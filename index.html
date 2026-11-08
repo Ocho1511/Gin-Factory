@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Weinkeller">
+<meta name="apple-mobile-web-app-title" content="Gin-Factory">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#17120a">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<title>Weinkeller</title>
+<title>Gin-Factory</title>
 <link rel="preload" href="fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/PlayfairDisplay-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -1068,7 +1068,7 @@ input[type="file"] { display: none; }
         <g fill="url(#spG)"><circle cx="31" cy="60" r="2"/><circle cx="36" cy="62" r="2"/><circle cx="41" cy="60" r="2"/><circle cx="36" cy="57" r="1.8" opacity=".9"/></g>
       </svg>
     </div>
-    <div class="splash-title" id="splash-title">Weinkeller</div>
+    <div class="splash-title" id="splash-title">Gin-Factory</div>
   </div>
 </div>
 
@@ -1158,7 +1158,7 @@ input[type="file"] { display: none; }
         </svg>
       </div>
       <div class="header-text">
-        <h1 id="title-keller">Ocho's Weinkeller</h1>
+        <h1 id="title-keller">Ocho's Gin-Factory</h1>
         <div class="subtitle" id="keller-subtitle">Meine Sammlung</div>
       </div>
     </div>
@@ -1889,10 +1889,10 @@ input[type="file"] { display: none; }
 // DATA
 // ═══════════════════════════════════════
 const SCAN_PROXY_URL = 'https://weinkeller-scan-proxy.ocho1511.workers.dev';
-const STORE_KEY = 'weinkeller_v2';
-const WISH_KEY  = 'weinkeller_v2_wish';
-const DRUNK_KEY = 'weinkeller_v2_drunk';
-const SETTINGS_KEY = 'weinkeller_v2_settings';
+const STORE_KEY = 'ginfactory_v2';
+const WISH_KEY  = 'ginfactory_v2_wish';
+const DRUNK_KEY = 'ginfactory_v2_drunk';
+const SETTINGS_KEY = 'ginfactory_v2_settings';
 // ── Daten bereinigen: schützt vor beschädigtem Speicher, Fehlimporten und manipulierten Cloud-Daten ──
 // Alles, was von außen kommt (Speicher, Import, Cloud), läuft durch diese Funktionen. So sind Typen, Zahlenbereiche
 // und IDs immer sauber, und Texte können keine Markierungen oder Skripte in die Oberfläche einschleusen.
@@ -2117,8 +2117,8 @@ let wines = cleanWines(safeParse(STORE_KEY, []));
 let wishes = cleanWishes(safeParse(WISH_KEY, []));
 let drunkWines = cleanDrunk(safeParse(DRUNK_KEY, []));
 const DEFAULT_OWNER = "Ocho";
-const STAMP_KEY = 'weinkeller_v2_stamp';
-const SYNCBASE_KEY = 'weinkeller_v2_syncbase';
+const STAMP_KEY = 'ginfactory_v2_stamp';
+const SYNCBASE_KEY = 'ginfactory_v2_syncbase';
 let settings = Object.assign({currency:'€', lang:'de', racks:[], cellars:[], blinkUrgent:false, blinkOver:false, blinkPeak:false, blinkOptimal:false, celeb:'both', owner:'', storage:'local', syncCode:'', email:'', font:'inter'}, safeParse(SETTINGS_KEY, {}));
 settings.cellars = cleanCellars(settings.cellars);
 settings.racks = cleanRacks(settings.racks);
@@ -2288,7 +2288,7 @@ async function createSyncCode() {
 
 // Sync-Code als Sicherung per E-Mail verschicken (öffnet die Mail-App des Nutzers; statische App, kein Mailserver)
 function buildCodeMailto(to) {
-  const subject = encodeURIComponent('Weinkeller Sync-Code');
+  const subject = encodeURIComponent('Gin-Factory Sync-Code');
   const body = encodeURIComponent(t('sync_email_body_1') + '\n\n' + settings.syncCode + '\n\n' + t('sync_email_body_2'));
   return 'mailto:' + encodeURIComponent(to || '') + '?subject=' + subject + '&body=' + body;
 }
@@ -2542,7 +2542,7 @@ let photoDbP = null;
 function photoDb() {
   if (!photoDbP) photoDbP = new Promise((resolve, reject) => {
     try {
-      const rq = indexedDB.open('weinkeller_photos', 1);
+      const rq = indexedDB.open('ginfactory_photos', 1);
       rq.onupgradeneeded = () => rq.result.createObjectStore('p');
       rq.onsuccess = () => resolve(rq.result);
       rq.onerror = () => reject(rq.error);
@@ -3491,7 +3491,7 @@ de: {
   setup_font: "Schriftart",
   setup_owner: "Anzeigename (Titel)",
   setup_owner_ph: "z.B. Peter",
-  setup_owner_desc: "Leer lassen für den Standardtitel. Name → „Name's Weinkeller\".",
+  setup_owner_desc: "Leer lassen für den Standardtitel. Name → „Name's Gin-Factory\".",
   setup_storage: "Speicherort",
   setup_storage_desc: "Cloud: Daten geräteübergreifend nutzbar (neueste Änderung gewinnt).",
   storage_local: "Nur dieses Gerät",
@@ -3508,7 +3508,7 @@ de: {
   sync_email_desc: "Öffnet deine Mail-App mit dem Code",
   sync_email_ph: "Deine E-Mail (optional)",
   sync_email_nocode: "Erst einen Sync-Code erstellen oder verbinden",
-  sync_email_body_1: "Dein Weinkeller Sync-Code (bitte sicher aufbewahren):",
+  sync_email_body_1: "Dein Gin-Factory Sync-Code (bitte sicher aufbewahren):",
   sync_email_body_2: "Damit stellst du deinen Keller auf einem anderen Gerät wieder her: Setup → Speicherort → Cloud → Code eingeben → Verbinden.",
   sync_running: "⏳ Synchronisiere…",
   sync_done: "Synchronisiert ✓",
@@ -3917,7 +3917,7 @@ en: {
   setup_font: "Font",
   setup_owner: "Display name (title)",
   setup_owner_ph: "e.g. Peter",
-  setup_owner_desc: "Leave empty for the default title. Name → \"Name's Weinkeller\".",
+  setup_owner_desc: "Leave empty for the default title. Name → \"Name's Gin-Factory\".",
   setup_storage: "Storage",
   setup_storage_desc: "Cloud: use your data across devices (newest change wins).",
   storage_local: "This device only",
@@ -3934,7 +3934,7 @@ en: {
   sync_email_desc: "Opens your mail app with the code",
   sync_email_ph: "Your email (optional)",
   sync_email_nocode: "Create or connect a sync code first",
-  sync_email_body_1: "Your Weinkeller sync code (please keep it safe):",
+  sync_email_body_1: "Your Gin-Factory sync code (please keep it safe):",
   sync_email_body_2: "Use it to restore your cellar on another device: Setup → Storage → Cloud → enter code → Connect.",
   sync_running: "⏳ Syncing…",
   sync_done: "Synced ✓",
@@ -4360,7 +4360,7 @@ es: {
   sync_email_desc: "Abre tu app de correo con el código",
   sync_email_ph: "Tu email (opcional)",
   sync_email_nocode: "Primero crea o conecta un código de sync",
-  sync_email_body_1: "Tu código de sync de Weinkeller (guárdalo bien):",
+  sync_email_body_1: "Tu código de sync de Gin-Factory (guárdalo bien):",
   sync_email_body_2: "Úsalo para restaurar tu bodega en otro dispositivo: Setup → Almacenamiento → Cloud → introducir código → Conectar.",
   sync_running: "⏳ Sincronizando…",
   sync_done: "Sincronizado ✓",
@@ -11176,7 +11176,7 @@ el: {
   sync_email_desc: "Ανοίγει την εφαρμογή αλληλογραφίας με τον κωδικό",
   sync_email_ph: "Το email σας (προαιρετικό)",
   sync_email_nocode: "Δημιουργήστε ή συνδέστε πρώτα έναν κωδικό συγχρονισμού",
-  sync_email_body_1: "Ο κωδικός συγχρονισμού του Weinkeller (φυλάξτε τον καλά):",
+  sync_email_body_1: "Ο κωδικός συγχρονισμού του Gin-Factory (φυλάξτε τον καλά):",
   sync_email_body_2: "Χρησιμοποιήστε τον για να επαναφέρετε το κελάρι σας σε άλλη συσκευή: Ρυθμίσεις → Αποθήκευση → Cloud → εισαγάγετε τον κωδικό → Σύνδεση.",
   sync_running: "⏳ Συγχρονισμός…",
   sync_done: "Συγχρονίστηκε ✓",
@@ -11602,7 +11602,7 @@ uk: {
   sync_email_desc: "Відкриває поштовий застосунок із кодом",
   sync_email_ph: "Ваш e-mail (необов'язково)",
   sync_email_nocode: "Спершу створіть код синхронізації або підключіться за кодом",
-  sync_email_body_1: "Ваш код синхронізації Weinkeller (зберігайте його в надійному місці):",
+  sync_email_body_1: "Ваш код синхронізації Gin-Factory (зберігайте його в надійному місці):",
   sync_email_body_2: "Використайте його, щоб відновити свій погріб на іншому пристрої: Налаштування → Сховище → Хмара → введіть код → Підключити.",
   sync_running: "⏳ Синхронізація…",
   sync_done: "Синхронізовано ✓",
@@ -12028,7 +12028,7 @@ ja: {
   sync_email_desc: "コードを入力した状態でメールアプリを開きます",
   sync_email_ph: "メールアドレス（任意）",
   sync_email_nocode: "先に同期コードを作成するか接続してください",
-  sync_email_body_1: "Weinkellerの同期コードです（大切に保管してください）:",
+  sync_email_body_1: "Gin-Factoryの同期コードです（大切に保管してください）:",
   sync_email_body_2: "別のデバイスでワインセラーを復元するには、設定 → 保存先 → クラウド → コードを入力 → 接続 の順に操作してください。",
   sync_running: "⏳ 同期中…",
   sync_done: "同期しました ✓",
@@ -12454,7 +12454,7 @@ ko: {
   sync_email_desc: "코드가 담긴 메일 앱을 열어요",
   sync_email_ph: "이메일 (선택 사항)",
   sync_email_nocode: "먼저 동기화 코드를 만들거나 연결해 주세요",
-  sync_email_body_1: "Weinkeller 동기화 코드입니다 (안전하게 보관해 주세요):",
+  sync_email_body_1: "Gin-Factory 동기화 코드입니다 (안전하게 보관해 주세요):",
   sync_email_body_2: "다른 기기에서 셀러를 복원할 때 사용하세요: 설정 → 저장 방식 → 클라우드 → 코드 입력 → 연결.",
   sync_running: "⏳ 동기화 중…",
   sync_done: "동기화 완료 ✓",
@@ -12880,7 +12880,7 @@ zh: {
   sync_email_desc: "打开邮件应用并附上同步码",
   sync_email_ph: "您的邮箱（可选）",
   sync_email_nocode: "请先创建或连接同步码",
-  sync_email_body_1: "您的 Weinkeller 同步码（请妥善保管）：",
+  sync_email_body_1: "您的 Gin-Factory 同步码（请妥善保管）：",
   sync_email_body_2: "可用于在另一台设备上恢复您的酒窖：设置 → 存储 → 云端 → 输入同步码 → 连接。",
   sync_running: "⏳ 正在同步…",
   sync_done: "已同步 ✓",
@@ -13687,7 +13687,7 @@ function applyI18n() {
 }
 
 const TITLE_PATTERNS = {
-  de: ["{o}'s Weinkeller", "{o}'s Statistik", "{o}'s Wunschliste"],
+  de: ["{o}'s Gin-Factory", "{o}'s Statistik", "{o}'s Wunschliste"],
   en: ["{o}'s Wine Cellar", "{o}'s Statistics", "{o}'s Wishlist"],
   es: ["Bodega de {o}", "Estadísticas de {o}", "Lista de deseos de {o}"],
   sv: ["{o}:s vinkällare", "{o}:s statistik", "{o}:s önskelista"],
@@ -13713,9 +13713,9 @@ const TITLE_PATTERNS = {
   hi: ["{o} का वाइन सेलर", "{o} के आँकड़े", "{o} की विशलिस्ट"]
 };
 // Neutrale Titel für die App-Store-Version, solange der Nutzer noch keinen Namen eingetragen hat
-// (sonst stünde bei jedem Kunden "Ocho's Weinkeller")
+// (sonst stünde bei jedem Kunden "Ocho's Gin-Factory")
 const NEUTRAL_TITLES = {
-  de: ["Mein Weinkeller", "Meine Statistik", "Meine Wunschliste"],
+  de: ["Meine Gin-Factory", "Meine Statistik", "Meine Wunschliste"],
   en: ["My Wine Cellar", "My Statistics", "My Wishlist"],
   es: ["Mi bodega", "Mis estadísticas", "Mi lista de deseos"],
   sv: ["Min vinkällare", "Min statistik", "Min önskelista"],
@@ -15366,7 +15366,7 @@ function setRackActive(i) { rackActive = i; rackFilledSlot = null; renderRacks()
 // Setup: Regale verwalten
 // ═══════════════════════════════════════
 // QR-ETIKETTEN FÜR REGALE UND EBENEN
-// Inhalt eines Codes: "weinkeller:1:<Regal-ID>" (Regal) bzw. "weinkeller:1:<Regal-ID>:<Ebene>" (Ebene).
+// Inhalt eines Codes: "ginfactory:1:<Regal-ID>" (Regal) bzw. "ginfactory:1:<Regal-ID>:<Ebene>" (Ebene).
 // Ausgabe: Etikettenbogen A4 mit 3 x 7 Etiketten zu je 63,5 x 38,1 mm (gängiges Format, z. B. Avery L7160), als PDF zum Teilen/Drucken
 // (iPhone: Teilen-Menü → Drucken) und im Browser direkt über "Drucken".
 // ═══════════════════════════════════════
@@ -15482,7 +15482,7 @@ function qrMatrix(text) {
   applyMask(best); formatBits(best);
   return mod;
 }
-function qrCode(rack, level) { return 'weinkeller:1:' + rack.id + (level ? ':' + level : ''); }
+function qrCode(rack, level) { return 'ginfactory:1:' + rack.id + (level ? ':' + level : ''); }
 // Etiketten eines Regals: eines für das Regal, je eines pro Ebene (Ebene 1 unten)
 function rackLabels(r) {
   const out = [{ rack: r, level: 0 }];
@@ -15534,7 +15534,7 @@ function drawQrLabel(lab) {
     ctx.font = '800 ' + nf.px + 'px Inter, system-ui, sans-serif';
     nf.lines.forEach((ln, i) => ctx.fillText(ln, tx, 80 + 20 + nf.px * (i + 1) * 1.05));
   }
-  ctx.fillStyle = '#aaa'; ctx.font = '500 20px Inter, system-ui, sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Weinkeller', W - 24, H - 22);
+  ctx.fillStyle = '#aaa'; ctx.font = '500 20px Inter, system-ui, sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Gin-Factory', W - 24, H - 22);
   return c;
 }
 let qrLabelCanvases = [];
@@ -15566,7 +15566,7 @@ async function qrLabelsPdf() {
         if (cuts) { doc.setDrawColor(190); doc.setLineWidth(0.1); doc.rect(x, y, LABEL_W_MM, LABEL_H_MM); }
       });
     });
-    await saveFile('weinkeller-qr-etiketten.pdf', doc.output('blob'));
+    await saveFile('gin-factory-qr-etiketten.pdf', doc.output('blob'));
   } catch (err) { exportFailed(err); }
 }
 // Browser-Druck: nur der Bogen wird gedruckt (Stylesheet für @media print)
@@ -15593,9 +15593,9 @@ async function qrLabelsPrint() {
 // ═══════════════════════════════════════
 let lvlSheet = { rack: null, e: 0 };
 const lvlSheetOpen = () => document.getElementById('lvl-modal').classList.contains('show');
-// "weinkeller:1:<Regal-ID>[:<Ebene>]" → { rack, e } (e = 0 beim Regal-Etikett) oder null
+// "ginfactory:1:<Regal-ID>[:<Ebene>]" → { rack, e } (e = 0 beim Regal-Etikett) oder null
 function parseShelfCode(text) {
-  const m = /^weinkeller:1:([A-Za-z0-9_-]{1,40})(?::(\d{1,3}))?$/.exec(String(text || '').trim());
+  const m = /^ginfactory:1:([A-Za-z0-9_-]{1,40})(?::(\d{1,3}))?$/.exec(String(text || '').trim());
   if (!m) return null;
   const r = rackById(m[1]), e = m[2] ? parseInt(m[2]) : 0;
   if (!r || e > r.rows || (m[2] && e < 1)) return null;
@@ -16298,7 +16298,7 @@ function exportRows() {
 async function exportCSV() {
   const rows = exportRows().map(row => row.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(','));
   try {
-    await saveFile('weinkeller.csv', new Blob(['\uFEFF' + [EXPORT_HEADERS.join(','), ...rows].join('\n')], { type: 'text/csv;charset=utf-8' }));
+    await saveFile('gin-factory.csv', new Blob(['\uFEFF' + [EXPORT_HEADERS.join(','), ...rows].join('\n')], { type: 'text/csv;charset=utf-8' }));
     showToast(t('toast_csv'));
   } catch (err) { exportFailed(err); }
 }
@@ -16326,10 +16326,10 @@ async function exportExcel() {
   try { await loadLib('xlsx'); } catch { showToast(t('toast_exportfail')); return; }
   const ws = XLSX.utils.aoa_to_sheet([EXPORT_HEADERS, ...exportRows()]);
   const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Weinkeller');
+  XLSX.utils.book_append_sheet(wb, ws, 'Gin-Factory');
   try {
     const out = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-    await saveFile('weinkeller.xlsx', new Blob([out], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+    await saveFile('gin-factory.xlsx', new Blob([out], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
     showToast(t('toast_xlsx'));
   } catch (err) { exportFailed(err); }
 }
@@ -16375,15 +16375,15 @@ async function exportPDF() {
     alternateRowStyles: { fillColor: [245,240,235] }
   });
   try {
-    await saveFile('weinkeller.pdf', doc.output('blob'));
+    await saveFile('gin-factory.pdf', doc.output('blob'));
     showToast(t('toast_pdf'));
   } catch (err) { exportFailed(err); }
 }
 
 async function exportJSON() {
-  const backup = { app: 'weinkeller', version: 2, dv: 2, exportedAt: new Date().toISOString(), wines, wishes, drunkWines, racks: settings.racks || [], cellars: settings.cellars || [], owner: settings.owner || '', photos: Object.fromEntries(wines.filter(w => w.photo && photoCache.has(w.photo)).map(w => [w.photo, photoCache.get(w.photo)])) };
+  const backup = { app: 'gin-factory', version: 2, dv: 2, exportedAt: new Date().toISOString(), wines, wishes, drunkWines, racks: settings.racks || [], cellars: settings.cellars || [], owner: settings.owner || '', photos: Object.fromEntries(wines.filter(w => w.photo && photoCache.has(w.photo)).map(w => [w.photo, photoCache.get(w.photo)])) };
   try {
-    await saveFile('weinkeller_backup.json', new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json;charset=utf-8' }));
+    await saveFile('gin-factory_backup.json', new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json;charset=utf-8' }));
     showToast(t('toast_backup'));
   } catch (err) { exportFailed(err); }
 }

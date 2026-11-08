@@ -1,7 +1,7 @@
 {
-  "name": "Ocho's Weinkeller",
+  "name": "Ocho's Gin-Factory",
   "short_name": "Ocho",
-  "description": "Dein persönlicher Weinkeller – Bestand, Trinkreife, Regale und mehr.",
+  "description": "Deine persönliche Gin-Factory – Bestand, Trinkreife, Regale und mehr.",
   "lang": "de",
   "start_url": "./",
   "scope": "./",

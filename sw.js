@@ -1,8 +1,8 @@
-/* Weinkeller Service Worker – App-Shell offline, HTML network-first (Updates), Schriften und Bibliotheken lokal gecacht */
-// Mehrere Weinkeller-Apps liegen unter derselben Herkunft (…github.io/<Repo>/). Jede bekommt deshalb einen eigenen Cache
+/* Gin-Factory Service Worker – App-Shell offline, HTML network-first (Updates), Schriften und Bibliotheken lokal gecacht */
+// Mehrere Gin-Factory-Apps liegen unter derselben Herkunft (…github.io/<Repo>/). Jede bekommt deshalb einen eigenen Cache
 // (Version + Pfad), und beim Aufräumen werden nur die eigenen alten Caches gelöscht, nicht die der anderen Apps.
 const SCOPE = new URL(self.registration.scope).pathname;
-const CACHE = 'weinkeller-v8:' + SCOPE;
+const CACHE = 'gin-factory-v1:' + SCOPE;
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png',
   './fonts/Inter-latin.woff2', './fonts/PlayfairDisplay-latin.woff2', './fonts/PlayfairDisplay-Italic-latin.woff2', './fonts/UnifrakturMaguntia-latin.woff2',
   './fonts/Roboto-cyrillic.woff2', './fonts/OpenSans-cyrillic.woff2', './fonts/Montserrat-cyrillic.woff2', './fonts/Roboto-latin.woff2', './fonts/OpenSans-latin.woff2', './fonts/Lato-latin-400.woff2', './fonts/Lato-latin-700.woff2', './fonts/Montserrat-latin.woff2', './fonts/Poppins-latin-400.woff2', './fonts/Poppins-latin-600.woff2',
@@ -13,8 +13,8 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-  // Alte Caches dieser App löschen: frühere gemeinsame Namen ohne Pfad ("weinkeller-v6") und ältere Versionen desselben Pfads
-  const mine = (k) => k.startsWith('weinkeller-') && k !== CACHE && (!k.includes(':') || k.endsWith(':' + SCOPE));
+  // Alte Caches dieser App löschen: frühere gemeinsame Namen ohne Pfad ("gin-factory-v6") und ältere Versionen desselben Pfads
+  const mine = (k) => k.startsWith('gin-factory-') && k !== CACHE && (!k.includes(':') || k.endsWith(':' + SCOPE));
   e.waitUntil(
     caches.keys().then((keys) => Promise.all(keys.filter(mine).map((k) => caches.delete(k)))).then(() => self.clients.claim())
   );

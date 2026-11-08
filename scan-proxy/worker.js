@@ -1,5 +1,5 @@
 // Cloudflare Worker: proxies wine-label scan requests to the Anthropic API
-// so the API key never has to live in the public Weinkeller webpage.
+// so the API key never has to live in the public Gin-Factory webpage.
 
 const ALLOWED_ORIGIN = 'https://ocho1511.github.io';
 
