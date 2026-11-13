@@ -1670,6 +1670,12 @@ input[type="file"] { display: none; }
     </div>
     <div class="form-row">
       <div class="form-group">
+        <label data-i18n="l_abv">Alkoholgehalt (% vol.)</label>
+        <input id="f-abv" placeholder="" type="number" min="0" max="100" step="0.1">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
         <label id="price-label">Preis (€)</label>
         <input id="f-price" placeholder="" type="number" step="0.01">
       </div>
@@ -2032,6 +2038,7 @@ function cleanWine(w, used) {
     location: cleanText(w.location, 200),
     drinkFrom: dw.from, drinkTo: dw.to,
     ...cleanTemps(w),
+    abv: (() => { const n = parseFloat(String(w.abv ?? '').replace(',', '.')); return Number.isFinite(n) && n > 0 && n <= 100 ? Math.round(n * 10) / 10 : null; })(),
     price: parsePrice(w.price), image: cleanImage(w.image), imageUser: !!w.imageUser,
     rating: Math.min(5, Math.max(0, parseInt(w.rating) || 0)) || null,
     note: cleanText(w.note, 5000),
@@ -2531,7 +2538,7 @@ async function vivinoImageFor(crit, meta) {
 // crit = { name, year, region, country, grape }
 async function resolveWineImage(info, crit, meta) {
   if (autoImagesOff()) return null;   // Store-Version: keine automatischen Fremdbilder
-  const viv = (meta && meta.noVivino) ? null : await vivinoImageFor(crit, meta);
+  const viv = null;   // Gin-Factory: Vivino kennt nur Wein -> übersprungen
   if (viv) { if (await verifyImageLoads(viv)) return viv; if (meta) meta.failed = true; }   // Bild gefunden, aber gerade nicht ladbar: kein Urteil
   if (info && isImageUrl(info.image) && await verifyImageLoads(info.image.trim())) return info.image.trim();
   if (info && info.page) { const og = await ogImageFor(info.page); if (og && await verifyImageLoads(og)) return og; }
@@ -3173,7 +3180,7 @@ async function lookupWineData(name, year) {
       model: 'claude-sonnet-4-6',
       max_tokens: 1200,
       tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
-      system: `Du bist ein Gin-Experte. Recherchiere den aktuellen durchschnittlichen Marktpreis (Endverbraucher, 0,7-l-Flasche) mit der Websuche. Antworte am Ende mit GENAU EINEM JSON-Objekt (ohne Markdown) mit den Feldern: type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), drinkFrom (immer null), drinkTo (immer null), tempFrom (immer null), tempTo (immer null), price (aktueller Durchschnittspreis pro Flasche in ${currencyName()} als Zahl ohne Währungssymbol, gerundet, oder null), image (eine direkte, öffentlich erreichbare URL zu einem Foto DER FLASCHE, die direkt auf eine Bilddatei zeigt und auf .jpg/.jpeg/.png/.webp endet; nur eine URL, die du über die Websuche tatsächlich gesehen hast, sonst null), page (die URL EINER Webseite, auf der die Flasche abgebildet ist – bevorzugt Wikipedia, die Seite der Destillerie oder ein Gin-Shop; eine echte, über die Websuche gefundene Seiten-URL, sonst null). Für Beschreibungsfelder nutze dein Wissen; für Preis, Bild und Seite die Websuche. Nutze null nur wenn keine sinnvolle Angabe möglich ist. Das Trinkfenster beginnt nie vor dem Jahrgang, und drinkTo liegt immer nach drinkFrom.`,
+      system: `Du bist ein Gin-Experte. Recherchiere den aktuellen durchschnittlichen Marktpreis (Endverbraucher, 0,7-l-Flasche) mit der Websuche. Antworte am Ende mit GENAU EINEM JSON-Objekt (ohne Markdown) mit den Feldern: type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), abv (Alkoholgehalt in % vol. als Zahl, z. B. 43.0, oder null), drinkFrom (immer null), drinkTo (immer null), tempFrom (immer null), tempTo (immer null), price (aktueller Durchschnittspreis pro Flasche in ${currencyName()} als Zahl ohne Währungssymbol, gerundet, oder null), image (eine direkte, öffentlich erreichbare URL zu einem Foto DER FLASCHE, die direkt auf eine Bilddatei zeigt und auf .jpg/.jpeg/.png/.webp endet; nur eine URL, die du über die Websuche tatsächlich gesehen hast, sonst null), page (die URL EINER Webseite, auf der die Flasche abgebildet ist – bevorzugt Wikipedia, die Seite der Destillerie oder ein Gin-Shop; eine echte, über die Websuche gefundene Seiten-URL, sonst null). Für Beschreibungsfelder nutze dein Wissen; für Preis, Bild und Seite die Websuche. Nutze null nur wenn keine sinnvolle Angabe möglich ist. Das Trinkfenster beginnt nie vor dem Jahrgang, und drinkTo liegt immer nach drinkFrom.`,
       messages: [{ role: 'user', content: `Gin: ${name}${year ? ' (Jahrgang ' + year + ')' : ''}. Nenne Stil, Region, Land, Botanicals, den aktuellen Durchschnittspreis pro Flasche in ${currencyName()}, eine direkte Bild-URL der Flasche und die URL einer Webseite, auf der die Flasche abgebildet ist.` }]
     })
   });
@@ -3205,6 +3212,7 @@ async function lookupWine() {
     setIfEmpty('f-region', info.region);
     setIfEmpty('f-country', info.land);
     setIfEmpty('f-grape', info.grape);
+    setIfEmpty('f-abv', info.abv);
     setIfEmpty('f-drink-from', info.drinkFrom);
     setIfEmpty('f-drink-to', info.drinkTo);
     fixFormDrinkWindow();
@@ -3247,6 +3255,7 @@ async function maybeAutoLookup() {
     setIfEmpty('f-region', info.region);
     setIfEmpty('f-country', info.land);
     setIfEmpty('f-grape', info.grape);
+    setIfEmpty('f-abv', info.abv);
     setIfEmpty('f-drink-from', info.drinkFrom);
     setIfEmpty('f-drink-to', info.drinkTo);
     fixFormDrinkWindow();
@@ -3411,6 +3420,7 @@ async function enrichAllWines() {
 // ═══════════════════════════════════════
 const I18N = {
 de: {
+  l_abv: "Alkoholgehalt (% vol.)",
   cur_eur: "Euro",
   cur_usd: "US-Dollar",
   cur_gbp: "Britisches Pfund",
@@ -3837,6 +3847,7 @@ de: {
   pdf_sub: "{n} Gins · Stand: {d}"
 },
 en: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "US dollar",
   cur_gbp: "British pound",
@@ -4263,6 +4274,7 @@ en: {
   pdf_sub: "{n} gins · as of {d}"
 },
 es: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Dólar estadounidense",
   cur_gbp: "Libra esterlina",
@@ -4689,6 +4701,7 @@ es: {
   pdf_sub: "{n} ginebras · a fecha de {d}"
 },
 sv: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "US-dollar",
   cur_gbp: "Brittiskt pund",
@@ -5115,6 +5128,7 @@ sv: {
   pdf_sub: "{n} ginsorter · per {d}"
 },
 da: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Amerikanske dollar",
   cur_gbp: "Britiske pund",
@@ -5541,6 +5555,7 @@ da: {
   pdf_sub: "{n} gin · pr. {d}"
 },
 fi: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Yhdysvaltain dollari",
   cur_gbp: "Englannin punta",
@@ -5967,6 +5982,7 @@ fi: {
   pdf_sub: "{n} ginia · {d} tilanne"
 },
 ru: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Евро",
   cur_usd: "Доллар США",
   cur_gbp: "Фунт стерлингов",
@@ -6393,6 +6409,7 @@ ru: {
   pdf_sub: "Джинов: {n} · по состоянию на {d}"
 },
 it: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Dollaro USA",
   cur_gbp: "Sterlina britannica",
@@ -6819,6 +6836,7 @@ it: {
   pdf_sub: "{n} gin · al {d}"
 },
 fr: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Dollar américain",
   cur_gbp: "Livre sterling",
@@ -7245,6 +7263,7 @@ fr: {
   pdf_sub: "{n} gins · au {d}"
 },
 pl: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Dolar amerykański",
   cur_gbp: "Funt brytyjski",
@@ -7671,6 +7690,7 @@ pl: {
   pdf_sub: "{n} ginów · stan na {d}"
 },
 hu: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euró",
   cur_usd: "Amerikai dollár",
   cur_gbp: "Brit font",
@@ -8097,6 +8117,7 @@ hu: {
   pdf_sub: "{n} gin · {d} állapot szerint"
 },
 cs: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Americký dolar",
   cur_gbp: "Britská libra",
@@ -8523,6 +8544,7 @@ cs: {
   pdf_sub: "{n} ginů · k {d}"
 },
 sk: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Americký dolár",
   cur_gbp: "Britská libra",
@@ -8949,6 +8971,7 @@ sk: {
   pdf_sub: "{n} ginov · k {d}"
 },
 ro: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Dolar american",
   cur_gbp: "Liră sterlină",
@@ -9375,6 +9398,7 @@ ro: {
   pdf_sub: "{n} gin-uri · la data de {d}"
 },
 hr: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Američki dolar",
   cur_gbp: "Britanska funta",
@@ -9801,6 +9825,7 @@ hr: {
   pdf_sub: "{n} ginova · na dan {d}"
 },
 pt: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Dólar americano",
   cur_gbp: "Libra esterlina",
@@ -10227,6 +10252,7 @@ pt: {
   pdf_sub: "{n} gins · a {d}"
 },
 no: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Amerikanske dollar",
   cur_gbp: "Britiske pund",
@@ -10653,6 +10679,7 @@ no: {
   pdf_sub: "{n} gin · per {d}"
 },
 nl: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Euro",
   cur_usd: "Amerikaanse dollar",
   cur_gbp: "Britse pond",
@@ -11079,6 +11106,7 @@ nl: {
   pdf_sub: "{n} gins · per {d}"
 },
 el: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Ευρώ",
   cur_usd: "Δολάριο ΗΠΑ",
   cur_gbp: "Λίρα στερλίνα",
@@ -11505,6 +11533,7 @@ el: {
   pdf_sub: "{n} τζιν · στις {d}"
 },
 uk: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "Євро",
   cur_usd: "Долар США",
   cur_gbp: "Британський фунт",
@@ -11931,6 +11960,7 @@ uk: {
   pdf_sub: "{n} джинів · станом на {d}"
 },
 ja: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "ユーロ",
   cur_usd: "米ドル",
   cur_gbp: "英ポンド",
@@ -12357,6 +12387,7 @@ ja: {
   pdf_sub: "ジン{n}本 · {d}現在"
 },
 ko: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "유로",
   cur_usd: "미국 달러",
   cur_gbp: "영국 파운드",
@@ -12783,6 +12814,7 @@ ko: {
   pdf_sub: "진 {n}병 · {d} 기준"
 },
 zh: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "欧元",
   cur_usd: "美元",
   cur_gbp: "英镑",
@@ -13209,6 +13241,7 @@ zh: {
   pdf_sub: "{n} 瓶金酒 · 截至 {d}"
 },
 hi: {
+  l_abv: "ABV (% vol.)",
   cur_eur: "यूरो",
   cur_usd: "अमेरिकी डॉलर",
   cur_gbp: "ब्रिटिश पाउंड",
@@ -14098,7 +14131,7 @@ function renderKeller() {
         ${wineImgHtml(w,'wine-row-img')}
         <div class="wine-row-info">
           <div class="wine-row-name">${esc(w.name)}</div>
-          <div class="wine-row-sub">${w.year||'–'} · ${TYPE_LABELS[w.type]||TYPE_LABELS.other||''}${w.grape?' · '+esc(w.grape):''}${regionCountry?' · '+esc(regionCountry):''}${loc?' · 📍 '+esc(loc):''}</div>
+          <div class="wine-row-sub">${w.year||'–'} · ${TYPE_LABELS[w.type]||TYPE_LABELS.other||''}${w.abv?' · '+w.abv+'%':''}${w.grape?' · '+esc(w.grape):''}${regionCountry?' · '+esc(regionCountry):''}${loc?' · 📍 '+esc(loc):''}</div>
         </div>
         <button class="wine-row-delete" onclick="deleteWine('${w.id}')">🗑</button>
       </div>`;
@@ -14117,7 +14150,7 @@ function renderKeller() {
         ${wineImgHtml(w,'wine-card-img')}
         <div style="flex:1;min-width:0">
           <div class="wine-name">${esc(w.name)}</div>
-          <div class="wine-year">${w.year||''} ${w.grape?'· '+esc(w.grape):''}</div>
+          <div class="wine-year">${w.year||''}${w.abv?' · '+w.abv+'%':''} ${w.grape?'· '+esc(w.grape):''}</div>
         </div>
         ${typeGrape(w)}
       </div>
@@ -14337,6 +14370,7 @@ function editWine(id) {
   document.getElementById('f-loc-regal').value = w.locRegal||'';
   document.getElementById('f-loc-ebene').value = w.locEbene||'';
   document.getElementById('f-loc-platz').value = w.locPlatz||'';
+  document.getElementById('f-abv').value = w.abv||'';
   document.getElementById('f-drink-from').value = w.drinkFrom||'';
   document.getElementById('f-drink-to').value = w.drinkTo||'';
   document.getElementById('f-temp-from').value = tempToDisplay(w.tempFrom);
@@ -14373,7 +14407,7 @@ function openAddModal() {
   editId = null;
   autoDrink = { from: null, to: null };
   lastAutoLookupKey = '';
-  ['f-name','f-year','f-region','f-country','f-grape','f-loc-regal','f-loc-ebene','f-loc-platz','f-note','f-drink-from','f-drink-to','f-temp-from','f-temp-to','f-price','f-image','f-ean','f-photo'].forEach(id => document.getElementById(id).value = '');
+  ['f-name','f-year','f-region','f-country','f-grape','f-loc-regal','f-loc-ebene','f-loc-platz','f-note','f-abv','f-drink-from','f-drink-to','f-temp-from','f-temp-to','f-price','f-image','f-ean','f-photo'].forEach(id => document.getElementById(id).value = '');
   updateImagePreview();
   if (formPhotoPending) photoDel(formPhotoPending);
   formPhotoPending = null; updateFormPhoto(); renderMinMaxFields(null);
@@ -14459,6 +14493,7 @@ function saveWine() {
     locEbene: document.getElementById('f-loc-ebene').value.trim()||null,
     locPlatz: document.getElementById('f-loc-platz').value.trim()||null,
     location: editId ? ((wines.find(w=>w.id===editId)||{}).location||null) : null,
+    abv: parseFloat(String(document.getElementById('f-abv').value).replace(',', '.'))||null,
     drinkFrom: parseInt(document.getElementById('f-drink-from').value)||null,
     drinkTo: parseInt(document.getElementById('f-drink-to').value)||null,
     tempFrom: tempKeep(document.getElementById('f-temp-from').value, editId ? (wines.find(w => w.id === editId) || {}).tempFrom : null), tempTo: tempKeep(document.getElementById('f-temp-to').value, editId ? (wines.find(w => w.id === editId) || {}).tempTo : null),
@@ -14505,7 +14540,7 @@ function saveWine() {
     savedId = existing ? existing.id : wine.id;
     if (existing) {
       existing.count = (existing.count||1) + (wine.count||1);
-      ['region','country','grape','locRegal','locEbene','locPlatz','drinkFrom','drinkTo','tempFrom','tempTo','price','image','rating','note','ean','photo'].forEach(k => {
+      ['region','country','grape','abv','locRegal','locEbene','locPlatz','drinkFrom','drinkTo','tempFrom','tempTo','price','image','rating','note','ean','photo'].forEach(k => {
         if (!existing[k] && wine[k]) existing[k] = wine[k];
       });
       if (!Object.keys(existing.minMax || {}).length && Object.keys(wine.minMax || {}).length) existing.minMax = wine.minMax;
@@ -14545,7 +14580,7 @@ async function handleScan(e) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 1000,
-        system: 'Du bist ein Gin-Etikett-Experte. Antworte NUR mit einem JSON-Objekt ohne Markdown-Backticks. Felder: name (Destillerie + Gin-Name), year (Abfüllungsjahr als Zahl oder null), type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch, z.B. Frankreich, oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), drinkFrom, drinkTo, tempFrom und tempTo sind immer null (Gin reift nicht). Wenn etwas nicht erkennbar ist, nutze null.',
+        system: 'Du bist ein Gin-Etikett-Experte. Antworte NUR mit einem JSON-Objekt ohne Markdown-Backticks. Felder: name (Destillerie + Gin-Name), year (Abfüllungsjahr als Zahl oder null), type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch, z.B. Frankreich, oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), abv ist der Alkoholgehalt in % vol. als Zahl oder null. drinkFrom, drinkTo, tempFrom und tempTo sind immer null (Gin reift nicht). Wenn etwas nicht erkennbar ist, nutze null.',
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: base64 } },
           { type: 'text', text: 'Analysiere dieses Gin-Etikett.' }
@@ -14562,6 +14597,7 @@ async function handleScan(e) {
     if (info.region) document.getElementById('f-region').value = info.region;
     if (info.land) document.getElementById('f-country').value = info.land;
     if (info.grape) document.getElementById('f-grape').value = info.grape;
+    if (info.abv && !document.getElementById('f-abv').value) document.getElementById('f-abv').value = info.abv;
     { const yy = parseInt(document.getElementById('f-year').value); const df = ruleFrom(yy, info.drinkFrom); if (df) document.getElementById('f-drink-from').value = df; }
     if (info.drinkTo) document.getElementById('f-drink-to').value = info.drinkTo;
     fixFormDrinkWindow();
@@ -14671,7 +14707,7 @@ async function scanBarcodeForWine() {
     const d = await resp.json();
     if (tok !== formToken) return;
     if (!d.found) { showBarcodeMiss(true); return; }
-    if (d.notWine) { document.getElementById('f-ean').value = ''; showToast(t('barcode_notwine')); return; }
+    // Gin-Factory: der Server-Filter 'notWine' gilt nur für Wein und wird ignoriert
     let name = d.name || d.brand || '';
     if (d.brand && d.name && !d.name.toLowerCase().includes(d.brand.toLowerCase())) name = d.brand + ' – ' + d.name;
     if (!document.getElementById('f-name').value.trim()) document.getElementById('f-name').value = name;
@@ -16295,9 +16331,9 @@ function wishToKeller(id) {
 // ═══════════════════════════════════════
 // EXPORT
 // ═══════════════════════════════════════
-const EXPORT_HEADERS = ['Name','Jahrgang','Typ','Region','Land','Rebsorte','Regal','Ebene','Platz','Flaschen','Bewertung','Preis','Trinken ab','Trinken bis','Notiz'];
+const EXPORT_HEADERS = ['Name','Abfüllung','Stil','Region','Land','Botanicals','Regal','Ebene','Platz','Flaschen','Bewertung','Preis','Alkohol %','Notiz'];
 function exportRows() {
-  return wines.map(w => [w.name,w.year||'',w.type,w.region||'',w.country||'',w.grape||'',w.locRegal||'',w.locEbene||'',w.locPlatz||'',w.count||1,w.rating||'',w.price||'',w.drinkFrom||'',w.drinkTo||'',w.note||'']);
+  return wines.map(w => [w.name,w.year||'',w.type,w.region||'',w.country||'',w.grape||'',w.locRegal||'',w.locEbene||'',w.locPlatz||'',w.count||1,w.rating||'',w.price||'',w.abv||'',w.note||'']);
 }
 
 async function exportCSV() {
@@ -16372,7 +16408,7 @@ async function exportPDF() {
   doc.setTextColor(120);
   doc.text(t('pdf_sub', {n: wines.length, d: new Date().toLocaleDateString(dateLocale())}), 14, 25);
   doc.autoTable({
-    head: [['Name','Jahrgang','Typ','Region','Rebsorte','Lagerplatz','Fl.','Bew.','Preis']],
+    head: [['Name','Abfüllung','Stil','Region','Botanicals','Lagerplatz','Fl.','Bew.','Preis']],
     body: wines.map(w => [w.name, w.year||'', TYPE_LABELS[w.type]||w.type, [w.region,w.country].filter(Boolean).join(', '), w.grape||'', formatLocation(w), w.count||1, w.rating?w.rating+'/5':'', w.price?fmtMoney(Number(w.price).toFixed(2)):'']),
     startY: 30,
     styles: { fontSize: 8, cellPadding: 3 },
@@ -16465,8 +16501,8 @@ function importRowsIntoWines(rows) {
   const header = rows[0].map(h => String(h ?? '').trim().toLowerCase());
   const col = name => header.indexOf(name);
   const idx = {
-    name: col('name'), year: col('jahrgang'), type: col('typ'),
-    region: col('region'), country: col('land'), grape: col('rebsorte'), location: col('lagerplatz'),
+    name: col('name'), year: Math.max(col('abfüllung'), col('jahrgang')), type: Math.max(col('stil'), col('typ')),
+    region: col('region'), country: col('land'), grape: Math.max(col('botanicals'), col('rebsorte')), abv: Math.max(col('alkohol %'), col('abv')), location: col('lagerplatz'),
     locRegal: col('regal'), locEbene: col('ebene'), locPlatz: col('platz'), count: col('flaschen'),
     rating: col('bewertung'), price: col('preis'),
     drinkFrom: col('trinken ab'), drinkTo: col('trinken bis'), note: col('notiz')
@@ -16482,7 +16518,7 @@ function importRowsIntoWines(rows) {
       region: get(cols, 'region'), country: get(cols, 'country'), grape: get(cols, 'grape'), location: get(cols, 'location'),
       locRegal: get(cols, 'locRegal'), locEbene: get(cols, 'locEbene'), locPlatz: get(cols, 'locPlatz'),
       count: get(cols, 'count'), rating: get(cols, 'rating'), price: get(cols, 'price'),
-      drinkFrom: get(cols, 'drinkFrom'), drinkTo: get(cols, 'drinkTo'), note: get(cols, 'note')
+      abv: get(cols, 'abv'), note: get(cols, 'note')
     }, used);
     if (!w) return;
     wines.push(w);
