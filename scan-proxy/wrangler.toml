@@ -1,3 +1,14 @@
 name = "gin-factory-scan-proxy"
 main = "worker.js"
 compatibility_date = "2026-01-01"
+
+# Cloud-Sync und Tageslimit: einmalig anlegen mit
+#   npx wrangler kv namespace create SYNC
+# und die ausgegebene id hier eintragen.
+[[kv_namespaces]]
+binding = "SYNC"
+id = "HIER_KV_ID_EINTRAGEN"
+
+# Optional: erlaubte Herkunftsadressen (Komma-getrennt), z. B. die eigene GitHub-Pages-Adresse
+# [vars]
+# ALLOWED_ORIGINS = "https://DEINNAME.github.io,capacitor://localhost"
