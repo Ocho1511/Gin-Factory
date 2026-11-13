@@ -48,6 +48,11 @@
 .nav-btn[onclick*="trinkreife"], #drinkrule-btn, .form-row:has(#f-drink-from), .form-row:has(#f-temp-from),
 .form-group:has([data-i18n="setup_tempunit"]), .wine-ripeness, .wine-temp { display: none !important; }
 :root { --wine: #1f6b4f; --wine-light: #2e8f6b; }
+.type-legend { margin: 0 16px 12px; padding: 12px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+.type-legend .legend-title { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+.type-legend .legend-text { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.type-legend .legend-row { display: flex; align-items: center; gap: 10px; font-size: 13px; padding: 3px 0; }
+.type-legend .legend-ico { width: 18px; display: flex; justify-content: center; }
 </style>
 <style>
 :root {
@@ -1173,6 +1178,7 @@ input[type="file"] { display: none; }
     <input class="search-input" id="search-input" placeholder="🔍  Wein suchen…" data-i18n-ph="search_ph" oninput="renderKeller()">
   </div>
   <div class="filter-scroll" id="filter-scroll"></div>
+    <div id="type-legend" class="type-legend" style="display:none"></div>
   <div class="sort-row">
     <select class="sort-select" id="sort-select" onchange="setSort(this.value)">
       <option value="added" data-i18n="sort_added">↕ Sortierung: Neueste zuerst</option>
@@ -3500,6 +3506,8 @@ async function enrichAllWines() {
 // ═══════════════════════════════════════
 const I18N = {
 de: {
+  legend_title: "Was bedeutet die Farbe der Beeren?",
+  legend_text: "Die Wacholderbeeren auf jeder Karte zeigen den Gin-Stil an. Tippen auf die Beeren öffnet die Wikipedia-Seite zum Gin.",
   t_tonic: "Tonic Water",
   o_tonic: "🥤 Tonic Water",
   l_tonic: "Passendes Tonic Water",
@@ -3939,6 +3947,8 @@ de: {
   pdf_sub: "{n} Gins · Stand: {d}"
 },
 en: {
+  legend_title: "What does the berry colour mean?",
+  legend_text: "The juniper berries on each card show the gin style. Tapping the berries opens the Wikipedia page for the gin.",
   t_tonic: "Tonic Water",
   o_tonic: "🥤 Tonic Water",
   l_tonic: "Matching tonic water",
@@ -14102,6 +14112,16 @@ function tonicLine(w) {
   }
   return w.tonic ? `<div class="wine-region" style="margin-top:4px">🥤 ${esc(w.tonic)}</div>` : '';
 }
+let legendOpen = false;
+function toggleLegend() { legendOpen = !legendOpen; renderKeller(); }
+function renderLegend() {
+  const el = document.getElementById('type-legend');
+  if (!el) return;
+  el.style.display = legendOpen ? '' : 'none';
+  if (!legendOpen) return;
+  el.innerHTML = `<div class="legend-title">${esc(t('legend_title'))}</div><div class="legend-text">${esc(t('legend_text'))}</div>` +
+    ['rot','weiß','rosé','sekt','tonic','other'].map(ty => `<div class="legend-row"><span class="legend-ico">${grapeSvg(TYPE_FILL[ty])}</span><span>${esc(TYPE_LABELS[ty])}</span></div>`).join('');
+}
 function typeGrape(w) {
   const svg = grapeSvg(TYPE_FILL[w.type]||TYPE_FILL.other);
   if (!w.grape && !w.name) return `<span class="wine-type-grape" title="${esc(TYPE_LABELS[w.type]||'')}">${svg}</span>`;
@@ -14193,8 +14213,11 @@ function renderKeller() {
     <button class="filter-chip ${activeFilter===ty?'active':''}" onclick="setFilter('${ty}')">${TYPE_LABELS[ty]}</button>
   `).join('') + `
     <button class="filter-chip ${viewMode==='list'?'active':''}" onclick="toggleViewMode()">${t('list_chip')}</button>
+    <button class="filter-chip ${legendOpen?'active':''}" onclick="toggleLegend()" title="${esc(t('legend_title'))}" aria-label="${esc(t('legend_title'))}">ⓘ</button>
     ${shoppingChipHtml()}
   `;
+
+  renderLegend();
 
   // list
   let list = wines.filter(w => {
