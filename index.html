@@ -70,6 +70,9 @@
 .rec-box { margin: 16px; padding: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
 .rec-box input, .rec-box textarea, .rec-box select { width: 100%; margin-top: 8px; box-sizing: border-box; }
 .shelf-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+/* Handy: Perfect-Serve-Felder untereinander, Formularzeilen unten ausrichten */
+@media (max-width: 520px) { #serve-group .form-row { display: grid; grid-template-columns: 1fr; gap: 8px; } }
+.form-row { align-items: flex-end; }
 </style>
 <style>
 :root {
@@ -3621,7 +3624,7 @@ de: {
   nav_ripe: "Trinkreife",
   nav_history: "Historie",
   nav_racks: "Regale",
-  nav_wish: "Wunschliste",
+  nav_wish: "Wunsch\u00adliste",
   nav_export: "Export/Import",
   nav_setup: "Setup",
   racks_title: "Regale",
