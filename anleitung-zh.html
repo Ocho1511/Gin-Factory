@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>用户指南 – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← 返回收藏</a> &nbsp;·&nbsp; </span><a href="support.html">← 返回支持页面</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html" selected>简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>用户指南 – Gin-Factory</h1>
+<p><small>更新日期：2026年11月15日 · 应用版本 2.0</small></p>
+
+<div class="toc">
+
+<strong>目录</strong><ol>
+<li><a href="#start">概览与入门步骤</a></li>
+<li><a href="#add">添加金酒</a></li>
+<li><a href="#cellar">酒吧</a></li>
+<li><a href="#drink">饮用金酒</a></li>
+<li><a href="#racks">酒架与存放</a></li>
+<li><a href="#history">历史</a></li>
+<li><a href="#wish">心愿单</a></li>
+<li><a href="#serve">完美饮法与酒杯</a></li>
+<li><a href="#recipes">配方与香草、装饰架</a></li>
+<li><a href="#stats">统计</a></li>
+<li><a href="#export">导出、导入与备份</a></li>
+<li><a href="#setup">设置</a></li>
+<li><a href="#sync">同步两台设备</a></li>
+<li><a href="#privacy">AI、隐私与费用</a></li>
+<li><a href="#faq">小贴士与常见问题</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. 概览与入门步骤</h2>
+
+<p>Gin-Factory 是装在口袋里的个人金酒吧：您可以管理库存、存放位置、心愿单、配方和统计数据。一切都在您的设备上运行；借助同步码，可以连接多台设备。</p>
+<p>在底部（PC 和横屏 iPad 上：在左侧）有一个包含八个区域的栏：</p>
+<table>
+<tbody><tr><th>区域</th><th>用途</th></tr>
+<tr><td><strong>酒吧</strong></td><td>所有金酒（以及汤力水）、搜索、筛选、排序、添加金酒、饮用</td></tr>
+<tr><td><strong>统计</strong></td><td>库存、价格、存放、饮用历史的分析</td></tr>
+<tr><td><strong>配方</strong></td><td>13 款金汤力与鸡尾酒经典、自己的配方、香草与装饰架</td></tr>
+<tr><td><strong>历史</strong></td><td>您已喝过的金酒</td></tr>
+<tr><td><strong>酒架</strong></td><td>存放规划：存放和移动金酒、二维码标签</td></tr>
+<tr><td><strong>心愿单</strong></td><td>您还想购买的金酒</td></tr>
+<tr><td><strong>导入导出</strong></td><td>备份您的数据，读入表格和备份文件</td></tr>
+<tr><td><strong>设置</strong></td><td>名称、货币、语言、云端、定义酒架</td></tr>
+</tbody></table>
+<h3>最初的五个步骤</h3>
+<ol>
+<li><strong>选择语言和货币</strong>：设置 → 通用。货币会自动跟随语言。</li>
+<li><strong>定义酒架</strong>（可选）：设置 → 酒架（参见<a href="#racks">第 5 节</a>）。</li>
+<li><strong>添加您的第一款金酒</strong>：在酒吧中点按 <kbd>+</kbd>（<a href="#add">第 2 节</a>）。</li>
+<li><strong>存放它</strong>：为这款金酒指定酒架中的一个位置。</li>
+<li><strong>备份</strong>：导入导出 → JSON 备份，或设置云端同步（<a href="#sync">第 13 节</a>）。</li>
+</ol>
+<div class="tip"><em>设置</em>中的各部分可以折叠。首次启动时“通用”是展开的，其余为折叠状态。应用会记住您上次展开或折叠的内容。</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. 添加金酒</h2>
+
+<p>在酒吧中点按 <kbd>+</kbd>。添加金酒有多种方式，可以组合使用。</p>
+<h3>a) 手动输入</h3>
+<p>填写各字段：<strong>名称 / 酒厂、装瓶年份、瓶数、金酒风格、产区、国家、植物原料、ABV (% vol.)、搭配的汤力水、完美饮法、存放位置（酒架 · 层 · 从左数第几位）、价格、酒瓶图片（网络链接）、自己的照片、评分、备注</strong>。只有名称是必填项。点按<em>保存</em>即可创建这款金酒。</p>
+<ul>
+<li><strong>金酒风格：</strong>London Dry、Old Tom / Plymouth、粉红 / 水果金酒、Navy Strength、汤力水或其他。</li>
+<li><strong>装瓶年份</strong>是该酒瓶的装瓶年份；<strong>植物原料</strong>是酿造所用的植物（例如杜松子、芫荽籽、柑橘皮）；<strong>ABV (% vol.)</strong> 是酒精度。</li>
+<li><strong>库存、最低和最高：</strong>如果您输入了最低值，库存低于该值时应用会发出提醒，并建议将这款金酒加入心愿单（<a href="#cellar">第 3 节</a>）。</li>
+<li><strong>自己的照片：</strong>“拍照 / 选择照片”可为金酒附上一张照片。照片保存在此设备上，包含在 JSON 备份中，但不会同步到云端。</li>
+<li><strong>搭配的汤力水与完美饮法：</strong>参见<a href="#serve">第 8 节</a>。</li>
+</ul>
+<h3>b) 扫描酒标（AI）</h3>
+<p>点按<em>扫描酒标（AI）</em>并拍摄酒瓶的酒标。AI 会读取名称、年份、风格、产区、国家、植物原料和 ABV。请检查这些值后再保存。首次使用前，应用会征求您的同意（<a href="#privacy">第 14 节</a>）。</p>
+<h3>c) 扫描条形码</h3>
+<p>点按<em>扫描条形码</em>，将酒瓶的条形码对准取景框。应用会在免费的商品数据库中查询该编号（免费，不消耗 AI 额度），如果找到，就会填入<strong>名称、生产商和金酒风格</strong>。装瓶年份是可选的，应用会向您询问。</p>
+<ul>
+<li>如果这瓶酒已经在酒吧中，应用会询问“再添加一瓶吗？”——当您又买了同样的酒时，这是增加数量的快捷方式。</li>
+<li>如果条形码<strong>不在</strong>数据库中（小型酒厂很常见），会出现带有<em>扫描酒标（AI）</em>按钮的提示。该编号仍会与金酒一起保存，这样下次就能立即识别这瓶酒。</li>
+</ul>
+<h3>d) 查询金酒（AI）</h3>
+<p><em>查询金酒（AI）</em>会让 AI 在网上搜索产区、国家、植物原料、ABV、当前平均价格，以及（在网页版中）酒瓶图片。您已填写的字段不会被覆盖。输入名称和年份且尚无价格时，这也会自动执行。</p>
+<div class="note">iPhone 应用不会从互联网加载酒瓶图片（App Store 规定）。您可以改为拍摄自己的照片。</div>
+<h3>e) 添加汤力水</h3>
+<p>汤力水的添加方式与金酒完全相同：在风格中选择<strong>汤力水</strong>（🥤）即可。筛选中也会出现单独的“汤力水”项。汤力水卡片上会以<strong>适合搭配：…</strong>显示与之相配的金酒。</p>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="cellar">3. 酒吧</h2>
+
+<h3>搜索、筛选、排序</h3>
+<ul>
+<li>顶部的<strong>搜索</strong>：按名称、产区、国家和酒厂查找金酒。</li>
+<li><strong>筛选：</strong>全部、London Dry、Old Tom / Plymouth、粉红 / 水果金酒、Navy Strength、汤力水、其他。点按某个风格时，搜索内容会自动清除。</li>
+<li><strong>排序：</strong>最新添加、名称、装瓶年份、植物原料、产区或国家。</li>
+<li><strong>列表 / 卡片：</strong><em>列表</em>按钮可在紧凑列表和详细卡片之间切换。</li>
+</ul>
+<h3>金酒卡片</h3>
+<p>卡片显示名称、装瓶年份、酒厂、评分（星级）、产区和国家（点按可打开地图或该国的金酒产区地图）、瓶数、<strong>植物原料</strong>以及<strong>存放位置</strong>（点按可跳转到酒架）。每张卡片上的<strong>杜松子</strong>用颜色表示金酒的风格；点按浆果即可打开该金酒的维基百科页面（参见“浆果颜色代表什么？”）。</p>
+<p>卡片底部有：<em>编辑</em>、<em>饮用</em>和 🗑（删除金酒）。</p>
+<h3>库存、最低/最高与购物清单</h3>
+<p>如果您为某款金酒输入最低值（也可选择输入最高值），卡片会显示“库存 · 最低 · 最高”，低于该值时以 ⚠ 提醒。<em>补货</em>按钮会打开<strong>购物清单</strong>：列出所有低于最低值的金酒（目标为最高值，否则为最低值）。您可以分享或复制该清单，也可以将这些金酒加入心愿单。</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. 饮用金酒</h2>
+
+<p>在金酒卡片上点按<em>饮用</em>，会打开<em>喝金酒</em>对话框：</p>
+<ul>
+<li><strong>从哪个位置取出？</strong>——选择酒瓶取自的酒架位置，或选择“酒瓶不在任何位置”。该位置随即空出。</li>
+<li><strong>和谁一起喝的？</strong>——您的客人姓名（可选）。</li>
+<li><strong>场合</strong>——春天、夏天、秋天、冬天、生日、派对或“随心小酌”（可多选）。</li>
+</ul>
+<p><em>饮用</em>会减少一瓶，并在<a href="#history">历史</a>中创建一条记录。彩带和音效会为此庆祝（可在设置中关闭）。如果这是<strong>最后一瓶</strong>，应用会告知您：这款金酒随后会从酒吧中消失（但仍保留在历史中）。</p>
+<div class="tip"><strong>扫描快速饮用：</strong>酒吧中的圆形按钮会拍摄酒标，在您的酒吧中识别出这款金酒，并立即打开“饮用”对话框。</div>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. 酒架与存放</h2>
+
+<h3>定义和编辑酒架</h3>
+<p><strong>设置 → 酒架</strong>（点按标题展开）：输入名称、层数、每层位置数和每个位置的瓶数，然后点按 ＋。“瓶/位”对于瓶架为 1，对于地面或木箱则更大。在列表中，每个酒架都有：</p>
+<ul>
+<li>用于更改顺序的<strong>拖动柄 ⠿</strong>，以及列表下方的<em>按 A–Z 排序</em>按钮，</li>
+<li>▦ 用于<strong>二维码标签</strong>，✏️ 用于编辑，🧹 用于清空，🗑 用于删除。</li>
+</ul>
+<p>通过<strong>编辑</strong>（✏️），您可以重命名酒架、更改每层的位置数、在上方或下方添加层、删除层，并为每一层指定独立的名称和瓶数。因此失去位置的酒瓶之后会被视为“未存放”；金酒本身仍保留在酒吧中。进行此类更改前，应用会先询问。</p>
+<h3>“酒架”区域</h3>
+<p>在顶部，您通过<strong>磁贴</strong>（名称和“已占用 / 位置数”）选择酒架。顺序也可以在这里更改：在 PC 上拖动磁贴，在触摸屏上长按磁贴约半秒，然后拖动。下方是<strong>存放规划</strong>：每一层及其位置。已占用的位置会显示一个颜色与金酒风格对应的酒瓶。</p>
+<h3>存放</h3>
+<ol>
+<li>在“未分配”下点按一款金酒（该列表可按酒厂和国家筛选）——或在酒吧中点按“未存放”提示。</li>
+<li>点按一个<strong>空位</strong>。对于地面和木箱，应用会存入尽可能多的酒瓶。</li>
+</ol>
+<p><strong>扫描并存放金酒</strong>会拍摄酒标、找到该金酒，并引导您完成存放。</p>
+<h3>已占用的位置、移动、移除</h3>
+<p>点按已占用的位置：您会看到这款金酒，并可以<em>打开</em>它、<em>从位置移除</em>或<em>移动</em>（然后点按一个空位）。<em>清空酒架</em>会取出酒架中的所有酒瓶（需确认）。</p>
+<h3>二维码标签与“扫描层”</h3>
+<p>通过<strong>二维码标签</strong>（设置 → 酒架 → ▦），您可以为酒架创建一张标签，并为每一层各创建一张。可作为 PDF 分享或打印（标签纸 63.5 × 38.1 mm，每页 21 张）并贴上。之后：在酒架区域使用<strong>扫描层</strong>——您会看到该层上有什么，并可以<em>存放到这里</em>、<em>取出</em>、饮用、移动酒瓶或<em>整层移动</em>。在“添加金酒”表单中，扫描某一层的标签也会填入存放位置。</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. 历史</h2>
+
+<p>历史列出您喝过的所有金酒，包括日期、金酒、价值、客人和场合。您可以按金酒风格和场合筛选，并编辑记录（客人、场合）。历史为统计中的饮用、支出和饮用频率分析提供数据。</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. 心愿单</h2>
+
+<ul>
+<li><strong>+ 添加心愿</strong>：手动添加或通过扫描酒标添加，可附带可选备注（“在哪里购买？”）。</li>
+<li><strong>搜索价格</strong>（💶）：应用会在网上搜索这款金酒的价格，显示最便宜的结果并乘以数量。这些是不作保证的参考值——请向店家确认运费和库存情况。</li>
+<li>左侧的<strong>勾选框</strong>：标记为已购买/已完成（该行会变淡）。</li>
+<li><strong>→ 酒吧</strong>：将心愿移入酒吧（带数量，如有则带最低价格），如果您有酒架，会直接进入存放流程。</li>
+<li>如果某款金酒低于其最低值，应用会建议按缺少的数量将其加入心愿单（“补货”）。</li>
+<li>完美饮法中标有购物提示（🛒）的汤力水，以及缺少的香草和装饰，也可以加入心愿单（<a href="#serve">第 8 节</a>、<a href="#recipes">第 9 节</a>）。</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="serve">8. 完美饮法与酒杯</h2>
+
+<p>在“添加金酒”或“编辑金酒”表单中有一个<strong>完美饮法（香草、装饰、比例）</strong>区块，告诉您哪种汤力水最适合这款金酒，以及怎样上桌最好。</p>
+<h3>两种推荐方式</h3>
+<table>
+<tbody><tr><th>按钮</th><th>作用</th></tr>
+<tr><td><em>🌿 规则提示</em></td><td>在设备上离线运行，免费。根据金酒风格和植物原料（柑橘、草本、花香、香料、浆果等）给出推荐。</td></tr>
+<tr><td><em>🤖 AI 推荐</em></td><td>由 AI 针对这款金酒给出推荐，会消耗一次 AI 扫描（<a href="#privacy">第 14 节</a>）。</td></tr>
+</tbody></table>
+<h3>汤力水推荐</h3>
+<p>结果最多显示<strong>三种汤力水推荐</strong>并附理由，例如经典印度汤力水、清淡汤力水（柔和）、地中海汤力水、接骨木花汤力水、姜味 / 香料汤力水、粉红西柚汤力水或柑橘汤力水。每条推荐都会标明：</p>
+<ul>
+<li><strong>✓ 酒吧里有</strong>：这款汤力水已经在您的酒吧中。</li>
+<li><strong>🛒 购物提示</strong>：您还没有这款汤力水。用<em>+ 心愿单</em>按钮可以直接把它加入心愿单。</li>
+</ul>
+<p>点按一条推荐，即可将该汤力水设为<strong>收藏</strong>（“已设为收藏 ✓”）。</p>
+<h3>输入字段</h3>
+<ul>
+<li><strong>香草和装饰</strong>：用逗号分隔（迷迭香枝、百里香、罗勒、黄瓜片、西柚皮、粉红胡椒等）。</li>
+<li><strong>比例</strong>：例如 1:2。</li>
+<li><strong>酒杯</strong>：例如 Copa 杯 / 气球杯。</li>
+<li><strong>冰块</strong>：例如大量大冰块。</li>
+</ul>
+<h3>搭配的汤力水（🤖）</h3>
+<p>在表单的<strong>搭配的汤力水</strong>字段旁点按 🤖，AI 会为这款金酒找到合适的汤力水。若要一次为所有金酒分配，请使用<em>设置 → 分配汤力水（AI）</em>：说明为“为每款尚无汤力水的金酒寻找搭配的汤力水”，应用会先征求确认。它会优先从您已有的汤力水中挑选，否则给出通用推荐。此操作会消耗 AI 扫描。</p>
+<h3>酒杯信息</h3>
+<p>酒杯名称是一个链接<em>查看酒杯</em>。点按它会打开一张带插图和简短说明的卡片；卡片下方的<em>查看更多图片 ↗</em>可以找到更多照片，<em>关闭</em>则关闭卡片。有说明的酒杯有：</p>
+<ul>
+<li><strong>Copa 杯 / 气球杯</strong>：金汤力的经典酒杯，宽阔的杯身能释放植物香气。</li>
+<li><strong>高球杯</strong>：用于汤力水加得多的金汤力和 Tom Collins 等长饮。</li>
+<li><strong>平底杯（古典杯）</strong>：用于加冰金酒，以及 Negroni、Gimlet 和罗勒 Smash。</li>
+<li><strong>浅碟香槟杯（Coupe）</strong>：用于 Gimlet、Southside、Bee's Knees 等不加冰的鸡尾酒。</li>
+<li><strong>马天尼杯</strong>：V 形酒杯，用于干马天尼。</li>
+<li><strong>香槟笛形杯</strong>：用于 French 75。</li>
+</ul>
+<p>金酒卡片上会显示<strong>收藏</strong>的汤力水、<strong>装饰</strong>和<strong>酒杯</strong>。</p>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. 配方与香草、装饰架</h2>
+
+<p>底部栏中的<strong>配方</strong>区域（副标题“金汤力与鸡尾酒”）收录了 <strong>13 款经典</strong>，并附有材料和做法：金汤力、地中海金汤力、粉红金汤力、海军强度金汤力、Negroni、干马天尼、Gimlet、Tom Collins、Southside、French 75、Bee's Knees、Martinez 和金酒罗勒 Smash。每个配方还会注明所需的酒杯。</p>
+<h3>筛选</h3>
+<ul>
+<li><strong>全部</strong>：所有配方。</li>
+<li><strong>⭐ 收藏</strong>：您用星标标记的配方。</li>
+<li><strong>我的</strong>：您自己创建的配方，以及您用 AI 生成并保存的配方。</li>
+<li><strong>✓ 适合我的酒吧</strong>：用您现有的金酒和材料就能做的配方（标有“可做”）。</li>
+</ul>
+<h3>自己的配方</h3>
+<p>在<em>添加自己的配方</em>中输入<strong>名称</strong>、<strong>材料</strong>（每行一种）和<strong>做法</strong>，然后点按<em>保存配方</em>。删除这样的配方时需要确认。</p>
+<h3>金酒配方（AI）</h3>
+<p>在<em>选择一款金酒…</em>中选择酒吧里的一款金酒，点按<em>🤖 生成配方</em>，AI 就会为它生成配方。喜欢的话，点按<em>保存为我的配方</em>。这会消耗一次 AI 扫描。</p>
+<h3>我的香草与装饰架</h3>
+<p>点按您家中已有的香草和装饰（例如青柠角、迷迭香枝、百里香、罗勒、黄瓜片、西柚皮、粉红胡椒）。之后推荐和配方中会显示 <strong>✓</strong>（已有）或 <strong>🛒</strong>（缺少）。点按<em>🛒 将缺少的物品加入心愿单</em>，缺少的材料就会加入<a href="#wish">心愿单</a>。</p>
+<div class="note">配方、收藏和装饰架会随云端同步一并保存（<a href="#sync">第 13 节</a>）。</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. 统计</h2>
+
+<p>从上到下：</p>
+<ul>
+<li><strong>关键数据：</strong>瓶数、金酒、总价值、平均评分。</li>
+<li><strong>按类型</strong>（金酒风格）和<strong>热门金酒</strong>（按评分或饮用频率，可按星级筛选）。</li>
+<li><strong>按国家、产区：</strong>条形图；点按会在酒吧中搜索。</li>
+<li><strong>价格：</strong>每瓶平均、最便宜、最贵、价格区间（按您的货币调整）。</li>
+<li><strong>储存：</strong>占用百分比、空位、未存放的酒瓶，以及每个酒架一条的条形图（点按可跳转到该酒架）。</li>
+<li><strong>已喝的金酒</strong>和<strong>已喝金酒的价值</strong>。</li>
+<li><strong>补货：</strong>低于最低库存的金酒（打开购物清单）、未完成的心愿及其价值。</li>
+</ul>
+<p>没有数据的部分（例如没有价格时）会被隐藏。</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. 导出、导入与备份</h2>
+
+<table>
+<tbody><tr><th>功能</th><th>用途</th></tr>
+<tr><td>导出 CSV</td><td>适用于 Excel 或 Numbers 的表格</td></tr>
+<tr><td>导出 Excel</td><td>保存为 .xlsx 文件</td></tr>
+<tr><td>导出 PDF</td><td>可打印的概览</td></tr>
+<tr><td><strong>JSON 备份</strong></td><td><strong>完整数据备份</strong>（金酒、心愿单、历史、酒架、显示名称、自己的照片）</td></tr>
+<tr><td>复制到剪贴板</td><td>复制文本清单</td></tr>
+<tr><td>导入 JSON / CSV / Excel</td><td>恢复备份或读入表格</td></tr>
+</tbody></table>
+<p>CSV 和 Excel 中包含名称、装瓶年份、风格、产区、国家、植物原料、ABV、酒架、层、位、瓶数、评分、价格、备注等列。导入时也接受旧的列名。</p>
+<div class="tip"><strong>请定期进行 JSON 备份。</strong>JSON 导入会用备份内容替换酒吧中的金酒（应用会先询问）。在新设备上，这样可以恢复所有内容。您也可以改用云端同步（<a href="#sync">第 13 节</a>）。</div>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. 设置</h2>
+
+<h3>通用</h3>
+<ul>
+<li><strong>显示名称（标题）：</strong>“Peter”会变成“Peter's Gin-Factory”等。留空则使用默认标题。</li>
+<li><strong>货币：</strong>€、$、£、CHF、A$、C$、SEK、NOK、DKK、PLN、HUF、CZK、RON、RUB、UAH、JPY、CNY、KRW、INR。</li>
+<li><strong>语言：</strong>25 种语言变体，包括德语、英语、英语（美国）等。<strong>货币会自动更改</strong>（瑞典语 → 克朗，英语（美国）→ 美元 US $，英语（英国）→ £）。例如：切换到瑞典语时，应用会改为 SEK，并询问是否<strong>按今天的欧洲中央银行汇率换算所有价格</strong>（“确定”），还是只更改标注（“取消”）。RUB 和 UAH 没有汇率。您可以随时手动更改货币。</li>
+<li><strong>饮用时的彩带与音效：</strong>彩带和音效、仅彩带或关闭。</li>
+<li><strong>字体：</strong>可从多种字体中选择。</li>
+</ul>
+<h3>存储</h3>
+<p><em>仅限此设备</em>或<em>云端</em>（同步码，<a href="#sync">第 13 节</a>）。</p>
+<h3>AI 额度（仅限 iPhone 应用）</h3>
+<p>显示剩余的 AI 扫描次数、设备 ID，并在需要时显示<em>充值额度</em>或解锁码。参见<a href="#privacy">第 14 节</a>。</p>
+<h3>金酒数据库</h3>
+<ul>
+<li><strong>更新所有金酒（AI）：</strong>为所有金酒补全缺失的产区、国家、植物原料和价格（网页版还包括酒瓶图片）。已有的值会保留。<em>提示：请先导出一份 JSON 备份。</em></li>
+<li><strong>分配汤力水（AI）：</strong>一次为所有尚无汤力水的金酒分配搭配的汤力水（<a href="#serve">第 8 节</a>）。</li>
+</ul>
+<h3>酒架</h3>
+<p>参见<a href="#racks">第 5 节</a>。标题中会显示酒架的数量。</p>
+<h3>隐私、支持、用户指南、版本</h3>
+<p>这些链接指向隐私政策以及“支持与帮助”页面。<em>用户指南</em>按钮会打开本指南。在最底部您可以找到应用<strong>版本</strong>——联系我们时请提供该版本号。</p>
+<h3>联系我们</h3>
+<p>可展开的区域<em>联系我们</em>中显示开发者的姓名和 <strong>Last Build: 日期</strong>（应用的最近构建日期）。</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. 同步两台设备</h2>
+
+<ol>
+<li><strong>第一台设备：</strong>设置 → 存储 → <em>云端</em> → <em>创建新的同步码</em>。同步码会显示在屏幕上；使用<em>通过邮件保存同步码</em>可以发送给自己。</li>
+<li><strong>第二台设备：</strong>设置 → 存储 → <em>云端</em> → 输入同步码（小写，无空格）→ 连接。如果该设备上已有金酒，应用会询问是否将其与云端数据合并。</li>
+<li>之后两台设备会自动同步（例如打开应用时）；<em>立即同步</em>可手动触发。规则是：<strong>以最新的更改为准</strong>。</li>
+</ol>
+<p>金酒、心愿单、历史、酒架、配方、收藏、香草与装饰架，以及语言、货币等设置都会同步。自己的照片和设备专属数据<strong>不会同步</strong>。任何知道您的同步码的人都能看到您的金酒——请只与您信任的人分享。同时也请保留一份 JSON 备份。</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. AI、隐私与费用</h2>
+
+<ul>
+<li><strong>AI 用于什么？</strong>扫描酒标、查询金酒、搜索价格、“更新所有金酒”、分配汤力水、AI 推荐（完美饮法）和金酒配方（AI）。照片或金酒名称会通过我们的服务器发送到 AI 服务（Anthropic，美国）进行分析——不含姓名或账户信息。首次使用前，应用会征求您的同意。</li>
+<li><strong>扫描条形码</strong>只会将编号发送到免费的商品数据库，不消耗 AI 额度。<em>🌿 规则提示</em>同样免费。</li>
+<li><strong>费用（iPhone 应用）：</strong>每次安装包含 50 次 AI 调用，已含在购买价格中；更多次数可作为可选的一次性购买获得（不是订阅，额度不会过期）。应用中的其他一切功能均无额外费用。额度用完后，除 AI 功能外的所有功能仍可继续使用。</li>
+<li><strong>数据：</strong>只要您不启用云端，一切都保留在您的设备上。无广告、无追踪、无用户账户。详情请见<a href="datenschutz.html">隐私政策</a>（德语）。</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. 小贴士与常见问题</h2>
+
+<ul>
+<li><strong>在 iPad 或 PC 上</strong>，布局会自适应：栏更宽、多张卡片并排显示，在 PC（和横屏 iPad）上导航位于左侧。手机也可以横屏使用。在 PC 上，<kbd>Esc</kbd> 会关闭最上层的窗口；在手机上，向下滑动窗口即可关闭。</li>
+<li><strong>我的金酒不见了：</strong>请参见<a href="support.html">支持</a>——可通过同步码或 JSON 备份恢复。</li>
+<li><strong>某款金酒的条形码没有匹配结果：</strong>小型酒厂很常见。请使用酒标扫描。</li>
+<li><strong>AI 读错了：</strong>请手动更正字段并保存；AI 给出的值只是建议。</li>
+<li><strong>汤力水也可以记录吗？</strong>可以。像金酒一样添加，风格选“汤力水”即可。之后完美饮法会用“✓ 酒吧里有”告诉您已拥有，没有的话，则会给出购物提示（🛒），可加入心愿单。</li>
+<li><strong>页面仍显示旧版本（网页）：</strong>请刷新页面（在 PC 上按 <kbd>Ctrl</kbd>+<kbd>F5</kbd>）。</li>
+</ul>
+<p>还有其他问题？请写信至 <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20User%20guide">t.knecht@web.de</a>，并注明应用版本（设置，最底部）。</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

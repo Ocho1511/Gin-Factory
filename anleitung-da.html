@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brugervejledning – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← Til samlingen</a> &nbsp;·&nbsp; </span><a href="support.html">← Tilbage til support</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html" selected>Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>Brugervejledning – Gin-Factory</h1>
+<p><small>Opdateret: 15. november 2026 · Appversion 2.0</small></p>
+
+<div class="toc">
+
+<strong>Indhold</strong><ol>
+<li><a href="#start">Overblik og de første skridt</a></li>
+<li><a href="#add">Tilføje en gin</a></li>
+<li><a href="#bar">Baren</a></li>
+<li><a href="#drink">Drikke en gin</a></li>
+<li><a href="#racks">Reoler og opbevaring</a></li>
+<li><a href="#history">Historik</a></li>
+<li><a href="#wish">Ønskeliste</a></li>
+<li><a href="#perfect">Perfect serve og tonic</a></li>
+<li><a href="#recipes">Opskrifter og hylde med urter og pynt</a></li>
+<li><a href="#stats">Statistik</a></li>
+<li><a href="#export">Eksport, import og backup</a></li>
+<li><a href="#setup">Opsætning (indstillinger)</a></li>
+<li><a href="#sync">Synkronisere to enheder</a></li>
+<li><a href="#privacy">AI, privatliv og omkostninger</a></li>
+<li><a href="#faq">Tips og ofte stillede spørgsmål</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. Overblik og de første skridt</h2>
+
+<p>Gin-Factory er din personlige ginbar i lommen: du administrerer beholdning, opbevaringspladser, en ønskeliste, opskrifter og statistik – og til hver gin kan du gemme en passende tonic. Alt kører på din enhed; med en synk-kode kan du forbinde flere enheder.</p>
+<p>Nederst (på pc og iPad i liggende format: til venstre) finder du linjen med otte områder:</p>
+<table>
+<tbody><tr><th>Område</th><th>Formål</th></tr>
+<tr><td><strong>Bar</strong></td><td>Alle gin (og tonics), søgning, filtre, sortering, tilføje en gin, drikke</td></tr>
+<tr><td><strong>Statistik</strong></td><td>Nøgletal, fordeling efter stil og dine topgin</td></tr>
+<tr><td><strong>Opskrifter</strong></td><td>13 klassikere, egne opskrifter, AI-opskrifter og din hylde med urter og pynt</td></tr>
+<tr><td><strong>Historik</strong></td><td>De gin, du har drukket</td></tr>
+<tr><td><strong>Reoler</strong></td><td>Opbevaringsplan: placere og flytte flasker, QR-etiketter</td></tr>
+<tr><td><strong>Ønskeliste</strong></td><td>Gin (og tonics), du stadig vil købe</td></tr>
+<tr><td><strong>Eksport/Import</strong></td><td>Sikkerhedskopiér dine data, indlæs tabeller og backups, kontakt</td></tr>
+<tr><td><strong>Opsætning</strong></td><td>Navn, valuta, sprog, sky, definere reoler, tildeling af tonic</td></tr>
+</tbody></table>
+<h3>De første fem skridt</h3>
+<ol>
+<li><strong>Vælg sprog og valuta</strong>: Opsætning → Generelt. Valutaen følger automatisk sproget.</li>
+<li><strong>Definér reoler</strong> (valgfrit): Opsætning → Reoler (se <a href="#racks">afsnit 5</a>).</li>
+<li><strong>Tilføj din første gin</strong>: tryk på <kbd>+</kbd> i baren (<a href="#add">afsnit 2</a>).</li>
+<li><strong>Opbevar den</strong>: giv flasken en plads i en reol.</li>
+<li><strong>Tag backup</strong>: Eksport/Import → JSON-backup, eller opsæt skysynkronisering (<a href="#sync">afsnit 13</a>).</li>
+</ol>
+<div class="tip">Afsnittene i <em>Opsætning</em> kan foldes sammen. ”Generelt” er åbent ved første start, de andre er lukkede. Appen husker, hvad du sidst åbnede eller lukkede.</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. Tilføje en gin</h2>
+
+<p>Tryk på <kbd>+</kbd> i baren. Der er flere måder at tilføje en gin på – de kan kombineres.</p>
+<h3>a) I hånden</h3>
+<p>Udfyld felterne: <strong>Navn / Destilleri, Aftapningsår, Flasker, Ginstil, Region, Land, Botanicals, ABV (% vol.), Passende tonic, Lagerplads, Pris, Bedømmelse, Note</strong>. Kun navnet er påkrævet. <em>Gem</em> opretter gin. I samme formular findes også blokken <strong>Perfect serve</strong> (<a href="#perfect">afsnit 8</a>).</p>
+<ul>
+<li><strong>Ginstil:</strong> London Dry, Old Tom / Plymouth, Pink / Frugtgin, Navy Strength, Tonic eller Andet. Tonic håndteres som en egen kategori (se <a href="#perfect">afsnit 8</a>).</li>
+<li><strong>Aftapningsår</strong> er det år, flasken blev aftappet. <strong>Botanicals</strong> er urterne og krydderierne i ginnen (f.eks. enebær, koriander, citrusskal). <strong>ABV (% vol.)</strong> er alkoholprocenten i volumenprocent.</li>
+<li><strong>Passende tonic:</strong> den tonic, der passer bedst til ginnen. Skriv den selv, eller tryk på 🤖, så foreslår AI'en en (se <a href="#perfect">afsnit 8</a>).</li>
+<li><strong>Beholdning, Min og Maks:</strong> Hvis du angiver et minimum, advarer appen, når beholdningen kommer under det, og tilbyder at sætte ginnen på ønskelisten (<a href="#bar">afsnit 3</a>).</li>
+<li><strong>Flaskebillede:</strong> en billedadresse fra internettet. <strong>Eget foto:</strong> ”Tag / vælg foto” knytter et foto til ginnen. Det bliver på denne enhed og indgår i JSON-backuppen, men synkroniseres ikke til skyen.</li>
+</ul>
+<h3>b) Scan etiket (AI)</h3>
+<p>Tryk på <em>Scan etiket (AI)</em> og fotografér flaskens etiket. AI'en læser navn, aftapningsår, stil, region, land, destilleri, botanicals og alkoholprocent. Kontrollér værdierne og gem. Før første brug beder appen om dit samtykke (<a href="#privacy">afsnit 14</a>).</p>
+<h3>c) Scan stregkode</h3>
+<p>Tryk på <em>Scan stregkode</em> og hold flaskens stregkode inde i rammen. Appen slår nummeret op i en gratis produktdatabase (koster ikke noget, ingen AI-kredit) og udfylder, hvis den finder det, navn og producent.</p>
+<ul>
+<li>Hvis flasken allerede findes i baren, spørger appen, om du vil tilføje endnu en flaske – en hurtig måde at tælle op på, når du køber flere.</li>
+<li>Hvis stregkoden <strong>ikke</strong> findes i databasen (almindeligt for mindre destillerier), vises et tip med knappen <em>Scan etiket (AI)</em>. Nummeret gemmes alligevel sammen med ginnen, så flasken genkendes med det samme næste gang.</li>
+</ul>
+<h3>d) Slå gin op (AI)</h3>
+<p><em>Slå gin op (AI)</em> lader AI'en søge på nettet efter region, land, botanicals, alkoholprocent, aktuel gennemsnitspris og – i webversionen – et flaskebillede. Felter, du allerede har udfyldt, overskrives ikke.</p>
+<div class="note">iPhone-appen henter ikke flaskebilleder fra internettet (App Store-regel). Du kan i stedet tage dine egne fotos.</div>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="bar">3. Baren</h2>
+
+<h3>Søge, filtrere, sortere</h3>
+<ul>
+<li><strong>Søg</strong> øverst (”Søg gin…”): finder gin efter navn, region, land og destilleri.</li>
+<li><strong>Filtre:</strong> Alle, London Dry, Old Tom / Plymouth, Pink / Frugtgin, Navy Strength, Tonic, Andet. Et klik på en stil rydder automatisk søgningen.</li>
+<li><strong>Sortering:</strong> Nyeste først, Navn, Aftapningsår, Botanicals, Region eller Land.</li>
+<li><strong>Liste / kort:</strong> Knappen <em>Liste</em> skifter mellem en kompakt liste og detaljerede kort.</li>
+</ul>
+<h3>Ginkortet</h3>
+<p>Kortet viser navn, aftapningsår, destilleri, bedømmelse (stjerner), region og land (tryk for at åbne et kort eller landets ginregioner), antal flasker, <strong>alkoholprocenten</strong>, <strong>botanicals</strong> og <strong>opbevaringspladserne</strong> (tryk for at springe til reolen). Desuden vises din <strong>favorit i Perfect serve</strong>, pyntet og glasset (<a href="#perfect">afsnit 8</a>). De små <strong>enebær</strong> på kortet viser ginens stil – ”Hvad betyder bærfarven?” – og et tryk på bærrene åbner ginens Wikipedia-side.</p>
+<p>På et <strong>tonic</strong>-kort står i stedet <em>Passer til</em> med de gin, tonicen passer til.</p>
+<p>Nederst på kortet: <em>Rediger</em>, <em>Drik</em> og 🗑 (slet gin).</p>
+<h3>Beholdning, Min/Maks og indkøbslisten</h3>
+<p>Hvis du angiver et minimum (og eventuelt et maksimum) for en gin, viser kortet ”Beholdning · Min · Maks” og advarer med ⚠, når du er under. Knappen <em>Genbestil</em> åbner <strong>indkøbslisten</strong>: den viser alle gin under deres minimum (målet er maksimum, ellers minimum). Du kan dele eller kopiere listen eller sætte gin på ønskelisten.</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. Drikke en gin</h2>
+
+<p>Tryk på <em>Drik</em> på ginkortet. Dialogen <em>Drik gin</em> åbnes:</p>
+<ul>
+<li><strong>Fra hvilken plads blev den taget?</strong> – vælg den reolplads, flasken kom fra, eller ”Flaske uden plads”. Pladsen bliver ledig.</li>
+<li><strong>Med hvem drak du?</strong> – navne på dine gæster (valgfrit).</li>
+<li><strong>Anledning</strong> – Forår, Sommer, Efterår, Vinter, Fødselsdag, Fest eller ”Bare fordi” (flere kan vælges).</li>
+</ul>
+<p><em>Drik</em> fjerner én flaske og opretter en post i <a href="#history">Historik</a>. Konfetti og lyd fejrer det (kan slås fra i Opsætning). Hvis det er den <strong>sidste flaske</strong>, fortæller appen det: ginnen forsvinder så fra baren (men bliver i Historik).</p>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. Reoler og opbevaring</h2>
+
+<h3>Definere og redigere reoler</h3>
+<p><strong>Opsætning → Reoler</strong> (tryk på overskriften for at åbne): angiv navn, niveauer, pladser pr. niveau og flasker pr. plads, og tryk derefter på ＋. ”Flasker/plads” er 1 for en flaskereol og større for gulv eller kasse. I listen har hver reol:</p>
+<ul>
+<li><strong>håndtaget ⠿</strong> til at ændre rækkefølgen og knappen <em>Sortér A–Å</em> under listen,</li>
+<li>▦ til <strong>QR-etiketter</strong>, ✏️ til at redigere, 🧹 til at tømme og 🗑 til at slette.</li>
+</ul>
+<p>Med <strong>rediger</strong> (✏️) kan du omdøbe reolen, ændre pladserne pr. niveau, tilføje niveauer øverst eller nederst, fjerne niveauer og give hvert niveau sit eget navn og antal flasker. Flasker, der på den måde mister deres plads, tæller bagefter som ”ikke placeret”; selve ginnen bliver i baren. Appen spørger, før sådanne ændringer udføres.</p>
+<h3>Området Reoler</h3>
+<p>Øverst vælger du en reol med <strong>felterne</strong> (navn og ”optaget / pladser”). Rækkefølgen kan også ændres her: på pc trækker du et felt, på touchskærme holder du et felt nede i ca. et halvt sekund og trækker derefter. Nedenunder er <strong>opbevaringsplanen</strong> (”Barplan”): hvert niveau med sine pladser. Optagne pladser viser en flaske i farven for ginens stil.</p>
+<h3>Opbevare</h3>
+<ol>
+<li>Tryk på en gin under ”Ikke placeret” – eller tryk på et ”ikke placeret”-tip i baren.</li>
+<li>Tryk på en <strong>ledig plads</strong>. For gulve og kasser placerer appen så mange flasker, som der er plads til.</li>
+</ol>
+<p><strong>Scan og læg gin på plads</strong> fotograferer etiketten, finder ginnen og fører dig gennem placeringen.</p>
+<h3>Optagne pladser, flytte, fjerne</h3>
+<p>Tryk på en optaget plads: du ser ginnen og kan <em>åbne</em> den, <em>fjerne den fra pladsen</em> eller <em>flytte</em> den (tryk derefter på en ledig plads). <em>Tøm reol</em> tager alle flasker ud af reolen (efter bekræftelse).</p>
+<h3>QR-etiketter og ”Scan hylde”</h3>
+<p>Med <strong>QR-etiketter</strong> (Opsætning → Reoler → ▦) laver du én etiket til reolen og én til hvert niveau. Del som PDF eller udskriv (etiketark 63,5 × 38,1 mm, 21 pr. side) og sæt dem på. Derefter: <strong>Scan hylde</strong> i området Reoler – du ser, hvad der står på det niveau, og kan <em>lægge ind her</em>, <em>tage ud</em>, drikke, flytte en flaske eller <em>flytte hele hylden</em>. I formularen ”Tilføj gin” udfylder en scanning af en niveauetiket også lagerpladsen.</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. Historik</h2>
+
+<p>Historikken viser alle gin, du har drukket, med dato, gin, værdi, gæster og anledning. Du kan filtrere efter ginstil og anledning og redigere en post (gæster, anledning). Historikken ligger også til grund for antallet af drinks (🥂) i listen over topgin i Statistik.</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. Ønskeliste</h2>
+
+<ul>
+<li><strong>+ Tilføj ønske</strong>: i hånden eller med etiketscanning, med en valgfri note (”Hvor kan den købes?”). Her kan du også sætte tonics, du vil købe.</li>
+<li><strong>Søg priser</strong> (💶): Appen søger på nettet efter priser, viser det billigste fund og ganger med antallet. Det er vejledende værdier uden garanti – tjek forsendelsesomkostninger og tilgængelighed hos butikken.</li>
+<li><strong>Flueben</strong> til venstre: markér som købt/færdig (rækken bliver bleg).</li>
+<li><strong>→ Bar</strong>: flytter ønsket ind i baren (med antal og, hvis den findes, den billigste pris) og fører dig, hvis du har reoler, direkte videre til opbevaringen.</li>
+<li>Hvis en gin kommer under sit minimum, tilbyder appen at sætte den på ønskelisten med den manglende mængde (”køb igen”). Også tonics og ingredienser, der mangler i Perfect serve eller i opskrifterne, kan havne her.</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="perfect">8. Perfect serve og tonic</h2>
+
+<p>I formularen ”Tilføj gin” / ”Rediger gin” findes blokken <strong>Perfect serve (urter, pynt, forhold)</strong>. Her gemmer du, hvordan netop denne gin smager bedst – med den rigtige tonic.</p>
+<h3>Tonic som egen kategori</h3>
+<ul>
+<li>Læg tonics ind ligesom gin og vælg ginstilen <strong>Tonic</strong>. De får et eget filter i baren og et eget kort med teksten <em>Passer til</em>.</li>
+<li>Feltet <strong>Passende tonic</strong> i ginformularen: tryk på 🤖, så finder AI'en en passende tonic til ginnen (”Leder efter en passende tonic…”). Findes ingen, vises ”Ingen tonic fundet”.</li>
+<li>Alle gin på én gang: <strong>Opsætning → Gindatabase → Tildel tonic (AI)</strong> finder en passende tonic til hver gin, der mangler en. AI'en vælger helst blandt dine egne tonics, ellers gemmes en anbefaling. Appen spørger først og melder bagefter ”… par gemt ✓”.</li>
+</ul>
+<h3>To knapper til forslag</h3>
+<ul>
+<li><strong>🌿 Regelbaseret tip</strong> – virker offline, er gratis og tager udgangspunkt i ginens stil og botanicals.</li>
+<li><strong>🤖 AI-anbefaling</strong> – spørger AI'en og koster <strong>én AI-scanning</strong> (<a href="#privacy">afsnit 14</a>).</li>
+</ul>
+<p>Resultatet er <strong>op til tre tonic-anbefalinger</strong> med en kort begrundelse, f.eks. <em>Klassisk indisk tonic</em>, <em>Let tonic (mild)</em>, <em>Middelhavstonic</em>, <em>Hyldeblomsttonic</em>, <em>Ingefær-/krydret tonic</em>, <em>Pink grapefrugttonic</em> eller <em>Citrustonic</em>. Ved hvert forslag står enten <strong>✓ i din bar</strong> (du har den) eller <strong>🛒 Indkøbstip</strong> med knappen <strong>+ Ønskeliste</strong>. <strong>Tryk på et forslag</strong>, så bliver den tonic favorit (”Markeret som favorit ✓”).</p>
+<h3>Felterne</h3>
+<ul>
+<li><strong>Urter og pynt, adskilt med komma</strong> – f.eks. rosmarin, timian, basilikum, agurk, grapefrugtskal, lyserød peber.</li>
+<li><strong>Forhold</strong> – blandingen af gin og tonic, f.eks. 1:2.</li>
+<li><strong>Glas</strong> – f.eks. Copa-/ballonglas eller Highballglas.</li>
+<li><strong>Is</strong> – f.eks. masser af store isterninger.</li>
+</ul>
+<h3>Glasset</h3>
+<p>Under feltet Glas finder du linket <strong>Se glasset</strong>. Det åbner et kort med en tegning og en kort forklaring af glasset: <em>Copa-/ballonglas</em>, <em>Highballglas</em>, <em>Tumbler (rocksglas)</em>, <em>Coupe</em>, <em>Martiniglas</em> eller <em>Champagneflute</em>. Linket <strong>Se flere billeder ↗</strong> fører til flere billeder på nettet, og <em>Luk</em> lukker kortet.</p>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. Opskrifter og hylde med urter og pynt</h2>
+
+<p>Området <strong>Opskrifter</strong> (”Gin &amp; tonic og cocktails”) samler klassiske gindrinks og dine egne opskrifter.</p>
+<h3>De 13 klassikere</h3>
+<p>Gin &amp; tonic, Middelhavs-G&amp;T, Pink gin &amp; tonic, Navy strength-G&amp;T, Negroni, Dry Martini, Gimlet, Tom Collins, Southside, French 75, Bee's Knees, Martinez og Gin Basil Smash. Hver opskrift viser <strong>Ingredienser</strong>, <strong>Fremgangsmåde</strong> og <strong>Glas</strong>.</p>
+<h3>Filtre</h3>
+<ul>
+<li><strong>Alle</strong> – alle opskrifter.</li>
+<li><strong>⭐ Favoritter</strong> – opskrifter, du har markeret med stjernen.</li>
+<li><strong>Mine</strong> – dine egne opskrifter.</li>
+<li><strong>✓ Passer til min bar</strong> – opskrifter, du kan lave med det, du har; under opskriften står <em>Passer</em> med de gin, den passer til.</li>
+</ul>
+<h3>Egne opskrifter og AI-opskrifter</h3>
+<ul>
+<li><strong>Tilføj din egen opskrift:</strong> udfyld <em>Navn</em>, <em>Ingredienser, én pr. linje</em> og <em>Fremgangsmåde</em>, og tryk på <em>Gem opskrift</em>. <em>Slet denne opskrift?</em> spørger appen, før en egen opskrift slettes.</li>
+<li><strong>Opskrift til en gin (AI):</strong> vælg en gin (<em>Vælg en gin…</em>) og tryk på <em>🤖 Lav opskrift</em>. Det koster en AI-scanning. Med <em>Gem som min opskrift</em> havner opskriften blandt <em>Mine</em>.</li>
+</ul>
+<h3>Min hylde med urter og pynt</h3>
+<p>Under <strong>Min hylde med urter og pynt</strong> trykker du på det, du har hjemme (limebåd, rosmarin, timian, basilikum, agurk, lyserød peber, enebær m.m.). Anbefalingerne viser så <strong>✓</strong> (har) eller <strong>🛒</strong> (mangler). Knappen <strong>🛒 Føj manglende ting til ønskelisten</strong> lægger det manglende på <a href="#wish">ønskelisten</a> (med noten ”Urter/pynt”). Hvis der intet mangler, får du besked om det.</p>
+<div class="note">Opskrifter, favoritter og hylden med urter og pynt sikres med skysynkroniseringen (<a href="#sync">afsnit 13</a>).</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. Statistik</h2>
+
+<p>Oppefra og ned:</p>
+<ul>
+<li><strong>Nøgletal:</strong> flasker, gin, samlet værdi, gns. bedømmelse.</li>
+<li><strong>Efter type:</strong> søjler pr. ginstil; et tryk på en søjle filtrerer baren.</li>
+<li><strong>Top gin</strong> (efter bedømmelse eller antal drinks, ★ Bedømmelse / 🥂 Antal) – de ti bedste eller alle med de stjerner, du vælger. Et tryk åbner ginnen.</li>
+</ul>
+<p>Afsnit uden data skjules.</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. Eksport, import og backup</h2>
+
+<table>
+<tbody><tr><th>Funktion</th><th>Formål</th></tr>
+<tr><td>Eksportér CSV</td><td>Tabel til Excel eller Numbers</td></tr>
+<tr><td>Eksportér Excel</td><td>Som .xlsx-fil</td></tr>
+<tr><td>Eksportér PDF</td><td>Printbart overblik</td></tr>
+<tr><td><strong>JSON-backup</strong></td><td><strong>Komplet databackup</strong> (gin, tonics, ønskeliste, historik, reoler, visningsnavn, opskrifter, egne fotos)</td></tr>
+<tr><td>Til udklipsholder</td><td>Kopiér en tekstliste</td></tr>
+<tr><td>Importér JSON / CSV / Excel</td><td>Gendan en backup eller indlæs en tabel</td></tr>
+</tbody></table>
+<p>Kolonnerne i CSV og Excel er: <strong>Navn, Aftapning, Stil, Region, Land, Botanicals, Reol, Niveau, Plads, Flasker, Bedømmelse, Pris, Alkohol %, Note</strong>.</p>
+<div class="tip"><strong>Tag jævnligt en JSON-backup.</strong> JSON-importen erstatter baren med backuppen (appen spørger først). På en ny enhed gendanner det alt. Alternativt kan du bruge skysynkronisering (<a href="#sync">afsnit 13</a>).</div>
+<p>Nederst på siden finder du det sammenfoldelige område <strong>Kontakt</strong>: Her står udviklerens navn og ”Last Build: dato” (hvornår appen sidst blev bygget).</p>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. Opsætning (indstillinger)</h2>
+
+<h3>Generelt</h3>
+<ul>
+<li><strong>Visningsnavn (titel):</strong> dit navn vises i appens titel. Lad feltet stå tomt for standardtitlen.</li>
+<li><strong>Valuta:</strong> €, $, £, CHF, A$, C$, SEK, NOK, DKK, PLN, HUF, CZK, RON, RUB, UAH, JPY, CNY, KRW, INR. <strong>Valutaen skifter automatisk</strong>, når du skifter sprog (dansk → krone); du kan til enhver tid skifte i hånden. Eksisterende priser omregnes ikke.</li>
+<li><strong>Sprog:</strong> appen findes på 24 sprog.</li>
+<li><strong>Konfetti &amp; lyd, når du drikker:</strong> begge dele, kun konfetti eller fra.</li>
+<li><strong>Skrifttype:</strong> ti skrifttyper at vælge imellem.</li>
+</ul>
+<h3>Lagringssted</h3>
+<p><em>Kun denne enhed</em> eller <em>Sky</em> (synk-kode, <a href="#sync">afsnit 13</a>).</p>
+<h3>AI-kreditter (kun iPhone-appen)</h3>
+<p>Viser de resterende AI-scanninger, enheds-ID'et og – når det er nødvendigt – <em>Tilføj kreditter</em> eller en oplåsningskode. Se <a href="#privacy">afsnit 14</a>.</p>
+<h3>Gindatabase</h3>
+<ul>
+<li><strong>Opdater al gin (AI):</strong> udfylder manglende region, land, botanicals, alkoholprocent og pris for alle gin (i webversionen også flaskebilleder). Eksisterende værdier bliver. <em>Tip: eksportér først en JSON-backup.</em></li>
+<li><strong>Tildel tonic (AI):</strong> finder en passende tonic til hver gin, der mangler en (se <a href="#perfect">afsnit 8</a>).</li>
+</ul>
+<h3>Reoler</h3>
+<p>Se <a href="#racks">afsnit 5</a>. Overskriften viser antallet af reoler.</p>
+<h3>Privatliv, support, vejledning, version</h3>
+<p>Linkene fører til privatlivspolitikken og til supportsiden. Knappen <strong>Brugervejledning</strong> åbner denne vejledning. Nederst finder du appens <strong>version</strong> – oplys den, når du kontakter os.</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. Synkronisere to enheder</h2>
+
+<ol>
+<li><strong>Første enhed:</strong> Opsætning → Lagringssted → <em>Sky</em> → <em>Opret ny synk-kode</em>. Koden vises på skærmen; med <em>Gem koden via e-mail</em> sender du den til dig selv.</li>
+<li><strong>Anden enhed:</strong> Opsætning → Lagringssted → <em>Sky</em> → indtast koden (små bogstaver, ingen mellemrum) → Forbind. Hvis enheden allerede indeholder gin, spørger appen, om de skal flettes med skydataene.</li>
+<li>Derefter synkroniserer begge enheder automatisk (f.eks. når appen åbnes); <em>Synkronisér nu</em> udløser det i hånden. Reglen er: <strong>den seneste ændring vinder</strong>.</li>
+</ol>
+<p>Gin, tonics, ønskeliste, historik, reoler, egne opskrifter, favoritter, hylden med urter og pynt og indstillinger som sprog og valuta synkroniseres. <strong>Synkroniseres ikke</strong> gør egne fotos og enhedsspecifikke data. Enhver, der kender din kode, kan se din bar – del den kun med personer, du stoler på. Gem også en JSON-backup.</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. AI, privatliv og omkostninger</h2>
+
+<ul>
+<li><strong>Hvad bruges AI til?</strong> Scan etiket, slå gin op, søg priser, ”Opdater al gin”, passende tonic (🤖 og ”Tildel tonic (AI)”), AI-anbefalingen i Perfect serve og AI-opskrifter. Fotoet eller ginnens navn sendes via vores server til en AI-tjeneste (Anthropic, USA) til vurdering – uden navne eller konti. Appen beder om dit samtykke før første brug.</li>
+<li><strong>Stregkodescanning</strong> sender kun nummeret til en gratis produktdatabase og koster ingen AI-kredit. Det <strong>regelbaserede tip</strong> i Perfect serve er også gratis og kører på din enhed.</li>
+<li><strong>Omkostninger (iPhone-appen):</strong> 50 AI-kald pr. installation er inkluderet i købsprisen; flere kan købes som et valgfrit engangskøb (intet abonnement, kreditterne udløber ikke). Alt andet i appen koster ikke ekstra. Når kreditterne er brugt op, virker alt undtagen AI-funktionerne stadig.</li>
+<li><strong>Data:</strong> Alt bliver på din enhed, så længe du ikke aktiverer skyen. Ingen reklamer, ingen sporing, ingen brugerkonto. Detaljer i <a href="datenschutz.html">privatlivspolitikken</a> (på tysk).</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. Tips og ofte stillede spørgsmål</h2>
+
+<ul>
+<li><strong>På en iPad eller pc</strong> tilpasser layoutet sig: bredere kolonne, flere kort side om side, og på pc (og iPad i liggende format) navigationen til venstre. Telefonen fungerer også i liggende format. På en pc lukker <kbd>Esc</kbd> det øverste vindue; på en telefon swiper du et vindue nedad for at lukke det.</li>
+<li><strong>Mine gin er væk:</strong> Se <a href="support.html">Support</a> – gendan med synk-koden eller en JSON-backup.</li>
+<li><strong>Intet stregkodehit for en gin:</strong> Normalt for små destillerier. Brug etiketscanningen.</li>
+<li><strong>AI'en læste noget forkert:</strong> Ret feltet i hånden og gem; AI-værdierne er forslag.</li>
+<li><strong>Ingen tonic fundet:</strong> Læg først nogle tonics ind i baren (ginstil Tonic) – så vælger AI'en helst blandt dem – eller brug den regelbaserede anbefaling.</li>
+<li><strong>Siden viser stadig den gamle version (web):</strong> Genindlæs siden (på pc <kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+</ul>
+<p>Flere spørgsmål? Skriv til <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20Brugervejledning">t.knecht@web.de</a> og oplys appversionen (Opsætning, nederst).</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

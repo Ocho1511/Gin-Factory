@@ -58,7 +58,8 @@
  "hr": {
   "sync_email_body_1": "Vaš kôd za sinkronizaciju Gin-Factory (čuvajte ga na sigurnom):",
   "ripe_nomatch": "Nema ginova za ove filtre.",
-  "setup_owner_desc": "Ostavite prazno za zadani naslov. Ime → „Gin-Factory: Ime\"."
+  "setup_owner_desc": "Ostavite prazno za zadani naslov. Ime → „Gin-Factory: Ime\".",
+  "glass_tumbler_title": "Tumbler (čaša za led / rocks)"
  },
  "pt": {
   "sync_email_body_1": "O seu código de sincronização do Gin-Factory (guarde-o em segurança):",
@@ -73,7 +74,8 @@
  "nl": {
   "sync_email_body_1": "Jouw synccode voor Gin-Factory (bewaar hem veilig):",
   "ripe_nomatch": "Geen gins voor deze filters.",
-  "setup_owner_desc": "Laat leeg voor de standaardtitel. Naam → „Gin-Factory van Naam\"."
+  "setup_owner_desc": "Laat leeg voor de standaardtitel. Naam → „Gin-Factory van Naam\".",
+  "glass_tumbler_title": "Tumbler (rocksglas)"
  },
  "hi": {
   "sync_email_body_1": "आपका Gin-Factory सिंक कोड (कृपया इसे सुरक्षित रखें):",
@@ -92,11 +94,13 @@
  },
  "el": {
   "ripe_nomatch": "Κανένα τζιν δεν ταιριάζει με αυτά τα φίλτρα.",
-  "setup_owner_desc": "Αφήστε κενό για τον προεπιλεγμένο τίτλο. Όνομα → \"Gin-Factory: Όνομα\"."
+  "setup_owner_desc": "Αφήστε κενό για τον προεπιλεγμένο τίτλο. Όνομα → \"Gin-Factory: Όνομα\".",
+  "glass_tumbler_title": "Τάμπλερ (ποτήρι rocks)"
  },
  "uk": {
   "ripe_nomatch": "Немає джинів за цими фільтрами.",
-  "setup_owner_desc": "Залиште порожнім для стандартної назви. Ім'я → \"Gin-Factory: Ім'я\"."
+  "setup_owner_desc": "Залиште порожнім для стандартної назви. Ім'я → \"Gin-Factory: Ім'я\".",
+  "glass_tumbler_title": "Тамблер (склянка рокс)"
  },
  "ja": {
   "ripe_nomatch": "この条件に一致するジンはありません。",

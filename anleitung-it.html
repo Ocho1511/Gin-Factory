@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guida utente – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← Alla collezione</a> &nbsp;·&nbsp; </span><a href="support.html">← Torna al supporto</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html" selected>Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>Guida utente – Gin-Factory</h1>
+<p><small>Aggiornato: 15 novembre 2026 · Gin-Factory</small></p>
+
+<div class="toc">
+
+<strong>Indice</strong><ol>
+<li><a href="#start">Panoramica e primi passi</a></li>
+<li><a href="#add">Aggiungere un gin</a></li>
+<li><a href="#cellar">Il bar</a></li>
+<li><a href="#drink">Bere un gin</a></li>
+<li><a href="#racks">Scaffali e riposizione</a></li>
+<li><a href="#history">Cronologia</a></li>
+<li><a href="#wish">Lista desideri</a></li>
+<li><a href="#serve">Perfect serve e toniche</a></li>
+<li><a href="#recipes">Ricette e scaffale di erbe e guarnizioni</a></li>
+<li><a href="#stats">Statistiche</a></li>
+<li><a href="#export">Esportazione, importazione e backup</a></li>
+<li><a href="#setup">Opzioni (impostazioni)</a></li>
+<li><a href="#sync">Sincronizzare due dispositivi</a></li>
+<li><a href="#privacy">IA, privacy e costi</a></li>
+<li><a href="#faq">Consigli e FAQ</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. Panoramica e primi passi</h2>
+
+<p>Gin-Factory è il tuo bar di gin personale in tasca: gestisci gin e acque toniche, posti di conservazione, una lista desideri, ricette e statistiche. Tutto funziona sul tuo dispositivo; con un codice di sync puoi collegare più dispositivi.</p>
+<p>In basso (su PC e iPad in orizzontale: a sinistra) trovi la barra con otto aree:</p>
+<table>
+<tbody><tr><th>Area</th><th>Scopo</th></tr>
+<tr><td><strong>Bar</strong></td><td>Tutti i tuoi gin e le tue toniche, ricerca, filtri, ordinamento, aggiungere un gin, bere</td></tr>
+<tr><td><strong>Statistiche</strong></td><td>Analisi di scorte, valore e valutazioni</td></tr>
+<tr><td><strong>Ricette</strong></td><td>Gin tonic e cocktail, ricette personali, scaffale di erbe e guarnizioni</td></tr>
+<tr><td><strong>Cronologia</strong></td><td>I gin che hai bevuto</td></tr>
+<tr><td><strong>Scaffali</strong></td><td>Piano di conservazione: riporre e spostare i gin, etichette QR</td></tr>
+<tr><td><strong>Lista desideri</strong></td><td>Gin e toniche che vuoi ancora comprare</td></tr>
+<tr><td><strong>Esporta/Importa</strong></td><td>Eseguire il backup dei dati, leggere tabelle e backup</td></tr>
+<tr><td><strong>Opzioni</strong></td><td>Nome, valuta, lingua, cloud, definire gli scaffali, crediti IA</td></tr>
+</tbody></table>
+<h3>I primi cinque passi</h3>
+<ol>
+<li><strong>Scegli lingua e valuta</strong>: Opzioni → Lingua e Valuta. La valuta segue automaticamente la lingua.</li>
+<li><strong>Definisci gli scaffali</strong> (facoltativo): Opzioni → Scaffali (vedi <a href="#racks">sezione 5</a>).</li>
+<li><strong>Aggiungi il tuo primo gin</strong>: tocca <kbd>+</kbd> nel bar (<a href="#add">sezione 2</a>).</li>
+<li><strong>Riponilo</strong>: assegna alla bottiglia un posto in uno scaffale.</li>
+<li><strong>Fai il backup</strong>: Esporta/Importa → backup JSON, oppure configura la sincronizzazione cloud (<a href="#sync">sezione 13</a>).</li>
+</ol>
+<div class="tip">Le toniche si gestiscono come i gin: scegli lo stile “Acqua tonica”. Così l'app può suggerirti quale tonica si abbina a quale gin (<a href="#serve">sezione 8</a>).</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. Aggiungere un gin</h2>
+
+<p>Tocca <kbd>+</kbd> nel bar. Ci sono diversi modi per aggiungere un gin – si possono combinare.</p>
+<h3>a) A mano</h3>
+<p>Compila i campi: <strong>Nome / Distilleria, Anno di imbottigliamento, Bottiglie, Stile di gin, Regione, Paese, Botanici, ABV (% vol.), Acqua tonica abbinata, Perfect serve, Posizione (scaffale · ripiano · posto da sinistra), Prezzo, Immagine bottiglia, Foto personale, Valutazione, Nota</strong>. Solo il nome è obbligatorio. <em>Salva</em> crea il gin.</p>
+<ul>
+<li><strong>Stile di gin:</strong> <em>London Dry</em>, <em>Old Tom / Plymouth</em>, <em>Gin rosa / alla frutta</em>, <em>Navy Strength</em>, <em>Acqua tonica</em> oppure <em>Altro</em>.</li>
+<li><strong>Anno di imbottigliamento</strong> è l'anno in cui la bottiglia è stata imbottigliata. <strong>Botanici</strong> sono le erbe, le spezie e gli agrumi con cui è fatto il gin (ad es. ginepro, coriandolo, scorza di limone). <strong>ABV (% vol.)</strong> è il contenuto alcolico in percentuale.</li>
+<li><strong>Acqua tonica abbinata:</strong> a mano oppure con il pulsante 🤖, che sceglie una tonica adatta con l'IA (<a href="#serve">sezione 8</a>).</li>
+<li><strong>Scorta (bottiglie), min. e max.:</strong> se inserisci un minimo, l'app ti avvisa quando la scorta scende sotto e ti propone di mettere il gin nella lista desideri (<a href="#cellar">sezione 3</a>).</li>
+<li><strong>Foto personale:</strong> “Scatta / scegli foto” allega una foto al gin. Resta su questo dispositivo ed è inclusa nel backup JSON, ma non viene sincronizzata con il cloud.</li>
+</ul>
+<h3>b) Scansionare l'etichetta (IA)</h3>
+<p>Tocca <em>Scansiona etichetta (IA)</em> e fotografa l'etichetta della bottiglia. L'IA legge nome, anno di imbottigliamento, stile, regione, paese, botanici e ABV. Controlla i valori e salva. Prima del primo utilizzo l'app chiede il tuo consenso (<a href="#privacy">sezione 14</a>).</p>
+<h3>c) Scansionare il codice a barre</h3>
+<p>Tocca <em>Scansiona codice a barre</em> e inquadra il codice a barre della bottiglia. L'app cerca il numero in un database di prodotti gratuito (senza costi, senza crediti IA) e, se lo trova, compila nome e produttore. L'anno di imbottigliamento è facoltativo.</p>
+<ul>
+<li>Se la bottiglia è già nel bar, l'app chiede “Aggiungere un'altra bottiglia?” – un modo rapido per aumentare il conteggio quando ne compri altre.</li>
+<li>Se il codice a barre <strong>non</strong> è nel database (frequente per le distillerie più piccole), compare un suggerimento con il pulsante <em>Scansiona etichetta (IA)</em>. Il numero viene comunque salvato con il gin, così la bottiglia viene riconosciuta subito la volta successiva.</li>
+</ul>
+<h3>d) Cercare il gin (IA)</h3>
+<p><em>Cerca gin (IA)</em> fa cercare all'IA sul web regione, paese, botanici, ABV, prezzo medio attuale e – nella versione web – un'immagine della bottiglia. I campi già compilati non vengono sovrascritti.</p>
+<div class="note">L'app per iPhone non carica immagini di bottiglie da internet (regola dell'App Store). Puoi invece scattare le tue foto.</div>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="cellar">3. Il bar</h2>
+
+<h3>Cercare, filtrare, ordinare</h3>
+<ul>
+<li><strong>Ricerca</strong> in alto: trova i gin per nome, regione, paese e botanici.</li>
+<li><strong>Filtri:</strong> Tutti, London Dry, Old Tom / Plymouth, Gin rosa / alla frutta, Navy Strength, Acqua tonica, Altro. Cliccando su uno stile la ricerca viene cancellata automaticamente.</li>
+<li><strong>Ordinamento:</strong> Più recenti prima, Nome, Anno di imbottigliamento, Botanici, Regione o Paese.</li>
+<li><strong>Elenco / schede:</strong> il pulsante <em>Elenco</em> passa da un elenco compatto a schede dettagliate.</li>
+</ul>
+<h3>La scheda del gin</h3>
+<p>La scheda mostra nome, anno, valutazione (stelle), regione e paese (tocca per aprire una mappa o le regioni del gin del paese), il numero di bottiglie, i <strong>posti di conservazione</strong> (tocca per saltare allo scaffale), la tonica preferita, la guarnizione e il bicchiere. Sulla scheda di un gin vedi anche l'<strong>acqua tonica abbinata</strong>, mentre sulla scheda di una tonica c'è <strong>“Si abbina a: …”</strong>.</p>
+<p>La bacca di ginepro su ogni scheda mostra lo stile del gin; la legenda “Cosa significa il colore della bacca?” spiega i colori, e toccando le bacche si apre la pagina Wikipedia del gin.</p>
+<p>In fondo alla scheda: <em>Modifica</em>, <em>Bevi</em> e 🗑 (elimina gin).</p>
+<h3>Scorta, min./max. e lista della spesa</h3>
+<p>Se inserisci un minimo (e facoltativamente un massimo) per un gin, la scheda mostra “Scorta · Min · Max” e avvisa con ⚠ quando sei sotto. Il pulsante <em>Riordina</em> apre la <strong>lista della spesa</strong>: elenca tutto ciò che è sotto il minimo (l'obiettivo è il massimo, altrimenti il minimo). Puoi condividere o copiare la lista, oppure mettere le voci nella lista desideri.</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. Bere un gin</h2>
+
+<p>Tocca <em>Bevi</em> sulla scheda del gin. Si apre la finestra <em>Bevi gin</em>:</p>
+<ul>
+<li><strong>Da quale posto è stata presa?</strong> – scegli il posto dello scaffale da cui proviene la bottiglia, oppure “Bottiglia non riposta”. Il posto si libera.</li>
+<li><strong>Con chi hai bevuto?</strong> – nomi dei tuoi ospiti (facoltativo).</li>
+<li><strong>Occasione</strong> – Primavera, Estate, Autunno, Inverno, Compleanno, Festa o “Senza motivo” (ne puoi scegliere diverse).</li>
+</ul>
+<p><em>Bevi</em> toglie una bottiglia e crea una voce nella <a href="#history">Cronologia</a>. Coriandoli e suono festeggiano (si possono disattivare nelle Opzioni). Se è l'<strong>ultima bottiglia</strong>, l'app te lo segnala: il gin scompare allora dal bar (ma resta nella Cronologia).</p>
+<div class="tip"><strong>Veloce con la scansione:</strong> il pulsante rotondo 🥂 nel bar fotografa un'etichetta, riconosce il gin nella tua collezione e apre subito la finestra Bevi.</div>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. Scaffali e riposizione</h2>
+
+<h3>Definire e modificare gli scaffali</h3>
+<p><strong>Opzioni → Scaffali</strong>: inserisci nome, ripiani, posti per ripiano e bottiglie per posto, poi tocca ＋. “Bottiglie/posto” è 1 per un portabottiglie e maggiore per un pavimento o una cassa. Nell'elenco ogni scaffale ha:</p>
+<ul>
+<li>la <strong>maniglia ⠿</strong> per cambiare l'ordine e il pulsante <em>Ordina A–Z</em> sotto l'elenco,</li>
+<li>▦ per le <strong>etichette QR</strong>, ✏️ per modificare, 🧹 per svuotare e 🗑 per eliminare.</li>
+</ul>
+<p>Con <strong>modifica</strong> (✏️) puoi rinominare lo scaffale, cambiare i posti per ripiano, aggiungere ripiani in alto o in basso, rimuovere ripiani e dare a ogni ripiano un nome e un numero di bottiglie propri. Le bottiglie che in questo modo perdono il posto contano poi come “non riposte”; i gin restano nel bar. L'app chiede conferma prima di queste modifiche.</p>
+<h3>L'area Scaffali</h3>
+<p>In alto scegli uno scaffale con i <strong>riquadri</strong> (nome e “occupati / posti”). Anche qui si può cambiare l'ordine: su PC trascina un riquadro; sui touch screen tieni premuto un riquadro per circa mezzo secondo, poi trascina. Sotto c'è il <strong>piano di conservazione</strong>: ogni ripiano con i suoi posti. I posti occupati mostrano una bottiglia del colore dello stile di gin.</p>
+<h3>Riporre</h3>
+<ol>
+<li>Tocca un gin sotto “Non assegnati” (l'elenco si può filtrare per paese) – oppure tocca un'indicazione “non riposta” nel bar.</li>
+<li>Tocca un <strong>posto libero</strong>. Per pavimenti e casse l'app ripone tutte le bottiglie che ci stanno.</li>
+</ol>
+<p><strong>Scansiona e riponi gin</strong> fotografa l'etichetta, trova il gin e ti guida nella riposizione.</p>
+<h3>Posti occupati, spostare, rimuovere</h3>
+<p>Tocca un posto occupato: vedi il gin e puoi <em>aprirlo</em>, <em>rimuoverlo dal posto</em> o <em>spostarlo</em> (poi tocca un posto libero). <em>Svuota scaffale</em> toglie tutte le bottiglie dallo scaffale (dopo conferma).</p>
+<h3>Etichette QR e “Scansiona ripiano”</h3>
+<p>Con le <strong>etichette QR</strong> (Opzioni → Scaffali → ▦) crei un'etichetta per lo scaffale e una per ogni ripiano. Condividile come PDF o stampale (foglio di etichette 63,5 × 38,1 mm, 21 per pagina) e incollale. Poi: <strong>Scansiona ripiano</strong> nell'area Scaffali – vedi cosa c'è su quel ripiano e puoi <em>riporre qui</em>, <em>prelevare</em>, bere, spostare una bottiglia o <em>spostare l'intero ripiano</em>. Nel modulo “Aggiungi gin”, scansionare un'etichetta di ripiano compila anche la posizione.</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. Cronologia</h2>
+
+<p>La Cronologia elenca tutti i gin che hai bevuto con data, gin, valore, ospiti e occasione. Puoi filtrare per stile e occasione e modificare una voce (ospiti, occasione). La Cronologia alimenta nelle Statistiche l'analisi “Gin che hai bevuto”.</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. Lista desideri</h2>
+
+<ul>
+<li><strong>+ Aggiungi desiderio</strong>: a mano o con la scansione di un'etichetta, con una nota facoltativa (“Nota / Dove comprare?”). Puoi aggiungere anche toniche.</li>
+<li><strong>Cerca prezzi</strong> (💶): l'app cerca sul web i prezzi del gin, mostra il risultato più economico e lo moltiplica per la quantità. Sono valori indicativi senza garanzia – verifica spese di spedizione e disponibilità con il negozio.</li>
+<li><strong>Casella</strong> a sinistra: segna come acquistato/fatto (la riga sbiadisce).</li>
+<li><strong>→ Bar</strong>: sposta il desiderio nel bar (con la quantità e, se disponibile, il prezzo più basso) e, se hai degli scaffali, ti porta direttamente alla riposizione.</li>
+<li>Se un gin scende sotto il minimo, l'app propone di metterlo nella lista desideri con la quantità mancante (“riordina”).</li>
+<li>Anche un “Consiglio d'acquisto” per una tonica (con il pulsante <em>+ Desideri</em>) e le erbe e guarnizioni mancanti dello scaffale (<a href="#recipes">sezione 9</a>) finiscono qui.</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="serve">8. Perfect serve e toniche</h2>
+
+<p>Nel modulo <em>Aggiungi gin</em> / <em>Modifica gin</em> trovi il blocco <strong>Perfect serve (erbe, guarnizione, proporzione)</strong>. Ti suggerisce quale tonica e quale guarnizione stanno meglio proprio con questo gin. Puoi ottenere il consiglio con due pulsanti:</p>
+<ul>
+<li><strong>🌿 Consiglio a regole</strong> – funziona offline e gratis: l'app tiene conto di stile e botanici del gin.</li>
+<li><strong>🤖 Consiglio dell'IA</strong> – l'IA consiglia in modo più mirato, ma costa una scansione IA (<a href="#privacy">sezione 14</a>).</li>
+</ul>
+<p>Il risultato sono fino a tre consigli di tonica, ciascuno con una breve motivazione, ad es. <em>Tonica indiana classica</em>, <em>Tonica leggera (delicata)</em>, <em>Tonica mediterranea</em>, <em>Tonica al fiore di sambuco</em>, <em>Tonica allo zenzero / speziata</em>, <em>Tonica al pompelmo rosa</em> o <em>Tonica agli agrumi</em>. Accanto a ognuna compare <strong>✓ nel tuo bar</strong> (la tonica ce l'hai già) oppure <strong>🛒 Consiglio d'acquisto</strong> con il pulsante <em>+ Desideri</em>, che mette la tonica nella lista desideri. Tocca quella che preferisci: diventa la tonica <strong>preferita</strong> del gin.</p>
+<h3>I campi del perfect serve</h3>
+<ul>
+<li><strong>Erbe e guarnizione</strong> (separate da virgole) – ad es. rametto di rosmarino, timo, basilico, nastro di cetriolo, scorza di pompelmo, pepe rosa;</li>
+<li><strong>Proporzione</strong> – ad es. 1:2 (una parte di gin e due di tonica);</li>
+<li><strong>Bicchiere</strong> e <strong>Ghiaccio</strong> (ad es. tanto ghiaccio in cubi grandi).</li>
+</ul>
+<h3>I bicchieri</h3>
+<p>Il bicchiere è un link <em>Vedi il bicchiere</em>. Apre una scheda con un disegno e una breve spiegazione: <strong>Copa / calice a palloncino</strong>, <strong>Bicchiere highball</strong>, <strong>Tumbler (bicchiere rocks)</strong>, <strong>Coppa</strong>, <strong>Calice Martini</strong> e <strong>Flûte da champagne</strong>. Con <em>Vedi altre immagini ↗</em> trovi altre foto; <em>Chiudi</em> chiude la scheda.</p>
+<h3>La tonica come categoria a sé</h3>
+<p>Le toniche si gestiscono come i gin: tocca <kbd>+</kbd> e scegli lo stile <strong>🥤 Acqua tonica</strong> (nel filtro del bar: “Acqua tonica”). Nel campo <strong>Acqua tonica abbinata</strong> di un gin puoi indicare la tonica a mano oppure toccare 🤖: l'IA ne sceglie una adatta. Per tutti i gin in una volta: <strong>Opzioni → Database dei gin → Assegna acque toniche (IA)</strong> (“Trova un'acqua tonica adatta per ogni gin che non ne ha una”); prima di iniziare l'app mostra per quanti gin farà la ricerca e che usa le tue toniche. Sulla scheda di una tonica compare <strong>“Si abbina a: …”</strong>.</p>
+<p>Sulla scheda del gin nel bar compaiono la tonica preferita, la guarnizione e il bicchiere.</p>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. Ricette e scaffale di erbe e guarnizioni</h2>
+
+<p>L'area <strong>Ricette</strong> (sottotitolo “Gin tonic e cocktail”) si trova nella barra tra “Statistiche” e “Cronologia”.</p>
+<ul>
+<li><strong>13 classici:</strong> Gin tonic, Gin tonic mediterraneo, Gin tonic rosa, Gin tonic Navy Strength, Negroni, Dry Martini, Gimlet, Tom Collins, Southside, French 75, Bee's Knees, Martinez e Gin Basil Smash. Ognuno ha <em>Ingredienti</em>, <em>Preparazione</em> e <em>Bicchiere</em>.</li>
+<li><strong>Filtri:</strong> <em>Tutte</em>, <em>⭐ Preferite</em>, <em>Mie</em> e <em>✓ Adatta al mio bar</em> – quest'ultimo mostra le ricette per cui hai un gin adatto.</li>
+<li><strong>Ricette personali:</strong> <em>Aggiungi la tua ricetta</em> – inserisci nome, ingredienti (uno per riga) e preparazione, poi <em>Salva ricetta</em>. Una ricetta personale si può eliminare in qualsiasi momento.</li>
+<li><strong>Ricetta per un gin (IA):</strong> scegli un gin (“Scegli un gin…”) e tocca <em>🤖 Crea ricetta</em>. L'IA propone una ricetta che puoi conservare con <em>Salva come mia ricetta</em>. Costa una scansione IA.</li>
+</ul>
+<h3>Lo scaffale di erbe e guarnizioni</h3>
+<p>Nel <strong>Il mio scaffale di erbe e guarnizioni</strong> tocca ciò che hai in casa: lime, limone, pompelmo, cetriolo, rosmarino, timo, basilico, menta, pepe rosa, anice stellato e altro. I consigli sul perfect serve e le ricette mostrano poi <strong>✓</strong> (ho) oppure <strong>🛒</strong> (manca). Con <em>🛒 Aggiungi ciò che manca alla lista desideri</em> ciò che manca va nella <a href="#wish">Lista desideri</a> (con la nota “Erbe/guarnizione”).</p>
+<div class="note">Ricette personali, preferiti e scaffale di erbe e guarnizioni vengono salvati con la sincronizzazione cloud (<a href="#sync">sezione 13</a>).</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. Statistiche</h2>
+
+<p>Dall'alto in basso:</p>
+<ul>
+<li><strong>Cifre chiave:</strong> bottiglie, gin, valore totale, voto medio.</li>
+<li><strong>Per tipo:</strong> barre per stile di gin; un tocco apre il bar con il filtro corrispondente.</li>
+<li><strong>Gin migliori:</strong> i gin con una valutazione, per impostazione predefinita i primi dieci. Puoi filtrare per stelle e passare dall'ordinamento <em>★ Valutazione</em> a <em>🥂 Frequenza</em> (quanto spesso hai bevuto quel gin). Un tocco su una riga apre il gin.</li>
+</ul>
+<p>Le sezioni senza dati vengono nascoste.</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. Esportazione, importazione e backup</h2>
+
+<table>
+<tbody><tr><th>Funzione</th><th>Scopo</th></tr>
+<tr><td>Esporta CSV</td><td>Tabella per Excel o Numbers</td></tr>
+<tr><td>Esporta Excel</td><td>Come file .xlsx</td></tr>
+<tr><td>Esporta PDF</td><td>Panoramica stampabile</td></tr>
+<tr><td><strong>Backup JSON</strong></td><td><strong>Backup completo dei dati</strong> (gin, lista desideri, cronologia, scaffali, ricette, foto personali)</td></tr>
+<tr><td>Negli appunti</td><td>Copiare un elenco di testo</td></tr>
+<tr><td>Importa JSON / CSV / Excel</td><td>Ripristinare un backup o leggere una tabella</td></tr>
+</tbody></table>
+<p>Le colonne in CSV ed Excel sono: <strong>Nome, Anno di imbottigliamento, Stile, Regione, Paese, Botanici, Scaffale, Ripiano, Posto, Bottiglie, Valutazione, Prezzo, Alcol %, Nota</strong>. L'importazione accetta anche i vecchi nomi di colonna.</p>
+<div class="tip"><strong>Fai regolarmente un backup JSON.</strong> L'importazione JSON sostituisce il bar con il backup (l'app chiede prima). Su un nuovo dispositivo questo ripristina tutto. In alternativa usa la sincronizzazione cloud (<a href="#sync">sezione 13</a>).</div>
+<p>In fondo alla schermata “Esporta/Importa” trovi la sezione comprimibile <strong>Contatto</strong>: contiene il nome dello sviluppatore e la riga “Last Build: data” – la data dell'ultima build dell'app.</p>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. Opzioni (impostazioni)</h2>
+
+<h3>Generali</h3>
+<ul>
+<li><strong>Nome visualizzato (titolo):</strong> il tuo nome viene inserito nel titolo dell'app. Lascia vuoto per il titolo predefinito.</li>
+<li><strong>Valuta:</strong> €, $, £, CHF, A$, C$, SEK, NOK, DKK, PLN, HUF, CZK, RON, RUB, UAH, JPY, CNY, KRW, INR.</li>
+<li><strong>Lingua:</strong> 25 varianti linguistiche. Cambiando lingua <strong>la valuta si imposta automaticamente</strong> (ad es. svedese → SEK) e l'app te lo segnala; puoi cambiare la valuta a mano in qualsiasi momento.</li>
+<li><strong>Coriandoli e suono quando bevi:</strong> entrambi, solo coriandoli o disattivato.</li>
+<li><strong>Carattere:</strong> dieci caratteri tra cui scegliere.</li>
+</ul>
+<h3>Archiviazione</h3>
+<p><em>Solo questo dispositivo</em> oppure <em>Cloud</em> (codice di sync, <a href="#sync">sezione 13</a>).</p>
+<h3>Crediti IA</h3>
+<p>Mostra le scansioni IA rimanenti, l'ID del dispositivo e – quando serve – <em>Ricarica crediti</em> o un codice di sblocco. Vedi <a href="#privacy">sezione 14</a>.</p>
+<h3>Database dei gin</h3>
+<ul>
+<li><strong>Aggiorna tutti i gin (IA):</strong> compila regione, paese, botanici e prezzo mancanti per tutti i gin (nella versione web anche le immagini delle bottiglie). I valori esistenti restano. <em>Consiglio: esporta prima un backup JSON.</em></li>
+<li><strong>Assegna acque toniche (IA):</strong> sceglie una tonica adatta per ogni gin che non ne ha ancora una (<a href="#serve">sezione 8</a>).</li>
+</ul>
+<h3>Scaffali</h3>
+<p>Vedi <a href="#racks">sezione 5</a>.</p>
+<h3>Privacy, guida, supporto</h3>
+<p>I link portano all'informativa sulla privacy, a questa <strong>Guida utente</strong> e alla pagina di supporto. Nome dello sviluppatore e “Last Build” si trovano nella sezione “Contatto” della schermata “Esporta/Importa” (<a href="#export">sezione 11</a>).</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. Sincronizzare due dispositivi</h2>
+
+<ol>
+<li><strong>Primo dispositivo:</strong> Opzioni → Archiviazione → <em>Cloud</em> → <em>Crea nuovo codice di sync</em>. Il codice appare sullo schermo; con <em>Salva il codice via e-mail</em> lo invii a te stesso.</li>
+<li><strong>Secondo dispositivo:</strong> Opzioni → Archiviazione → <em>Cloud</em> → inserisci il codice (minuscolo, senza spazi) → Collega. Se il dispositivo contiene già dei gin, l'app chiede se unirli ai dati del cloud.</li>
+<li>Poi entrambi i dispositivi si sincronizzano automaticamente (ad es. all'apertura dell'app); <em>Sincronizza ora</em> lo avvia a mano. La regola è: <strong>vince la modifica più recente</strong>.</li>
+</ol>
+<p>Vengono sincronizzati gin e toniche, lista desideri, cronologia, scaffali, ricette personali, preferiti, scaffale di erbe e guarnizioni e impostazioni come lingua e valuta. <strong>Non vengono sincronizzate</strong> le foto personali e i dati specifici del dispositivo. Chiunque conosca il tuo codice può vedere il tuo bar – condividilo solo con persone di fiducia. Tieni anche un backup JSON.</p>
+
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. IA, privacy e costi</h2>
+
+<ul>
+<li><strong>A cosa serve l'IA?</strong> Scansione etichetta, ricerca gin, ricerca prezzi, “Aggiorna tutti i gin”, consiglio dell'IA per il perfect serve, ricetta dell'IA e abbinamento delle toniche. La foto o il nome del gin viene inviato tramite il nostro server a un servizio di IA (Anthropic, USA) per la valutazione – senza nomi né account. L'app chiede il tuo consenso prima del primo utilizzo.</li>
+<li>La <strong>scansione del codice a barre</strong> e il <em>🌿 Consiglio a regole</em> non usano l'IA: il codice a barre invia solo il numero a un database di prodotti gratuito, il consiglio a regole funziona offline, e nessuno dei due costa crediti IA.</li>
+<li><strong>Costi (app per iPhone):</strong> 50 chiamate IA per installazione sono incluse nel prezzo di acquisto; altre si possono acquistare con un acquisto singolo facoltativo (nessun abbonamento, i crediti non scadono). Tutto il resto nell'app non costa nulla in più. Quando i crediti sono esauriti, tutto tranne le funzioni IA continua a funzionare.</li>
+<li><strong>Dati:</strong> tutto resta sul tuo dispositivo finché non attivi il cloud. Niente pubblicità, niente tracciamento, nessun account utente. Dettagli nell'<a href="datenschutz.html">informativa sulla privacy</a> (in tedesco).</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. Consigli e FAQ</h2>
+
+<ul>
+<li><strong>Su iPad o PC</strong> il layout si adatta: colonna più larga, più schede affiancate e, su PC (e iPad in orizzontale), la navigazione a sinistra. Anche lo smartphone funziona in orizzontale. Su PC <kbd>Esc</kbd> chiude la finestra in primo piano; su smartphone scorri una finestra verso il basso per chiuderla.</li>
+<li><strong>I miei gin sono spariti:</strong> vedi <a href="support.html">Supporto</a> – ripristina con il codice di sync o con un backup JSON.</li>
+<li><strong>Nessun risultato del codice a barre per un gin:</strong> è normale per le piccole distillerie. Usa la scansione dell'etichetta.</li>
+<li><strong>L'IA ha letto male qualcosa:</strong> correggi il campo a mano e salva; i valori dell'IA sono suggerimenti.</li>
+<li><strong>Quale tonica scegliere?</strong> Inizia dal “Consiglio a regole”: ai gin agrumati stanno bene le toniche agli agrumi e mediterranee, a quelli speziati la tonica allo zenzero, a quelli rosa la tonica al pompelmo rosa. Con i gin forti Navy Strength usa meno tonica del solito.</li>
+<li><strong>La pagina mostra ancora la vecchia versione (web):</strong> ricarica la pagina (su PC <kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+</ul>
+<p>Altre domande? Scrivi a <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20Guida%20utente">t.knecht@web.de</a>.</p>
+
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Felhasználói útmutató – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← A gyűjteményhez</a> &nbsp;·&nbsp; </span><a href="support.html">← Vissza a támogatáshoz</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html" selected>Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>Felhasználói útmutató – Gin-Factory</h1>
+<p><small>Frissítve: 2026. november 15. · Az alkalmazás verziója: 2.0</small></p>
+
+<div class="toc">
+
+<strong>Tartalom</strong><ol>
+<li><a href="#start">Áttekintés és az első lépések</a></li>
+<li><a href="#add">Ginek és tonikok hozzáadása</a></li>
+<li><a href="#cellar">A bár</a></li>
+<li><a href="#drink">Gin elfogyasztása</a></li>
+<li><a href="#racks">Polcok és elhelyezés</a></li>
+<li><a href="#history">Napló</a></li>
+<li><a href="#wish">Kívánságlista</a></li>
+<li><a href="#serve">Perfect serve és poharak</a></li>
+<li><a href="#recipes">Receptek és fűszernövény- és díszítéspolc</a></li>
+<li><a href="#stats">Statisztika</a></li>
+<li><a href="#export">Export, import és biztonsági mentés</a></li>
+<li><a href="#setup">Beállítások</a></li>
+<li><a href="#sync">Két eszköz szinkronizálása</a></li>
+<li><a href="#privacy">MI, adatvédelem és költségek</a></li>
+<li><a href="#faq">Tippek és GYIK</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. Áttekintés és az első lépések</h2>
+
+<p>A Gin-Factory a személyes gin-bárod a zsebedben: kezeled benne a ginek és tonikok készletét, a tárolóhelyeket, a kívánságlistát, a recepteket és a statisztikákat. Minden az eszközödön fut; egy szinkronkóddal több eszközt is összekapcsolhatsz.</p>
+<p>Alul (PC-n és fekvő iPaden: balra) található a sáv nyolc területtel:</p>
+<table>
+<tbody><tr><th>Terület</th><th>Feladat</th></tr>
+<tr><td><strong>Bár</strong></td><td>Az összes gin (és tonik), keresés, szűrők, rendezés, gin hozzáadása, elfogyasztás</td></tr>
+<tr><td><strong>Statisztika</strong></td><td>Kimutatások a készletről, az árakról, a tárolásról és az ivási naplóról</td></tr>
+<tr><td><strong>Receptek</strong></td><td>Gin tonik és koktélok, saját receptek, MI-recept, fűszernövény- és díszítéspolc</td></tr>
+<tr><td><strong>Napló</strong></td><td>A megivott ginek</td></tr>
+<tr><td><strong>Polcok</strong></td><td>Bártérkép: ginek elhelyezése és áthelyezése, QR-címkék</td></tr>
+<tr><td><strong>Kívánság</strong></td><td>Ginek és tonikok, amelyeket még meg szeretnél venni</td></tr>
+<tr><td><strong>Export/Import</strong></td><td>Adataid mentése, táblázatok és mentések beolvasása</td></tr>
+<tr><td><strong>Beállítások</strong></td><td>Név, pénznem, nyelv, felhő, polcok megadása</td></tr>
+</tbody></table>
+<h3>Az első öt lépés</h3>
+<ol>
+<li><strong>Válassz nyelvet és pénznemet</strong>: Beállítások → Általános. A pénznem automatikusan követi a nyelvet.</li>
+<li><strong>Add meg a polcokat</strong> (nem kötelező): Beállítások → Polcok (lásd az <a href="#racks">5. fejezetet</a>).</li>
+<li><strong>Add hozzá az első ginedet</strong>: koppints a <kbd>+</kbd> gombra a bárban (<a href="#add">2. fejezet</a>).</li>
+<li><strong>Helyezd el</strong>: adj a ginnek egy helyet egy polcon.</li>
+<li><strong>Készíts mentést</strong>: Export/Import → JSON biztonsági mentés, vagy állítsd be a felhős szinkronizálást (<a href="#sync">13. fejezet</a>).</li>
+</ol>
+<div class="tip">A <em>Beállítások</em> szakaszai összecsukhatók. Az „Általános” az első indításkor nyitva van, a többi zárva. Az alkalmazás megjegyzi, mit nyitottál ki vagy csuktál össze utoljára.</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. Ginek és tonikok hozzáadása</h2>
+
+<p>Koppints a <kbd>+</kbd> gombra a bárban. Többféleképpen is hozzáadhatsz egy ginet – ezek kombinálhatók.</p>
+<h3>a) Kézzel</h3>
+<p>Töltsd ki a mezőket: <strong>Név / Szeszfőzde, Palackozás éve, Palackok, Gin stílusa, Régió, Ország, Botanikumok, ABV (% vol.), Illő tonik, Perfect serve, Tárolóhely, Ár, Értékelés, Megjegyzés</strong>. Csak a név kötelező. A <em>Mentés</em> létrehozza a ginet.</p>
+<ul>
+<li><strong>Gin stílusa:</strong> London Dry, Old Tom / Plymouth, Rózsaszín / gyümölcsös gin, Navy Strength, Tonik vagy Egyéb.</li>
+<li><strong>Palackozás éve:</strong> az üveg palackozásának vagy a lepárlásnak az éve. A <strong>Botanikumok</strong> a gin gyógynövényes és gyümölcsös alapanyagai (pl. boróka, koriander, citrushéj), az <strong>ABV (% vol.)</strong> pedig az alkoholtartalom százalékban.</li>
+<li><strong>Készlet, Min és Max:</strong> Ha megadsz egy minimumot, az alkalmazás figyelmeztet, ha a készlet ez alá csökken, és felajánlja, hogy a ginet a kívánságlistára teszi (<a href="#cellar">3. fejezet</a>).</li>
+<li><strong>Illő tonik</strong> és <strong>Perfect serve</strong>: lásd alább és a <a href="#serve">8. fejezetet</a>.</li>
+<li><strong>Saját fotó:</strong> A „Fotó készítése / kiválasztása” egy fotót csatol a ginhez. Ez ezen az eszközön marad, bekerül a JSON biztonsági mentésbe, de a felhővel nem szinkronizálódik.</li>
+</ul>
+<h3>b) Címke beolvasása (MI)</h3>
+<p>Koppints a <em>Címke beolvasása (MI)</em> gombra, és fényképezd le az üveg címkéjét. Az MI kiolvassa a nevet, az évet, a stílust, a régiót, az országot, a szeszfőzdét, a botanikumokat és az ABV-t. Ellenőrizd az értékeket, és mentsd el. Az első használat előtt az alkalmazás hozzájárulásodat kéri (<a href="#privacy">14. fejezet</a>).</p>
+<h3>c) Vonalkód beolvasása</h3>
+<p>Koppints a <em>Vonalkód beolvasása</em> gombra, és tartsd az üveg vonalkódját a keretbe. Az alkalmazás egy ingyenes termékadatbázisban megkeresi a számot (költség és MI-kredit nélkül), és ha megtalálja, kitölti a <strong>nevet, a gyártót és a gin stílusát</strong>. Az évet a névből egészíti ki, vagy rákérdez.</p>
+<ul>
+<li>Ha az üveg már szerepel a bárban, az alkalmazás megkérdezi: „Hozzáadsz még egy palackot?” – gyors módja annak, hogy növeld a darabszámot, ha többet vásárolsz.</li>
+<li>Ha a vonalkód <strong>nincs</strong> az adatbázisban (kisebb szeszfőzdéknél gyakori), megjelenik egy tipp a <em>Címke beolvasása (MI)</em> gombbal. A szám ettől még elmentődik a ginnel, így legközelebb az üveget azonnal felismeri.</li>
+</ul>
+<h3>d) Gin keresése (MI)</h3>
+<p>A <em>Gin keresése (MI)</em> funkcióval az MI az interneten keresi a régiót, az országot, a botanikumokat, az ABV-t, az aktuális átlagárat és – a webes változatban – egy palackképet. A már kitöltött mezőket nem írja felül. Ez automatikusan is megtörténik, ha megadtad a nevet és az évet, és még nincs ár.</p>
+<div class="note">Az iPhone-alkalmazás nem tölt le palackképeket az internetről (App Store-szabály). Helyette készíthetsz saját fotókat.</div>
+<h3>e) A tonik mint önálló kategória</h3>
+<p>A tonikokat ugyanúgy veszed fel, mint a ginekat, a <strong>Tonik</strong> stílust választva. A bárban a <em>🥤 Tonik</em> szűrő alatt találod őket, a tonik kártyáján pedig az „Ehhez illik: …” sor áll – vagyis az, mely ginekhez illik. Az <strong>Illő tonik</strong> mezőt kitöltheted kézzel, vagy koppints a 🤖 gombra: az MI illő toniket keres a ginhez (először a te tonikjaid közül, egyébként ajánlásként). Az összes ginhez egyszerre a <em>Beállításokban</em> a <em>Tonikok hozzárendelése (MI)</em> gombbal rendelheted hozzá (<a href="#setup">12. fejezet</a>).</p>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="cellar">3. A bár</h2>
+
+<h3>Keresés, szűrés, rendezés</h3>
+<ul>
+<li><strong>Keresés</strong> felül: név, régió, ország és szeszfőzde szerint talál ginekat.</li>
+<li><strong>Szűrők:</strong> Mind, London Dry, Old Tom / Plymouth, Rózsaszín / gyümölcsös gin, Navy Strength, Tonik, Egyéb. Egy stílusra kattintva a keresés automatikusan törlődik.</li>
+<li><strong>Rendezés:</strong> Legújabb elöl, Név, Palackozás éve, Botanikumok, Régió vagy Ország.</li>
+<li><strong>Lista / kártyák:</strong> A <em>Lista</em> gomb vált a kompakt lista és a részletes kártyák között.</li>
+</ul>
+<h3>A ginkártya</h3>
+<p>A kártya mutatja a nevet, a palackozás évét, a szeszfőzdét, az értékelést (csillagok), a régiót és az országot (koppintásra megnyílik a gin régióinak térképe), a palackok számát és a <strong>tárolóhelyeket</strong> (koppintásra a polchoz ugrik). A kártyán lévő borókabogyók a gin stílusát mutatják; rájuk koppintva megnyílik a gin Wikipedia-oldala. Ha be van állítva a Perfect serve, a kártyán a kedvenc tonik, a díszítés és a pohár is látszik. A tonik kártyáján az „Ehhez illik: …” sor áll.</p>
+<p>A kártya alján: <em>Szerkesztés</em>, <em>Iszom</em> és 🗑 (gin törlése).</p>
+<h3>Készlet, Min/Max és a bevásárlólista</h3>
+<p>Ha egy ginhez megadsz egy minimumot (és igény szerint egy maximumot), a kártya a „Készlet · Min · Max” értékeket mutatja, és ⚠ jellel figyelmeztet, ha alatta vagy. Az <em>Utánrendelés</em> gomb megnyitja a <strong>bevásárlólistát</strong>: felsorolja az összes minimum alatti ginet (a cél a maximum, ennek hiányában a minimum). A listát megoszthatod vagy átmásolhatod, vagy a ginekat a kívánságlistára teheted.</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. Gin elfogyasztása</h2>
+
+<p>Koppints az <em>Iszom</em> gombra a ginkártyán. Megnyílik a <em>Gin megivása</em> ablak:</p>
+<ul>
+<li><strong>Melyik helyről vették ki?</strong> – válaszd ki a polchelyet, ahonnan az üveg származik, vagy az „Elhelyezetlen üveg” lehetőséget. A hely felszabadul.</li>
+<li><strong>Kivel ittad?</strong> – a vendégeid nevei (nem kötelező).</li>
+<li><strong>Alkalom</strong> – Tavasz, Nyár, Ősz, Tél, Születésnap, Buli vagy „Csak úgy” (több is választható).</li>
+</ul>
+<p>Az <em>Iszom</em> eltávolít egy palackot, és bejegyzést hoz létre a <a href="#history">Naplóban</a>. Konfetti és hang ünnepli (a Beállításokban kikapcsolható). Ha ez az <strong>utolsó palack</strong>, az alkalmazás szól: a gin ekkor eltűnik a bárból (de megmarad a Naplóban).</p>
+<p>Hogy mivel érdemes a ginet felszolgálni, azt a Perfect serve mutatja (<a href="#serve">8. fejezet</a>).</p>
+<div class="tip"><strong>Gyorsan beolvasással:</strong> A bárban a kerek 🥂 gomb lefényképez egy címkét, felismeri a ginet a bárodban, és azonnal megnyitja az Iszom ablakot.</div>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. Polcok és elhelyezés</h2>
+
+<h3>Polcok megadása és szerkesztése</h3>
+<p><strong>Beállítások → Polcok</strong> (koppints a címsorra a megnyitáshoz): add meg a nevet, a szinteket, a helyek számát szintenként és a palackok számát helyenként, majd koppints a ＋ gombra. Az „Üveg/hely” értéke palacktartónál 1, padlónál vagy rekesznél nagyobb. A listában minden polchoz tartozik:</p>
+<ul>
+<li>a <strong>fogantyú ⠿</strong> a sorrend módosításához, valamint a lista alatti <em>Rendezés A–Z</em> gomb,</li>
+<li>▦ a <strong>QR-címkékhez</strong>, ✏️ a szerkesztéshez, 🧹 a kiürítéshez és 🗑 a törléshez.</li>
+</ul>
+<p>A <strong>szerkesztéssel</strong> (✏️) átnevezheted a polcot, módosíthatod a helyek számát szintenként, szinteket adhatsz hozzá felül vagy alul, szinteket távolíthatsz el, és minden szintnek saját nevet és palackszámot adhatsz. Azok a palackok, amelyek így elvesztik a helyüket, utána „elhelyezetlennek” számítanak; maguk a ginek a bárban maradnak. Az alkalmazás ilyen módosítások előtt rákérdez.</p>
+<h3>A Polcok terület</h3>
+<p>Felül a <strong>csempékkel</strong> választasz polcot (név és „megtelt / helyek”). A sorrend itt is módosítható: PC-n húzd a csempét, érintőképernyőn nyomd meg és tartsd kb. fél másodpercig a csempét, majd húzd. Alatta van a <strong>bártérkép</strong>: minden szint a helyeivel. A foglalt helyeken a gin stílusának színében egy palack látható.</p>
+<h3>Elhelyezés</h3>
+<ol>
+<li>Koppints egy ginre a „Nincs elhelyezve” alatt (a lista szűrhető szeszfőzde és ország szerint) – vagy koppints egy „elhelyezetlen” jelzésre a bárban.</li>
+<li>Koppints egy <strong>szabad helyre</strong>. Padlónál és rekesznél az alkalmazás annyi palackot helyez el, amennyi elfér.</li>
+</ol>
+<p>A <strong>Gin beolvasása és elrakása</strong> lefényképezi a címkét, megkeresi a ginet, és végigvezet az elhelyezésen.</p>
+<h3>Foglalt helyek, áthelyezés, eltávolítás</h3>
+<p>Koppints egy foglalt helyre: látod a ginet, és <em>megnyithatod</em>, <em>eltávolíthatod a helyről</em> vagy <em>áthelyezheted</em> (ekkor koppints egy szabad helyre). Az <em>Állvány kiürítése</em> minden palackot kivesz a polcról (megerősítés után).</p>
+<h3>QR-címkék és a „Szint beolvasása”</h3>
+<p>A <strong>QR-címkékkel</strong> (Beállítások → Polcok → ▦) egy címkét készítesz a polcnak és egyet-egyet minden szintnek. Oszd meg PDF-ként vagy nyomtasd ki (címkelap 63,5 × 38,1 mm, oldalanként 21 darab), és ragaszd fel őket. Ezután: <strong>Szint beolvasása</strong> a Polcok területen – látod, mi áll azon a szinten, és <em>itt elhelyezhetsz</em>, <em>kivehetsz</em>, megihatsz, áthelyezhetsz egy palackot, vagy <em>áthelyezheted a teljes szintet</em>. A „Gin hozzáadása” űrlapban egy szintcímke beolvasása a tárolóhelyet is kitölti.</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. Napló</h2>
+
+<p>A Napló felsorol minden megivott ginet dátummal, ginnel, értékkel, vendégekkel és alkalommal. Szűrhetsz a gin stílusa és az alkalom szerint, és szerkeszthetsz egy bejegyzést (vendégek, alkalom). A Napló táplálja a Statisztika „Megivott havonta/évente” kimutatásait, a költéseket és a gyakoriságot.</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. Kívánságlista</h2>
+
+<ul>
+<li><strong>+ Kívánság hozzáadása</strong>: kézzel vagy címkebeolvasással, egy opcionális megjegyzéssel („Hol vehető?”).</li>
+<li><strong>Árak keresése</strong> (💶): Az alkalmazás az interneten keresi a gin árait, megmutatja a legolcsóbb találatot, és megszorozza a mennyiséggel. Ezek tájékoztató értékek, garancia nélkül – kérjük, a szállítási költségeket és az elérhetőséget egyeztesd a bolttal.</li>
+<li><strong>Pipa</strong> a bal oldalon: megvásároltként/késznek jelölés (a sor elhalványul).</li>
+<li><strong>→ Bár</strong>: áthelyezi a kívánságot a bárba (a mennyiséggel és, ha van, a legolcsóbb árral), és ha vannak polcaid, rögtön az elhelyezéshez visz.</li>
+<li>Ha egy gin a minimum alá csökken, az alkalmazás felajánlja, hogy a hiányzó mennyiséggel a kívánságlistára teszi („utánrendelés”).</li>
+<li>A hiányzó tonikok, fűszernövények és díszítések ide a Perfect serve <em>+ Kívánság</em> gombjával vagy a Receptek <em>🛒 Hiányzók hozzáadása a kívánságlistához</em> gombjával kerülnek.</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="serve">8. Perfect serve és poharak</h2>
+
+<p>A <em>Gin hozzáadása</em> / <em>Gin szerkesztése</em> űrlapban találod a <strong>Perfect serve (fűszernövények, díszítés, arány)</strong> blokkot. Azt javasolja, hogyan érdemes az adott ginet felszolgálni – mindenekelőtt melyik tonikkal.</p>
+<h3>Két gomb</h3>
+<ul>
+<li><strong>🌿 Szabályalapú tipp</strong> – offline működik és ingyenes. Az alkalmazás a gin stílusa és botanikumai alapján értékel.</li>
+<li><strong>🤖 MI-ajánlás</strong> – egy MI-beolvasásba kerül (<a href="#privacy">14. fejezet</a>).</li>
+</ul>
+<p>Használat előtt add meg a nevet (különben ez jelenik meg: „Előbb add meg a nevet”). Az eredmény <strong>legfeljebb három tonikajánlás</strong> indoklással, például „Klasszikus indiai tonik” (semleges és keserű, a boróka vezet), „Mediterrán tonik”, „Bodzavirág tonik”, „Gyömbéres / fűszeres tonik”, „Rózsaszín grapefruit tonik”, „Citrusos tonik” vagy „Light tonik (enyhe)”. Minden ajánlásnál ezt látod: <strong>✓ a bárodban</strong> (megvan ilyen tonikod) vagy <strong>🛒 Vásárlási tipp</strong> a <em>+ Kívánság</em> gombbal. Ha <strong>rákoppintasz</strong> egy ajánlásra, az a tonik kedvencnek jelölődik („Kedvencnek jelölve ✓”).</p>
+<h3>Mezők</h3>
+<ul>
+<li><strong>Fűszernövények és díszítés</strong> (vesszővel elválasztva): rozmaring, kakukkfű, bazsalikom, uborka, grapefruithéj, rózsabors stb.</li>
+<li><strong>Arány</strong>: pl. 1:2 (gin a toniknak)</li>
+<li><strong>Pohár</strong></li>
+<li><strong>Jég</strong></li>
+</ul>
+<p>A bárban a <strong>ginkártyán</strong> látszik a kedvenc tonik, a díszítés és a pohár.</p>
+<h3>A pohár: „Pohár megtekintése”</h3>
+<p>A pohár (pl. a balon pohár) egy <em>Pohár megtekintése</em> hivatkozás. Megnyit egy kártyát rajzzal és rövid magyarázattal; a <em>További képek megtekintése ↗</em> hivatkozás további képekhez vezet, a <em>Bezárás</em> bezárja a kártyát. Elérhető poharak:</p>
+<table>
+<tbody><tr><th>Pohár</th><th>Mire való</th></tr>
+<tr><td><strong>Copa / balon pohár</strong></td><td>A klasszikus gin tonik: széles kehely hosszú száron, elfér benne a nagy jégkocka és a díszítés</td></tr>
+<tr><td><strong>Highball pohár</strong></td><td>Sok tonikkal készült gin tonik, Tom Collins és más long drinkek</td></tr>
+<tr><td><strong>Tumbler (rocks pohár)</strong></td><td>Gin jéggel, Negroni, Gimlet, Basil Smash</td></tr>
+<tr><td><strong>Coupe</strong></td><td>Jég nélküli koktélok: Gimlet, Southside, Bee's Knees</td></tr>
+<tr><td><strong>Martinis pohár</strong></td><td>Dry Martini és más kevert, jég nélküli gines koktélok</td></tr>
+<tr><td><strong>Pezsgős fuvolapohár</strong></td><td>French 75 habzóborral</td></tr>
+</tbody></table>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. Receptek és fűszernövény- és díszítéspolc</h2>
+
+<p>A <strong>Receptek</strong> terület (alcíme „Gin tonik és koktélok”) <strong>13 klasszikust</strong> tartalmaz hozzávalókkal és elkészítéssel: Gin tonik, Mediterrán G&amp;T, Pink gin tonik, Navy Strength G&amp;T, Negroni, Dry Martini, Gimlet, Tom Collins, Southside, French 75, Bee's Knees, Martinez és Gin Basil Smash.</p>
+<h3>Szűrők</h3>
+<ul>
+<li><strong>Mind</strong> – az összes recept,</li>
+<li><strong>⭐ Kedvencek</strong> – a csillaggal megjelölt receptek,</li>
+<li><strong>Saját</strong> – a saját receptjeid,</li>
+<li><strong>✓ Illik a bárhoz</strong> – azok a receptek, amelyekhez megvan a gin, a tonik, a fűszernövény és a díszítés.</li>
+</ul>
+<h3>Saját receptek</h3>
+<ul>
+<li><strong>Saját recept hozzáadása</strong>: add meg a nevet, a hozzávalókat (soronként egyet) és az elkészítést, majd koppints a <em>Recept mentése</em> gombra. Egy recept törlése előtt az alkalmazás rákérdez.</li>
+<li><strong>Recept ginhez (MI)</strong>: válassz ki egy ginet a listából („Válassz egy ginet…”), és koppints a <em>🤖 Recept készítése</em> gombra. Az MI receptet készít ehhez a ginhez; a <em>Mentés saját receptként</em> gombbal megtartod. Ez egy MI-beolvasásba kerül.</li>
+</ul>
+<h3>Fűszernövény- és díszítéspolc</h3>
+<p>A <strong>Fűszernövény- és díszítéspolcom</strong> alatt megérinted, ami otthon van: például lime gerezd, citrom- vagy grapefruithéj, uborkaszalag, rozmaring, kakukkfű, bazsalikom, menta, zsálya, levendula, rózsaszirom, rózsabors, boróka bogyó, eper, málna, gyömbér vagy kardamom. Az ajánlások (a Perfect serve-ben is) ezután <strong>✓</strong> (megvan) vagy <strong>🛒</strong> (hiányzik) jelet mutatnak. A <em>🛒 Hiányzók hozzáadása a kívánságlistához</em> a hiányzó dolgokat felveszi a <a href="#wish">kívánságlistára</a>.</p>
+<div class="tip">A recepteket, a kedvenceket és a fűszernövény- és díszítéspolcot a felhős szinkronizálás is menti (<a href="#sync">13. fejezet</a>).</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. Statisztika</h2>
+
+<p>Fentről lefelé:</p>
+<ul>
+<li><strong>Főbb számok:</strong> palackok, ginek, összérték, átlagos értékelés.</li>
+<li><strong>Típus szerint</strong> és <strong>Legjobb ginek</strong> (értékelés vagy gyakoriság szerint, csillagok szerint szűrhető).</li>
+<li><strong>Ország, régió, szeszfőzde szerint:</strong> oszlopok (legfeljebb 8, a többi „+n további”); egy koppintás keres a bárban. <strong>Palackozás éve szerint:</strong> oszlopok, oldalirányban görgethető.</li>
+<li><strong>Árak:</strong> átlag palackonként, legolcsóbb, legdrágább, ársávok (a pénznemedhez igazítva) és érték országonként.</li>
+<li><strong>Raktár:</strong> kihasználtság százalékban, szabad helyek, elhelyezetlen palackok és polconként egy oszlop (koppintásra a polchoz ugrik).</li>
+<li><strong>Megivott:</strong> havonta (utolsó 12) és évente, valamint a megivott palackok költsége.</li>
+<li><strong>Legjobb országok és legjobb szeszfőzdék</strong> átlagos értékelés szerint (bár és Napló együtt).</li>
+<li><strong>Utánrendelés:</strong> a minimumkészlet alatti ginek (megnyitja a bevásárlólistát), a nyitott kívánságok és az értékük.</li>
+</ul>
+<p>Az adatok nélküli szakaszok (pl. árak nélkül) rejtve maradnak.</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. Export, import és biztonsági mentés</h2>
+
+<table>
+<tbody><tr><th>Funkció</th><th>Feladat</th></tr>
+<tr><td>CSV exportálása</td><td>Táblázat Excelhez vagy Numbershöz</td></tr>
+<tr><td>Excel exportálása</td><td>.xlsx fájlként</td></tr>
+<tr><td>PDF exportálása</td><td>Nyomtatható áttekintés</td></tr>
+<tr><td><strong>JSON biztonsági mentés</strong></td><td><strong>Teljes adatmentés</strong> (ginek, kívánságlista, napló, polcok, megjelenített név, saját fotók)</td></tr>
+<tr><td>Vágólapra</td><td>Szöveges lista másolása</td></tr>
+<tr><td>JSON / CSV / Excel importálása</td><td>Mentés visszaállítása vagy táblázat beolvasása</td></tr>
+</tbody></table>
+<div class="tip"><strong>Rendszeresen készíts JSON biztonsági mentést.</strong> A JSON-import a bárt a mentéssel váltja le (az alkalmazás előbb rákérdez). Új eszközön ezzel minden visszaáll. Használhatod helyette a felhős szinkronizálást is (<a href="#sync">13. fejezet</a>).</div>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. Beállítások</h2>
+
+<h3>Általános</h3>
+<ul>
+<li><strong>Megjelenített név (cím):</strong> írd be például a keresztneved, hogy megjelenjen az alkalmazás címében. Hagyd üresen az alapértelmezett címhez.</li>
+<li><strong>Pénznem:</strong> €, $, £, CHF, A$, C$, SEK, NOK, DKK, PLN, HUF, CZK, RON, RUB, UAH, JPY, CNY, KRW, INR.</li>
+<li><strong>Nyelv:</strong> 25 nyelvi változat, köztük német, angol, angol (US) és sok más. <strong>A pénznem automatikusan változik</strong> (svéd → korona, angol (US) → US $, angol (UK) → £). Példa: ha svédre váltasz, az alkalmazás SEK-re vált, és megkérdezi, hogy <strong>az összes árat átszámítsa-e a mai Európai Központi Banki árfolyamon</strong> („OK”), vagy csak a jelölést módosítsa („Mégse”). RUB-ra és UAH-ra nincs árfolyam. A pénznemet bármikor kézzel is módosíthatod.</li>
+<li><strong>Konfetti és hang ivásnál:</strong> mindkettő, csak konfetti, vagy kikapcsolva.</li>
+<li><strong>Betűtípus:</strong> tíz betűtípus közül választhatsz.</li>
+</ul>
+<h3>Tárolás helye</h3>
+<p><em>Csak ezen az eszközön</em> vagy <em>Felhő</em> (szinkronkód, <a href="#sync">13. fejezet</a>).</p>
+<h3>MI-kreditek (csak az iPhone-alkalmazásban)</h3>
+<p>Mutatja a hátralévő MI-beolvasásokat, az eszközazonosítót és – szükség esetén – a <em>Kredit feltöltése</em> lehetőséget vagy egy feloldó kódot. Lásd a <a href="#privacy">14. fejezetet</a>.</p>
+<h3>Gin-adatbázis</h3>
+<ul>
+<li><strong>Összes gin frissítése (MI):</strong> kitölti az összes gin hiányzó régióját, országát, botanikumait és árát (a webes változatban a palackképeket is). A meglévő értékek megmaradnak. <em>Tipp: előbb készíts JSON biztonsági mentést.</em></li>
+<li><strong>Tonikok hozzárendelése (MI):</strong> illő toniket keres minden olyan ginhez, amelyhez még nincs. Az MI először a te tonikjaid közül választ, egyébként ajánlást ad. Az alkalmazás indulás előtt megerősítést kér, a végén pedig megmutatja a mentett párosítások számát.</li>
+</ul>
+<h3>Polcok</h3>
+<p>Lásd az <a href="#racks">5. fejezetet</a>. A címsor a polcok számát mutatja.</p>
+<h3>Adatvédelem, támogatás, útmutató, kapcsolat, verzió</h3>
+<p>A hivatkozások az adatvédelmi nyilatkozathoz és a támogatási oldalhoz vezetnek; a <em>Felhasználói útmutató</em> gomb ezt az útmutatót nyitja meg. Legalul találod az alkalmazás <strong>verzióját</strong> – kérjük, add meg, ha kapcsolatba lépsz velünk.</p>
+<p>A <em>Kapcsolat</em> területen (koppintásra lenyílik) látod a fejlesztő nevét és a „Last Build: dátum” sort, vagyis az alkalmazás utolsó összeállításának dátumát.</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. Két eszköz szinkronizálása</h2>
+
+<ol>
+<li><strong>Első eszköz:</strong> Beállítások → Tárolás helye → <em>Felhő</em> → <em>Új szinkronkód létrehozása</em>. A kód megjelenik a képernyőn; a <em>Kód mentése e-mailben</em> gombbal elküldheted magadnak.</li>
+<li><strong>Második eszköz:</strong> Beállítások → Tárolás helye → <em>Felhő</em> → add meg a kódot (kisbetűkkel, szóközök nélkül) → Csatlakozás. Ha az eszközön már vannak ginek, az alkalmazás megkérdezi, egyesítse-e őket a felhős adatokkal.</li>
+<li>Ezután mindkét eszköz automatikusan szinkronizál (pl. az alkalmazás megnyitásakor); a <em>Szinkronizálás most</em> kézzel indítja el. A szabály: <strong>a legújabb módosítás nyer</strong>.</li>
+</ol>
+<p>A ginek (és tonikok), a kívánságlista, a napló, a polcok, a saját receptek, a kedvenc receptek, a fűszernövény- és díszítéspolc és az olyan beállítások, mint a nyelv és a pénznem, szinkronizálódnak. <strong>Nem szinkronizálódnak</strong> a saját fotók és az eszközspecifikus adatok. Aki ismeri a kódodat, láthatja a gineidet – csak megbízható személyekkel oszd meg. Emellett tarts egy JSON biztonsági mentést is.</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. MI, adatvédelem és költségek</h2>
+
+<ul>
+<li><strong>Mire használják az MI-t?</strong> Címke beolvasása, gin keresése, árak keresése, a Perfect serve (MI-ajánlás), a tonik hozzárendelése, a recept ginhez és az „Összes gin frissítése”. A fotót vagy a gin nevét a szerverünkön keresztül egy MI-szolgáltatásnak (Anthropic, USA) küldjük kiértékelésre – nevek és fiókok nélkül. Az alkalmazás az első használat előtt hozzájárulásodat kéri.</li>
+<li><strong>Nem fogyaszt MI-kreditet:</strong> a vonalkód-beolvasás (csak a számot küldi egy ingyenes termékadatbázisnak) és a Perfect serve Szabályalapú tippje.</li>
+<li><strong>Költségek (iPhone-alkalmazás):</strong> telepítésenként 50 MI-hívás benne van a vételárban; továbbiak opcionális egyszeri vásárlással szerezhetők (nincs előfizetés, a kreditek nem járnak le). Az alkalmazásban minden más ingyenes. Ha a kreditek elfogytak, az MI-funkciókon kívül minden tovább működik.</li>
+<li><strong>Adatok:</strong> Minden az eszközödön marad, amíg nem kapcsolod be a felhőt. Nincs reklám, nincs követés, nincs felhasználói fiók. A részletek az <a href="datenschutz.html">adatvédelmi nyilatkozatban</a> (németül).</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. Tippek és GYIK</h2>
+
+<ul>
+<li><strong>iPaden vagy PC-n</strong> az elrendezés alkalmazkodik: szélesebb oszlop, több kártya egymás mellett, PC-n (és fekvő iPaden) a navigáció balra kerül. A telefon fekvő módban is működik. PC-n az <kbd>Esc</kbd> bezárja a legfelső ablakot; telefonon húzd lefelé az ablakot a bezáráshoz.</li>
+<li><strong>Eltűntek a ginjeim:</strong> Lásd a <a href="support.html">Támogatást</a> – állítsd vissza a szinkronkóddal vagy egy JSON biztonsági mentéssel.</li>
+<li><strong>Egy ginhez nincs vonalkód-találat:</strong> Kis szeszfőzdéknél ez normális. Használd a címkebeolvasást.</li>
+<li><strong>Az MI félreolvasott valamit:</strong> Javítsd ki a mezőt kézzel, és mentsd el; az MI értékei csak javaslatok.</li>
+<li><strong>Hogyan veszek fel tonikokat?</strong> Vedd fel őket ginként a „Tonik” stílussal. Utána az MI hozzárendelheti őket a ginekhez (🤖 az „Illő tonik” mezőnél, vagy a Beállításokban a „Tonikok hozzárendelése (MI)”).</li>
+<li><strong>Az oldal még a régi verziót mutatja (web):</strong> Töltsd újra az oldalt (PC-n <kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+</ul>
+<p>További kérdés? Írj a <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20Felhaszn%C3%A1l%C3%B3i%20%C3%BAtmutat%C3%B3">t.knecht@web.de</a> címre, és add meg az alkalmazás verzióját (Beállítások, legalul).</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

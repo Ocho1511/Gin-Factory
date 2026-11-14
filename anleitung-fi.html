@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Käyttöohje – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← Kokoelmaan</a> &nbsp;·&nbsp; </span><a href="support.html">← Takaisin tukeen</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html" selected>Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>Käyttöohje – Gin-Factory</h1>
+<p><small>Päivitetty: 15. marraskuuta 2026 · Sovelluksen versio 2.0</small></p>
+
+<div class="toc">
+
+<strong>Sisältö</strong><ol>
+<li><a href="#start">Yleiskatsaus ja ensimmäiset askeleet</a></li>
+<li><a href="#add">Ginin lisääminen</a></li>
+<li><a href="#bar">Baari</a></li>
+<li><a href="#drink">Ginin juominen</a></li>
+<li><a href="#racks">Hyllyt ja varastointi</a></li>
+<li><a href="#history">Historia</a></li>
+<li><a href="#wish">Toivelista</a></li>
+<li><a href="#perfect">Perfect serve ja tonic</a></li>
+<li><a href="#recipes">Reseptit sekä yrttien ja koristeiden hylly</a></li>
+<li><a href="#stats">Tilastot</a></li>
+<li><a href="#export">Vienti, tuonti ja varmuuskopio</a></li>
+<li><a href="#setup">Asetukset</a></li>
+<li><a href="#sync">Kahden laitteen synkronointi</a></li>
+<li><a href="#privacy">Tekoäly, tietosuoja ja kustannukset</a></li>
+<li><a href="#faq">Vinkkejä ja usein kysyttyä</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. Yleiskatsaus ja ensimmäiset askeleet</h2>
+
+<p>Gin-Factory on henkilökohtainen ginbaarisi taskussa: hallitset varastoa, säilytyspaikkoja, toivelistaa, reseptejä ja tilastoja – ja jokaiselle ginille voit tallentaa sopivan tonicin. Kaikki toimii laitteellasi; synkronointikoodilla voit yhdistää useita laitteita.</p>
+<p>Alareunasta (tietokoneella ja iPadilla vaakatilassa: vasemmalta) löydät palkin, jossa on kahdeksan aluetta:</p>
+<table>
+<tbody><tr><th>Alue</th><th>Käyttötarkoitus</th></tr>
+<tr><td><strong>Baari</strong></td><td>Kaikki ginit (ja tonicit), haku, suodattimet, lajittelu, ginin lisääminen, juominen</td></tr>
+<tr><td><strong>Tilastot</strong></td><td>Tunnusluvut, jakauma tyylin mukaan ja parhaat ginisi</td></tr>
+<tr><td><strong>Reseptit</strong></td><td>13 klassikkoa, omat reseptit, tekoälyreseptit ja yrttien ja koristeiden hylly</td></tr>
+<tr><td><strong>Historia</strong></td><td>Juomasi ginit</td></tr>
+<tr><td><strong>Hyllyt</strong></td><td>Varastointisuunnitelma: pullojen sijoittaminen ja siirtäminen, QR-tarrat</td></tr>
+<tr><td><strong>Toivelista</strong></td><td>Ginit (ja tonicit), jotka haluat vielä ostaa</td></tr>
+<tr><td><strong>Vienti/Tuonti</strong></td><td>Varmuuskopioi tietosi, tuo taulukoita ja varmuuskopioita, yhteystiedot</td></tr>
+<tr><td><strong>Asetukset</strong></td><td>Nimi, valuutta, kieli, pilvi, hyllyjen määrittely, tonicien määritys</td></tr>
+</tbody></table>
+<h3>Viisi ensimmäistä askelta</h3>
+<ol>
+<li><strong>Valitse kieli ja valuutta</strong>: Asetukset → Yleiset. Valuutta seuraa kieltä automaattisesti.</li>
+<li><strong>Määrittele hyllyt</strong> (valinnainen): Asetukset → Hyllyt (ks. <a href="#racks">luku 5</a>).</li>
+<li><strong>Lisää ensimmäinen ginisi</strong>: napauta <kbd>+</kbd> baarissa (<a href="#add">luku 2</a>).</li>
+<li><strong>Varastoi se</strong>: anna pullolle paikka hyllyssä.</li>
+<li><strong>Varmuuskopioi</strong>: Vienti/Tuonti → JSON-varmuuskopio, tai ota käyttöön pilvisynkronointi (<a href="#sync">luku 13</a>).</li>
+</ol>
+<div class="tip"><em>Asetukset</em>-osiot voi laajentaa ja supistaa. ”Yleiset” on auki ensimmäisellä käynnistyskerralla, muut ovat kiinni. Sovellus muistaa, mitä viimeksi avasit tai suljit.</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. Ginin lisääminen</h2>
+
+<p>Napauta <kbd>+</kbd> baarissa. Ginin voi lisätä usealla tavalla – ne voi yhdistää.</p>
+<h3>a) Käsin</h3>
+<p>Täytä kentät: <strong>Nimi / Tislaamo, Pullotusvuosi, Pulloja, Ginityyli, Alue, Maa, Botanicalit, ABV (% vol.), Sopiva tonic, Säilytyspaikka, Hinta, Arvosana, Muistiinpano</strong>. Vain nimi on pakollinen. <em>Tallenna</em> luo ginin. Samassa lomakkeessa on myös <strong>Perfect serve</strong> -lohko (<a href="#perfect">luku 8</a>).</p>
+<ul>
+<li><strong>Ginityyli:</strong> London Dry, Old Tom / Plymouth, Pinkki / hedelmägin, Navy Strength, Tonic tai Muu. Tonic käsitellään omana luokkanaan (ks. <a href="#perfect">luku 8</a>).</li>
+<li><strong>Pullotusvuosi</strong> on vuosi, jolloin pullo pullotettiin. <strong>Botanicalit</strong> ovat ginin yrtit ja mausteet (esim. katajanmarja, korianteri, sitrusten kuori). <strong>ABV (% vol.)</strong> on alkoholipitoisuus tilavuusprosentteina.</li>
+<li><strong>Sopiva tonic:</strong> tonic, joka sopii ginille parhaiten. Kirjoita se itse tai napauta 🤖, niin tekoäly ehdottaa sellaisen (ks. <a href="#perfect">luku 8</a>).</li>
+<li><strong>Varasto, Min ja Maks:</strong> Jos annat vähimmäismäärän, sovellus varoittaa, kun varasto putoaa sen alle, ja tarjoaa ginin lisäämistä toivelistalle (<a href="#bar">luku 3</a>).</li>
+<li><strong>Pullokuva:</strong> kuvan osoite internetistä. <strong>Oma kuva:</strong> ”Ota / valitse kuva” liittää giniin valokuvan. Se pysyy tällä laitteella ja sisältyy JSON-varmuuskopioon, mutta sitä ei synkronoida pilveen.</li>
+</ul>
+<h3>b) Skannaa etiketti (tekoäly)</h3>
+<p>Napauta <em>Skannaa etiketti (tekoäly)</em> ja ota kuva pullon etiketistä. Tekoäly lukee nimen, pullotusvuoden, tyylin, alueen, maan, tislaamon, botanicalit ja alkoholipitoisuuden. Tarkista arvot ja tallenna. Ennen ensimmäistä käyttökertaa sovellus pyytää suostumuksesi (<a href="#privacy">luku 14</a>).</p>
+<h3>c) Skannaa viivakoodi</h3>
+<p>Napauta <em>Skannaa viivakoodi</em> ja pidä pullon viivakoodi kehyksen sisällä. Sovellus hakee numeron ilmaisesta tuotetietokannasta (ei kustannuksia, ei tekoälykrediittiä) ja täyttää, jos tieto löytyy, nimen ja valmistajan.</p>
+<ul>
+<li>Jos pullo on jo baarissa, sovellus kysyy, lisätäänkö toinen pullo – nopea tapa kasvattaa määrää, kun ostat lisää.</li>
+<li>Jos viivakoodia <strong>ei</strong> löydy tietokannasta (tavallista pienille tislaamoille), näkyy vihje ja painike <em>Skannaa etiketti (tekoäly)</em>. Numero tallennetaan silti ginin mukana, jotta pullo tunnistetaan heti seuraavalla kerralla.</li>
+</ul>
+<h3>d) Hae gin (tekoäly)</h3>
+<p><em>Hae gin (tekoäly)</em> antaa tekoälyn etsiä verkosta alueen, maan, botanicalit, alkoholipitoisuuden, ajankohtaisen keskihinnan ja – verkkoversiossa – pullokuvan. Jo täyttämiäsi kenttiä ei korvata.</p>
+<div class="note">iPhone-sovellus ei lataa pullokuvia internetistä (App Storen sääntö). Voit ottaa omia kuvia sen sijaan.</div>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="bar">3. Baari</h2>
+
+<h3>Haku, suodatus, lajittelu</h3>
+<ul>
+<li><strong>Haku</strong> ylhäällä (”Hae ginia…”): löytää ginit nimen, alueen, maan ja tislaamon mukaan.</li>
+<li><strong>Suodattimet:</strong> Kaikki, London Dry, Old Tom / Plymouth, Pinkki / hedelmägin, Navy Strength, Tonic, Muu. Tyylin napsauttaminen tyhjentää haun automaattisesti.</li>
+<li><strong>Lajittelu:</strong> Uusin ensin, Nimi, Pullotusvuosi, Botanicalit, Alue tai Maa.</li>
+<li><strong>Lista / kortit:</strong> <em>Lista</em>-painike vaihtaa tiiviin listan ja yksityiskohtaisten korttien välillä.</li>
+</ul>
+<h3>Ginikortti</h3>
+<p>Kortti näyttää nimen, pullotusvuoden, tislaamon, arvosanan (tähdet), alueen ja maan (napauta avataksesi kartan tai maan ginialueet), pullojen määrän, <strong>alkoholipitoisuuden</strong>, <strong>botanicalit</strong> ja <strong>säilytyspaikat</strong> (napauta siirtyäksesi hyllyyn). Lisäksi näkyvät <strong>Perfect serven suosikkisi</strong>, koriste ja lasi (<a href="#perfect">luku 8</a>). Kortin pienet <strong>katajanmarjat</strong> näyttävät ginin tyylin – ”Mitä marjan väri tarkoittaa?” – ja marjoja napauttamalla avautuu ginin Wikipedia-sivu.</p>
+<p><strong>Tonic</strong>-kortilla näkyy sen sijaan <em>Sopii yhteen</em> ja ginit, joille tonic sopii.</p>
+<p>Kortin alareunassa: <em>Muokkaa</em>, <em>Juo</em> ja 🗑 (poista gin).</p>
+<h3>Varasto, Min/Maks ja ostoslista</h3>
+<p>Jos annat ginille vähimmäismäärän (ja halutessasi enimmäismäärän), kortti näyttää ”Varasto · Min · Maks” ja varoittaa merkillä ⚠, kun jäät sen alle. <em>Täydennä</em> avaa <strong>ostoslistan</strong>: se listaa kaikki ginit, jotka ovat alle vähimmäismäärän (tavoite on enimmäismäärä, muuten vähimmäismäärä). Voit jakaa tai kopioida listan tai lisätä ginit toivelistalle.</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. Ginin juominen</h2>
+
+<p>Napauta ginikortilla <em>Juo</em>. <em>Juo gin</em> -ikkuna avautuu:</p>
+<ul>
+<li><strong>Miltä paikalta otettu?</strong> – valitse hyllypaikka, jolta pullo otettiin, tai ”Pullo ilman paikkaa”. Paikka vapautuu.</li>
+<li><strong>Kenen kanssa joit?</strong> – vieraidesi nimet (valinnainen).</li>
+<li><strong>Tilaisuus</strong> – Kevät, Kesä, Syksy, Talvi, Syntymäpäivä, Juhlat tai ”Ihan vain” (useita voi valita).</li>
+</ul>
+<p><em>Juo</em> poistaa yhden pullon ja luo merkinnän <a href="#history">Historiaan</a>. Konfetti ja ääni juhlistavat sitä (voi kytkeä pois Asetuksissa). Jos kyseessä on <strong>viimeinen pullo</strong>, sovellus kertoo siitä: gin poistuu tällöin baarista (mutta säilyy Historiassa).</p>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. Hyllyt ja varastointi</h2>
+
+<h3>Hyllyjen määrittely ja muokkaus</h3>
+<p><strong>Asetukset → Hyllyt</strong> (avaa napauttamalla otsikkoa): anna nimi, tasot, paikat tasoa kohden ja pullot paikkaa kohden ja napauta sitten ＋. ”Pulloa/paikka” on 1 pullohyllylle ja suurempi lattialle tai laatikolle. Listassa jokaisella hyllyllä on:</p>
+<ul>
+<li><strong>kahva ⠿</strong> järjestyksen vaihtamiseen ja listan alla <em>Lajittele A–Ö</em> -painike,</li>
+<li>▦ <strong>QR-tarroille</strong>, ✏️ muokkaamiseen, 🧹 tyhjentämiseen ja 🗑 poistamiseen.</li>
+</ul>
+<p><strong>Muokkaamalla</strong> (✏️) voit nimetä hyllyn uudelleen, muuttaa paikkoja tasoa kohden, lisätä tasoja ylös tai alas, poistaa tasoja ja antaa jokaiselle tasolle oman nimen ja pullomäärän. Pullot, jotka menettävät paikkansa tällä tavoin, lasketaan jälkeenpäin ”ei sijoitetuiksi”; itse ginit pysyvät baarissa. Sovellus kysyy ennen tällaisia muutoksia.</p>
+<h3>Hyllyt-alue</h3>
+<p>Ylhäällä valitset hyllyn <strong>laatoilla</strong> (nimi ja ”varattu / paikat”). Järjestystä voi muuttaa myös täällä: tietokoneella vedä laattaa, kosketusnäytöillä pidä laattaa painettuna noin puoli sekuntia ja vedä sitten. Alla on <strong>varastointisuunnitelma</strong>: jokainen taso paikkoineen. Varatut paikat näyttävät pullon ginin tyylin värillä.</p>
+<h3>Varastointi</h3>
+<ol>
+<li>Napauta ginia kohdassa ”Ei sijoitettu” – tai napauta baarissa ”ei sijoitettu” -vihjettä.</li>
+<li>Napauta <strong>vapaata paikkaa</strong>. Lattioille ja laatikoille sovellus sijoittaa niin monta pulloa kuin mahtuu.</li>
+</ol>
+<p><strong>Skannaa ja varastoi gin</strong> ottaa kuvan etiketistä, löytää ginin ja opastaa sinut varastointiin.</p>
+<h3>Varatut paikat, siirtäminen, poistaminen</h3>
+<p>Napauta varattua paikkaa: näet ginin ja voit <em>avata</em> sen, <em>poistaa sen paikalta</em> tai <em>siirtää</em> sen (napauta sitten vapaata paikkaa). <em>Tyhjennä hylly</em> ottaa kaikki pullot pois hyllystä (vahvistuksen jälkeen).</p>
+<h3>QR-tarrat ja ”Skannaa taso”</h3>
+<p><strong>QR-tarroilla</strong> (Asetukset → Hyllyt → ▦) luot yhden tarran hyllylle ja yhden jokaiselle tasolle. Jaa PDF:nä tai tulosta (tarra-arkki 63,5 × 38,1 mm, 21 per sivu) ja kiinnitä ne. Sen jälkeen: <strong>Skannaa taso</strong> Hyllyt-alueella – näet, mitä tasolla on, ja voit <em>varastoida tähän</em>, <em>ottaa pois</em>, juoda, siirtää pullon tai <em>siirtää koko tason</em>. ”Lisää gin” -lomakkeessa tasotarran skannaus täyttää myös säilytyspaikan.</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. Historia</h2>
+
+<p>Historia listaa kaikki juomasi ginit päivämäärän, ginin, arvon, vieraiden ja tilaisuuden kanssa. Voit suodattaa ginityylin ja tilaisuuden mukaan ja muokata merkintää (vieraat, tilaisuus). Historia on myös pohjana Tilastojen parhaiden ginien listan juomakerroille (🥂).</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. Toivelista</h2>
+
+<ul>
+<li><strong>+ Lisää toive</strong>: käsin tai etikettiskannauksella, valinnaisella muistiinpanolla (”Mistä ostaa?”). Voit lisätä tänne myös tonicit, jotka haluat ostaa.</li>
+<li><strong>Hae hintoja</strong> (💶): Sovellus etsii verkosta hintoja, näyttää halvimman löydön ja kertoo sen määrällä. Arvot ovat suuntaa-antavia ilman takuuta – tarkista toimituskulut ja saatavuus kaupasta.</li>
+<li><strong>Valintamerkki</strong> vasemmalla: merkitse ostetuksi/valmiiksi (rivi himmenee).</li>
+<li><strong>→ Baari</strong>: siirtää toiveen baariin (määrän ja, jos saatavilla, halvimman hinnan kanssa) ja vie sinut, jos sinulla on hyllyjä, suoraan varastointiin.</li>
+<li>Jos gin putoaa alle vähimmäismääränsä, sovellus tarjoaa sen lisäämistä toivelistalle puuttuvalla määrällä (”täydennys”). Myös Perfect serven tai reseptien puuttuvat tonicit ja ainekset voivat päätyä tänne.</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="perfect">8. Perfect serve ja tonic</h2>
+
+<p>”Lisää gin” / ”Muokkaa ginia” -lomakkeessa on lohko <strong>Perfect serve (yrtit, koriste, suhde)</strong>. Siihen tallennat, miten juuri tämä gin maistuu parhaalta – oikean tonicin kanssa.</p>
+<h3>Tonic omana luokkanaan</h3>
+<ul>
+<li>Lisää tonicit samalla tavalla kuin ginit ja valitse ginityyliksi <strong>Tonic</strong>. Niille tulee oma suodatin baariin ja oma kortti, jolla lukee <em>Sopii yhteen</em>.</li>
+<li><strong>Sopiva tonic</strong> -kenttä ginilomakkeessa: napauta 🤖, niin tekoäly etsii giniin sopivan tonicin (”Etsitään sopivaa tonicia…”). Jos mitään ei löydy, näkyy ”Tonicia ei löytynyt”.</li>
+<li>Kaikki ginit kerralla: <strong>Asetukset → Gintietokanta → Määritä tonicit (tekoäly)</strong> etsii sopivan tonicin jokaiselle ginille, jolla sitä ei ole. Tekoäly valitsee ensisijaisesti omista tonicisi, muuten tallennetaan suositus. Sovellus kysyy ensin ja ilmoittaa lopuksi ”… paria tallennettu ✓”.</li>
+</ul>
+<h3>Kaksi painiketta ehdotuksille</h3>
+<ul>
+<li><strong>🌿 Sääntöpohjainen vinkki</strong> – toimii offline-tilassa, on ilmainen ja perustuu ginin tyyliin ja botanicaleihin.</li>
+<li><strong>🤖 Tekoälysuositus</strong> – kysyy tekoälyltä ja maksaa <strong>yhden tekoälyskannauksen</strong> (<a href="#privacy">luku 14</a>).</li>
+</ul>
+<p>Tuloksena on <strong>enintään kolme tonic-suositusta</strong> lyhyine perusteluineen, esim. <em>Klassinen intialainen tonic</em>, <em>Kevyt tonic (mieto)</em>, <em>Välimeren tonic</em>, <em>Seljankukkatonic</em>, <em>Inkivääri-/mausteinen tonic</em>, <em>Pinkki greippitonic</em> tai <em>Sitrustonic</em>. Jokaisen ehdotuksen kohdalla lukee joko <strong>✓ baarissasi</strong> (sinulla on se) tai <strong>🛒 Ostovinkki</strong> ja painike <strong>+ Toivelista</strong>. <strong>Napauta ehdotusta</strong>, niin kyseinen tonic merkitään suosikiksi (”Merkitty suosikiksi ✓”).</p>
+<h3>Kentät</h3>
+<ul>
+<li><strong>Yrtit ja koriste, pilkulla erotettuina</strong> – esim. rosmariini, timjami, basilika, kurkku, greipin kuori, vaaleanpunainen pippuri.</li>
+<li><strong>Suhde</strong> – ginin ja tonicin seos, esim. 1:2.</li>
+<li><strong>Lasi</strong> – esim. Copa-/ballonilasi tai Highball-lasi.</li>
+<li><strong>Jää</strong> – esim. paljon isoja jääpalia.</li>
+</ul>
+<h3>Lasi</h3>
+<p>Lasi-kentän alla on linkki <strong>Katso lasi</strong>. Se avaa kortin, jossa on piirros ja lyhyt selitys lasista: <em>Copa-/ballonilasi</em>, <em>Highball-lasi</em>, <em>Tumbler (rocks-lasi)</em>, <em>Coupe-lasi</em>, <em>Martinilasi</em> tai <em>Samppanjalasi (flute)</em>. Linkki <strong>Katso lisää kuvia ↗</strong> vie lisäkuviin verkossa, ja <em>Sulje</em> sulkee kortin.</p>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. Reseptit sekä yrttien ja koristeiden hylly</h2>
+
+<p><strong>Reseptit</strong>-alue (”Gin tonic ja cocktailit”) kokoaa klassiset gindrinkit ja omat reseptisi.</p>
+<h3>13 klassikkoa</h3>
+<p>Gin tonic, Välimeren G&amp;T, Pinkki gin tonic, Navy strength G&amp;T, Negroni, Dry Martini, Gimlet, Tom Collins, Southside, French 75, Bee's Knees, Martinez ja Gin Basil Smash. Jokaisessa reseptissä näkyvät <strong>Ainekset</strong>, <strong>Valmistus</strong> ja <strong>Lasi</strong>.</p>
+<h3>Suodattimet</h3>
+<ul>
+<li><strong>Kaikki</strong> – kaikki reseptit.</li>
+<li><strong>⭐ Suosikit</strong> – tähdellä merkitsemäsi reseptit.</li>
+<li><strong>Omat</strong> – omat reseptisi.</li>
+<li><strong>✓ Sopii baariini</strong> – reseptit, jotka voit valmistaa sillä, mitä sinulla on; reseptin alla lukee <em>Sopii</em> ja ginit, joille se sopii.</li>
+</ul>
+<h3>Omat reseptit ja tekoälyreseptit</h3>
+<ul>
+<li><strong>Lisää oma resepti:</strong> täytä <em>Nimi</em>, <em>Ainekset, yksi per rivi</em> ja <em>Valmistus</em> ja napauta <em>Tallenna resepti</em>. <em>Poistetaanko tämä resepti?</em> sovellus kysyy ennen oman reseptin poistamista.</li>
+<li><strong>Resepti ginille (tekoäly):</strong> valitse gin (<em>Valitse gini…</em>) ja napauta <em>🤖 Luo resepti</em>. Se maksaa yhden tekoälyskannauksen. <em>Tallenna omaksi reseptiksi</em> siirtää reseptin kohtaan <em>Omat</em>.</li>
+</ul>
+<h3>Yrttien ja koristeiden hyllyni</h3>
+<p>Kohdassa <strong>Yrttien ja koristeiden hyllyni</strong> napautat sen, mitä sinulla on kotona (limelohko, rosmariini, timjami, basilika, kurkku, vaaleanpunainen pippuri, katajanmarja jne.). Suosituksissa näkyy sitten <strong>✓</strong> (on) tai <strong>🛒</strong> (puuttuu). Painike <strong>🛒 Lisää puuttuvat toivelistalle</strong> lisää puuttuvat <a href="#wish">toivelistalle</a> (muistiinpanolla ”Yrtit/koriste”). Jos mitään ei puutu, saat siitä ilmoituksen.</p>
+<div class="note">Reseptit, suosikit ja yrttien ja koristeiden hylly varmuuskopioidaan pilvisynkronoinnilla (<a href="#sync">luku 13</a>).</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. Tilastot</h2>
+
+<p>Ylhäältä alas:</p>
+<ul>
+<li><strong>Tunnusluvut:</strong> pulloa, ginejä, kokonaisarvo, keskiarvosana.</li>
+<li><strong>Tyypeittäin:</strong> palkit ginityylin mukaan; palkin napautus suodattaa baarin.</li>
+<li><strong>Parhaat ginit</strong> (arvosanan tai juomakertojen mukaan, ★ Arvosana / 🥂 Määrä) – kymmenen parasta tai kaikki valitsemillasi tähdillä. Napautus avaa ginin.</li>
+</ul>
+<p>Osiot ilman tietoja piilotetaan.</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. Vienti, tuonti ja varmuuskopio</h2>
+
+<table>
+<tbody><tr><th>Toiminto</th><th>Käyttötarkoitus</th></tr>
+<tr><td>Vie CSV</td><td>Taulukko Exceliä tai Numbersia varten</td></tr>
+<tr><td>Vie Excel</td><td>.xlsx-tiedostona</td></tr>
+<tr><td>Vie PDF</td><td>Tulostettava yleiskatsaus</td></tr>
+<tr><td><strong>JSON-varmuuskopio</strong></td><td><strong>Täydellinen tietojen varmuuskopio</strong> (ginit, tonicit, toivelista, historia, hyllyt, näyttönimi, reseptit, omat kuvat)</td></tr>
+<tr><td>Leikepöydälle</td><td>Kopioi tekstilista</td></tr>
+<tr><td>Tuo JSON / CSV / Excel</td><td>Palauta varmuuskopio tai tuo taulukko</td></tr>
+</tbody></table>
+<p>CSV:n ja Excelin sarakkeet ovat: <strong>Nimi, Pullotus, Tyyli, Alue, Maa, Botanicalit, Hylly, Taso, Paikka, Pulloja, Arvosana, Hinta, Alkoholi %, Muistiinpano</strong>.</p>
+<div class="tip"><strong>Tee JSON-varmuuskopio säännöllisesti.</strong> JSON-tuonti korvaa baarin varmuuskopiolla (sovellus kysyy ensin). Uudella laitteella se palauttaa kaiken. Vaihtoehtoisesti käytä pilvisynkronointia (<a href="#sync">luku 13</a>).</div>
+<p>Sivun alareunassa on avattava <strong>Yhteystiedot</strong>-alue: siinä näkyvät kehittäjän nimi ja ”Last Build: päivämäärä” (milloin sovellus on viimeksi koottu).</p>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. Asetukset</h2>
+
+<h3>Yleiset</h3>
+<ul>
+<li><strong>Näyttönimi (otsikko):</strong> nimesi näkyy sovelluksen otsikossa. Jätä tyhjäksi oletusotsikkoa varten.</li>
+<li><strong>Valuutta:</strong> €, $, £, CHF, A$, C$, SEK, NOK, DKK, PLN, HUF, CZK, RON, RUB, UAH, JPY, CNY, KRW, INR. <strong>Valuutta vaihtuu automaattisesti</strong>, kun vaihdat kieltä (suomi → euro); voit vaihtaa käsin milloin tahansa. Olemassa olevia hintoja ei muunneta.</li>
+<li><strong>Kieli:</strong> sovellus on saatavilla 24 kielellä.</li>
+<li><strong>Konfetti &amp; ääni juodessa:</strong> molemmat, vain konfetti tai pois.</li>
+<li><strong>Fontti:</strong> kymmenen fonttia valittavana.</li>
+</ul>
+<h3>Tallennuspaikka</h3>
+<p><em>Vain tämä laite</em> tai <em>Pilvi</em> (synkronointikoodi, <a href="#sync">luku 13</a>).</p>
+<h3>Tekoälykrediitit (vain iPhone-sovellus)</h3>
+<p>Näyttää jäljellä olevat tekoälyskannaukset, laitetunnuksen ja – tarvittaessa – <em>Lisää krediittejä</em> tai avauskoodin. Katso <a href="#privacy">luku 14</a>.</p>
+<h3>Gintietokanta</h3>
+<ul>
+<li><strong>Päivitä kaikki ginit (tekoäly):</strong> täyttää puuttuvan alueen, maan, botanicalit, alkoholipitoisuuden ja hinnan kaikille gineille (verkkoversiossa myös pullokuvat). Olemassa olevat arvot säilyvät. <em>Vinkki: vie ensin JSON-varmuuskopio.</em></li>
+<li><strong>Määritä tonicit (tekoäly):</strong> etsii sopivan tonicin jokaiselle ginille, jolla sitä ei ole (ks. <a href="#perfect">luku 8</a>).</li>
+</ul>
+<h3>Hyllyt</h3>
+<p>Katso <a href="#racks">luku 5</a>. Otsikko näyttää hyllyjen määrän.</p>
+<h3>Tietosuoja, tuki, ohje, versio</h3>
+<p>Linkit johtavat tietosuojaselosteeseen ja tukisivuun. <strong>Käyttöohje</strong>-painike avaa tämän ohjeen. Aivan alareunasta löydät sovelluksen <strong>version</strong> – ilmoita se, kun otat meihin yhteyttä.</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. Kahden laitteen synkronointi</h2>
+
+<ol>
+<li><strong>Ensimmäinen laite:</strong> Asetukset → Tallennuspaikka → <em>Pilvi</em> → <em>Luo uusi synkronointikoodi</em>. Koodi näkyy näytöllä; <em>Tallenna koodi sähköpostiin</em> -toiminnolla lähetät sen itsellesi.</li>
+<li><strong>Toinen laite:</strong> Asetukset → Tallennuspaikka → <em>Pilvi</em> → syötä koodi (pienet kirjaimet, ei välilyöntejä) → Yhdistä. Jos laitteella on jo ginejä, sovellus kysyy, yhdistetäänkö ne pilvitietoihin.</li>
+<li>Sen jälkeen molemmat laitteet synkronoituvat automaattisesti (esim. kun sovellus avataan); <em>Synkronoi nyt</em> käynnistää sen käsin. Sääntö on: <strong>viimeisin muutos voittaa</strong>.</li>
+</ol>
+<p>Ginit, tonicit, toivelista, historia, hyllyt, omat reseptit, suosikit, yrttien ja koristeiden hylly sekä asetukset kuten kieli ja valuutta synkronoidaan. <strong>Ei synkronoida</strong> omia kuvia eikä laitekohtaisia tietoja. Jokainen, joka tietää koodisi, voi nähdä baarisi – jaa se vain luotettavien ihmisten kanssa. Pidä myös JSON-varmuuskopio.</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. Tekoäly, tietosuoja ja kustannukset</h2>
+
+<ul>
+<li><strong>Mihin tekoälyä käytetään?</strong> Etiketin skannaus, ginin tietojen haku, hintojen haku, ”Päivitä kaikki ginit”, sopivan tonicin etsintä (🤖 ja ”Määritä tonicit (tekoäly)”), Perfect serven tekoälysuositus ja tekoälyreseptit. Kuva tai ginin nimi lähetetään palvelimemme kautta tekoälypalveluun (Anthropic, USA) arvioitavaksi – ilman nimiä tai tilejä. Sovellus pyytää suostumuksesi ennen ensimmäistä käyttökertaa.</li>
+<li><strong>Viivakoodin skannaus</strong> lähettää vain numeron ilmaiseen tuotetietokantaan eikä kuluta tekoälykrediittiä. Myös Perfect serven <strong>sääntöpohjainen vinkki</strong> on ilmainen ja toimii laitteellasi.</li>
+<li><strong>Kustannukset (iPhone-sovellus):</strong> 50 tekoälykutsua asennusta kohden sisältyy ostohintaan; lisää voi ostaa valinnaisena kertaostona (ei tilausta, krediitit eivät vanhene). Kaikki muu sovelluksessa on ilman lisämaksua. Kun krediitit on käytetty, kaikki muu paitsi tekoälytoiminnot toimii edelleen.</li>
+<li><strong>Tiedot:</strong> Kaikki pysyy laitteellasi, kunhan et ota pilveä käyttöön. Ei mainoksia, ei seurantaa, ei käyttäjätiliä. Lisätietoja <a href="datenschutz.html">tietosuojaselosteessa</a> (saksaksi).</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. Vinkkejä ja usein kysyttyä</h2>
+
+<ul>
+<li><strong>iPadilla tai tietokoneella</strong> asettelu mukautuu: leveämpi palsta, useita kortteja vierekkäin, ja tietokoneella (sekä iPadilla vaakatilassa) navigointi vasemmalla. Puhelin toimii myös vaakatilassa. Tietokoneella <kbd>Esc</kbd> sulkee ylimmän ikkunan; puhelimella pyyhkäise ikkunaa alaspäin sulkeaksesi sen.</li>
+<li><strong>Ginini ovat kadonneet:</strong> Katso <a href="support.html">Tuki</a> – palauta synkronointikoodilla tai JSON-varmuuskopiolla.</li>
+<li><strong>Viivakoodilla ei löydy ginia:</strong> Normaalia pienille tislaamoille. Käytä etikettiskannausta.</li>
+<li><strong>Tekoäly luki jotain väärin:</strong> Korjaa kenttä käsin ja tallenna; tekoälyn arvot ovat ehdotuksia.</li>
+<li><strong>Tonicia ei löytynyt:</strong> Lisää ensin muutama tonic baariin (ginityyli Tonic) – silloin tekoäly valitsee ensisijaisesti niistä – tai käytä sääntöpohjaista suositusta.</li>
+<li><strong>Sivu näyttää yhä vanhan version (verkko):</strong> Lataa sivu uudelleen (tietokoneella <kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+</ul>
+<p>Lisää kysymyksiä? Kirjoita osoitteeseen <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20K%C3%A4ytt%C3%B6ohje">t.knecht@web.de</a> ja ilmoita sovelluksen versio (Asetukset, aivan alhaalla).</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

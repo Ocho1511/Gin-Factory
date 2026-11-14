@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ユーザーガイド – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← コレクションへ戻る</a> &nbsp;·&nbsp; </span><a href="support.html">← サポートに戻る</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html" selected>日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>ユーザーガイド – Gin-Factory</h1>
+<p><small>更新日：2026年11月15日 · アプリバージョン 2.0</small></p>
+
+<div class="toc">
+
+<strong>目次</strong><ol>
+<li><a href="#start">概要と最初のステップ</a></li>
+<li><a href="#add">ジンを追加する</a></li>
+<li><a href="#cellar">バー</a></li>
+<li><a href="#drink">ジンを飲む</a></li>
+<li><a href="#racks">ラックと保管</a></li>
+<li><a href="#history">履歴</a></li>
+<li><a href="#wish">ウィッシュリスト</a></li>
+<li><a href="#serve">パーフェクトサーブ、トニック、グラス</a></li>
+<li><a href="#recipes">レシピとハーブ＆ガーニッシュ棚</a></li>
+<li><a href="#stats">統計</a></li>
+<li><a href="#export">書き出し、読み込み、バックアップ</a></li>
+<li><a href="#setup">設定</a></li>
+<li><a href="#sync">2台のデバイスを同期する</a></li>
+<li><a href="#privacy">AI、プライバシー、費用</a></li>
+<li><a href="#faq">ヒントとFAQ</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. 概要と最初のステップ</h2>
+
+<p>Gin-Factory は、ポケットに入るあなただけのジンバーです。在庫、保管場所、ウィッシュリスト、レシピ、統計を管理できます。トニックウォーターもジンと同じように登録でき、AIがジンごとに合うトニックを探すのを手伝います。すべてお使いのデバイス上で動作し、同期コードを使えば複数のデバイスを接続できます。</p>
+<p>画面下部（PCおよび横向きのiPadでは左側）に、8つのエリアを持つバーがあります。</p>
+<table>
+<tbody><tr><th>エリア</th><th>用途</th></tr>
+<tr><td><strong>バー</strong></td><td>すべてのジンとトニック、検索、フィルター、並び替え、ジンの追加、「飲む」</td></tr>
+<tr><td><strong>統計</strong></td><td>在庫、評価額、評価、人気のジンの一覧</td></tr>
+<tr><td><strong>レシピ</strong></td><td>ジンのクラシックレシピ13種、オリジナルレシピ、ハーブ＆ガーニッシュ棚（<a href="#recipes">セクション9</a>）</td></tr>
+<tr><td><strong>履歴</strong></td><td>これまでに飲んだジン</td></tr>
+<tr><td><strong>ラック</strong></td><td>バー配置図：ジンの保管と移動、QRラベル</td></tr>
+<tr><td><strong>ほしい物</strong></td><td>これから買いたいジンとトニック</td></tr>
+<tr><td><strong>入出力</strong></td><td>データのバックアップ、表やバックアップの読み込み</td></tr>
+<tr><td><strong>設定</strong></td><td>名前、通貨、言語、クラウド、ラックの定義</td></tr>
+</tbody></table>
+<h3>最初の5つのステップ</h3>
+<ol>
+<li><strong>言語と通貨を選ぶ</strong>：設定。通貨は言語に合わせて自動的に切り替わります。</li>
+<li><strong>ラックを定義する</strong>（任意）：設定 → ラック（<a href="#racks">セクション5</a>を参照）。</li>
+<li><strong>最初のジンを追加する</strong>：バーで <kbd>+</kbd> をタップします（<a href="#add">セクション2</a>）。</li>
+<li><strong>保管する</strong>：ジンにラックの場所を割り当てます。</li>
+<li><strong>バックアップする</strong>：入出力 → JSONバックアップ、またはクラウド同期を設定します（<a href="#sync">セクション13</a>）。</li>
+</ol>
+<div class="tip">すでにトニックウォーターをお持ちですか？ それも登録しておきましょう（スタイルは「トニックウォーター」）。そうすると、パーフェクトサーブのおすすめで、そのトニックが「バーにあり」と表示されます。</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. ジンを追加する</h2>
+
+<p>バーで <kbd>+</kbd> をタップします。ジンを追加する方法はいくつかあり、組み合わせて使えます。</p>
+<h3>a) 手入力</h3>
+<p>各項目を入力します：<strong>名前 / 蒸留所、瓶詰め年、ボトル数、ジンのスタイル、地域、国、ボタニカル、ABV (% vol.)、合うトニックウォーター、パーフェクトサーブ、保管場所、価格、ボトル画像、自分の写真、評価、メモ</strong>。必須なのは名前だけです。<em>保存</em>でジンが作成されます。</p>
+<ul>
+<li><strong>ジンのスタイル：</strong>London Dry、Old Tom / Plymouth、ピンク / フルーツジン、Navy Strength、トニックウォーター、その他。</li>
+<li><strong>瓶詰め年</strong>は、そのボトルが瓶詰めされた年です。<strong>ボタニカル</strong>はジンの香り付けに使われる素材（例：ジュニパー、コリアンダー、柑橘の皮）、<strong>ABV (% vol.)</strong>はアルコール度数（％）です。</li>
+<li><strong>在庫、最小、最大：</strong>「在庫（本数）」の項目では、最小値と最大値を設定できます。最小値を入力すると、在庫がそれを下回ったときにアプリが警告し、ジンをウィッシュリストに入れるよう提案します（<a href="#cellar">セクション3</a>）。</li>
+<li><strong>合うトニックウォーター：</strong>そのジンに合うトニックを入力するか、AIに探してもらいます（下記と<a href="#serve">セクション8</a>を参照）。</li>
+<li><strong>パーフェクトサーブ：</strong>「パーフェクトサーブ（ハーブ、ガーニッシュ、割合）」ブロックで、トニック、ハーブ、割合、グラス、氷のヒントが得られます（<a href="#serve">セクション8</a>）。</li>
+<li><strong>ボトル画像と自分の写真：</strong>「ボトル画像（ウェブのURL）」には画像のアドレスを入力できます。「写真を撮る / 選ぶ」で、ジンに自分の写真を添付できます。写真はこのデバイスに保存され、JSONバックアップには含まれますが、クラウドには同期されません。</li>
+</ul>
+<h3>b) ラベルをスキャン（AI）</h3>
+<p><em>ラベルをスキャン（AI）</em>をタップして、ボトルのラベルを撮影します。AIがジンの情報（名前、スタイル、地域、国、ボタニカル、ABVなど）を読み取ります。値を確認して保存してください。初回の使用前に、アプリが同意を求めます（<a href="#privacy">セクション14</a>）。</p>
+<h3>c) バーコードをスキャン</h3>
+<p><em>バーコードをスキャン</em>をタップして、ボトルのバーコードを枠内に合わせます。アプリは無料の商品データベースで番号を検索し（無料、AIクレジットは不要）、見つかれば名前、生産者、ジンのスタイルを入力します。瓶詰め年は名前から補完するか、入力を求めます（任意）。</p>
+<ul>
+<li>そのボトルがすでにバーにある場合、アプリはもう1本追加するかどうかを尋ねます。買い足したときに本数を増やす手軽な方法です。</li>
+<li>バーコードがデータベースに<strong>ない</strong>場合（小規模な蒸留所ではよくあります）、<em>ラベルをスキャン（AI）</em>ボタン付きのヒントが表示されます。番号はジンと一緒に保存されるため、次回はすぐにボトルが認識されます。</li>
+</ul>
+<h3>d) ジンを検索（AI）</h3>
+<p><em>ジンを検索（AI）</em>は、AIにウェブでスタイル、地域、国、ボタニカル、ABV、現在の平均価格、そしてウェブ版ではボトル画像を検索させます。すでに入力済みの項目は上書きされません。名前と年を入力し、まだ価格がない場合は、自動的にも実行されます。</p>
+<div class="note">iPhoneアプリは、インターネットからボトル画像を読み込みません（App Storeの規則）。代わりに自分で写真を撮影できます。</div>
+<h3>e) トニックウォーターは独立したカテゴリ</h3>
+<p>トニックウォーターはジンと同じように登録します。「ジンのスタイル」で<strong>🥤 トニックウォーター</strong>を選んでください。バーの<em>トニックウォーター</em>フィルターで、それだけを表示できます。ジンには<strong>合うトニックウォーター</strong>の項目があります。名前を入力するか、項目の横の 🤖 をタップすると、AIが最適なトニック（できればお手持ちのもの）を選びます。トニックのカードには「相性：…」と表示されます。</p>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="cellar">3. バー</h2>
+
+<h3>検索、フィルター、並び替え</h3>
+<ul>
+<li><strong>検索</strong>（上部、「ジンを検索…」）：名前、地域、国、ボタニカルでジンを探します。</li>
+<li><strong>フィルター：</strong>すべて、London Dry、Old Tom / Plymouth、ピンク / フルーツジン、Navy Strength、トニックウォーター、その他。スタイルをタップすると、検索は自動的にクリアされます。</li>
+<li><strong>並び替え：</strong>新しい順、名前順（A–Z）、瓶詰め年、ボタニカル、地域、国。</li>
+<li><strong>リスト / カード：</strong><em>リスト</em>ボタンで、コンパクトなリストと詳細なカードを切り替えます。</li>
+</ul>
+<h3>ジンカード</h3>
+<p>カードには、名前、瓶詰め年、蒸留所、評価（星）、地域と国（タップすると地図またはその国のジン産地マップが開きます）、ボトル数、<strong>合うトニック</strong>、<strong>お気に入りのサーブ</strong>（ハーブ、ガーニッシュ、グラス）、<strong>保管場所</strong>（タップするとラックへ移動）が表示されます。</p>
+<p>各カードの<strong>ジュニパーベリー</strong>は、ジンのスタイルを表します（「ベリーの色は何を表す？」）。ベリーをタップすると、そのジンのウィキペディアのページが開きます。</p>
+<p>カードの下部には、<em>編集</em>、<em>飲む</em>、🗑（ジンを削除）があります。</p>
+<h3>在庫、最小/最大、買い物リスト</h3>
+<p>ジンに最小値（任意で最大値）を入力すると、カードに「在庫 · 最小 · 最大」が表示され、下回ると ⚠ で警告されます。<em>買い足し</em>ボタンで<strong>買い物リスト</strong>が開きます。最小値を下回るすべてのジンが並びます（目標は最大値、なければ最小値）。リストは共有やコピーができ、ジンをウィッシュリストに入れることもできます。</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. ジンを飲む</h2>
+
+<p>ジンカードの<em>飲む</em>をタップすると、<em>ジンを飲む</em>ダイアログが開きます。</p>
+<ul>
+<li><strong>どの場所から取り出しましたか？</strong> – ボトルを取り出したラックの場所、または「場所に置かれていないボトル」を選びます。その場所は空きになります。</li>
+<li><strong>誰と飲みましたか？</strong> – ゲストの名前（任意）。</li>
+<li><strong>シーン</strong> – 春、夏、秋、冬、誕生日、パーティー、「何となく」（複数選択可）。</li>
+</ul>
+<p><em>飲む</em>で1本が減り、<a href="#history">履歴</a>にエントリーが作成されます。紙吹雪とサウンドでお祝いします（設定でオフにできます）。<strong>最後の1本</strong>の場合はアプリが知らせます。ジンはバーから消えます（履歴には残ります）。</p>
+<div class="tip"><strong>スキャンで素早く：</strong>バーの丸い 🥂 ボタンは、ラベルを撮影し、バー内のジンを認識して、すぐに「飲む」ダイアログを開きます。おいしい飲み方は<a href="#serve">セクション8</a>で確認できます。</div>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. ラックと保管</h2>
+
+<h3>ラックの定義と編集</h3>
+<p><strong>設定 → ラック</strong>：名前、段数、1段あたりの場所の数、1か所あたりのボトル数を入力して、＋をタップします。「ボトル数/場所」は、ボトルラックなら1、床や木箱ならそれより大きくします。一覧では、各ラックに次のものがあります。</p>
+<ul>
+<li>順序を変える<strong>ハンドル ⠿</strong>と、一覧の下にある<em>A–Zで並べ替え</em>ボタン、</li>
+<li><strong>QRラベル</strong>用の ▦、編集用の ✏️、空にする 🧹、削除する 🗑。</li>
+</ul>
+<p><strong>編集</strong>（✏️）では、ラック名の変更、1段あたりの場所の数の変更、上または下への段の追加、段の削除、各段への個別の名前とボトル数の設定ができます。これによって場所を失ったボトルは「未収納」として扱われますが、ジン自体はバーに残ります。このような変更の前には、アプリが確認します。</p>
+<h3>ラックエリア</h3>
+<p>上部で<strong>タイル</strong>（名前と「使用中 / 場所」）を使ってラックを選びます。ここでも順序を変更できます。PCではタイルをドラッグし、タッチ画面ではタイルを約0.5秒長押ししてからドラッグします。その下が<strong>バー配置図</strong>で、各段とその場所が表示されます。使用中の場所には、ジンのスタイルの色のボトルが表示されます。</p>
+<h3>保管する</h3>
+<ol>
+<li>「未割り当て」にあるジンをタップします（一覧は蒸留所と国で絞り込めます）。または、バーの「未収納」のヒントをタップします。</li>
+<li><strong>空いている場所</strong>をタップします。床や木箱では、入るだけのボトルを保管します。</li>
+</ol>
+<p><strong>スキャンして保管</strong>は、ラベルを撮影してジンを見つけ、保管までを案内します。</p>
+<h3>使用中の場所、移動、取り外し</h3>
+<p>使用中の場所をタップすると、ジンが表示され、<em>開く</em>、<em>場所から外す</em>、<em>移動</em>（そのあと空いている場所をタップ）ができます。<em>ラックを空にする</em>は、ラックのすべてのボトルを取り出します（確認後）。</p>
+<h3>QRラベルと「段をスキャン」</h3>
+<p><strong>QRラベル</strong>（設定 → ラック → ▦）で、ラック用に1枚、各段用に1枚のラベルを作成します。PDFで共有するか印刷して（ラベルシート 63.5 × 38.1 mm、1ページ21枚）、貼り付けます。その後、ラックエリアの<strong>段をスキャン</strong>を使うと、その段にあるものが表示され、<em>ここに保管</em>、<em>取り出す</em>、飲む、ボトルの移動、<em>段ごと移動</em>ができます。「ジンを追加」フォームで段のラベルをスキャンすると、保管場所も入力されます。</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. 履歴</h2>
+
+<p>履歴には、飲んだジンすべてが、日付、ジン、金額、ゲスト、シーンとともに一覧表示されます。スタイルとシーンで絞り込み、エントリー（ゲスト、シーン）を編集できます。履歴は、統計の「🥂 頻度」による並び替えに使われます。</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. ウィッシュリスト</h2>
+
+<ul>
+<li><strong>+ ウィッシュを追加</strong>：手入力またはラベルのスキャンで、任意のメモ（「購入先」）を付けられます。トニックウォーターも登録できます。</li>
+<li><strong>価格を検索</strong>（💶）：アプリがウェブでそのジンの価格を検索し、最安のものを表示して数量を掛けます。これは保証のない目安の値です。送料や在庫は店舗でご確認ください。</li>
+<li>左の<strong>チェック</strong>：購入済み／完了としてマークします（行が薄くなります）。</li>
+<li><strong>→ バー</strong>：ウィッシュをバーに移し（数量と、あれば最安値付き）、ラックがある場合はそのまま保管へ進みます。</li>
+<li>ジンが最小値を下回ると、アプリは不足数量でウィッシュリストに入れるよう提案します（「買い足し」）。</li>
+<li>パーフェクトサーブの買い物のヒント（お持ちでないトニック）や、棚に足りないハーブやガーニッシュは、ワンタップでここに追加できます（<a href="#serve">セクション8</a>、<a href="#recipes">セクション9</a>）。</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="serve">8. パーフェクトサーブ、トニック、グラス</h2>
+
+<p><em>ジンを追加</em>（および<em>ジンを編集</em>）フォームには、<strong>パーフェクトサーブ（ハーブ、ガーニッシュ、割合）</strong>というブロックがあります。ここで、そのジンに合う最高のトニックと正しい作り方をアプリが提案します。トニックウォーターにはこのブロックは表示されません。</p>
+<h3>提案を出す2つのボタン</h3>
+<ul>
+<li><strong>🌿 ルールに基づくヒント</strong>：完全にオフラインで動作し、無料です。ジンのスタイル、名前、地域、ボタニカルからアプリが判断します。</li>
+<li><strong>🤖 AIのおすすめ</strong>：そのジンについてAIに尋ねます。<strong>AIスキャンを1回消費します</strong>（<a href="#privacy">セクション14</a>）。</li>
+</ul>
+<h3>結果</h3>
+<ul>
+<li>最大<strong>3つのトニックのおすすめ</strong>が、それぞれ短い理由付きで表示されます。例：「クラシック・インディアン・トニック」「ライトトニック（マイルド）」「メディテレーニアン・トニック」「エルダーフラワー・トニック」「ジンジャー／スパイストニック」「ピンクグレープフルーツ・トニック」「シトラス・トニック」。</li>
+<li>各おすすめの横に、すでにそのトニックをお持ちなら<strong>✓ バーにあり</strong>、お持ちでなければ<strong>🛒 買い物のヒント</strong>と<em>＋ ほしい物</em>ボタンが表示され、タップするとウィッシュリストに追加されます。</li>
+<li>おすすめをタップすると、<strong>お気に入りのトニック</strong>に設定されます（「お気に入りに設定しました ✓」）。「合うトニックウォーター」の項目に入ります。</li>
+</ul>
+<h3>ブロックの項目</h3>
+<ul>
+<li><strong>ハーブとガーニッシュ</strong>（カンマ区切り）：例：ローズマリー、タイム、バジル、キュウリ、グレープフルーツの皮、ピンクペッパー。</li>
+<li><strong>割合</strong>：例：1:2。</li>
+<li><strong>グラス</strong>：例：コパ／バルーングラス。</li>
+<li><strong>氷</strong>：例：「大きな氷をたっぷり」。</li>
+</ul>
+<h3>グラス</h3>
+<p>グラスは<strong>グラスを見る</strong>というリンクで表示されます。タップすると、イラストと短い解説の付いたカードが開きます。カードがあるのは、<em>コパ／バルーングラス</em>、<em>ハイボールグラス</em>、<em>タンブラー</em>、<em>クープ</em>、<em>マティーニグラス</em>、<em>シャンパンフルート</em>です。<em>画像をもっと見る ↗</em>でその他の写真が開き、<em>閉じる</em>でカードを閉じます。</p>
+<p><strong>ジンカード</strong>には、お気に入りのトニック、ハーブ、ガーニッシュ（割合付き）、グラスが表示されます。</p>
+<h3>すべてのジンにトニックを割り当てる（AI）</h3>
+<p><strong>設定</strong>の「ジンデータベース」ブロックにある<em>トニックウォーターを割り当て（AI）</em>は、まだトニックが設定されていないすべてのジンに合うトニックを探します。AIは、登録済みのトニックの中から優先して選び、なければおすすめとして提示します。開始前にアプリが確認し、進行状況を表示します。1本のジンにつきAIスキャンを1回消費します。</p>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. レシピとハーブ＆ガーニッシュ棚</h2>
+
+<p><strong>レシピ</strong>エリア（ナビゲーションバーの統計と履歴の間、サブタイトルは「ジントニックとカクテル」）には、ジンを使ったレシピがまとまっています。</p>
+<h3>13のクラシックレシピ</h3>
+<p>用意されているレシピ：ジントニック、メディテレーニアン・ジントニック、ピンクジントニック、ネイビーストレングス・ジントニック、ネグローニ、ドライ・マティーニ、ギムレット、トム・コリンズ、サウスサイド、フレンチ75、ビーズ・ニーズ、マルティネス、ジン・バジル・スマッシュ。レシピをタップすると開き、<strong>材料</strong>、<strong>作り方</strong>、<strong>グラス</strong>（グラスカードへのリンク付き）が表示されます。<em>対応</em>の行には、そのレシピに合うあなたのジンが表示されます。名前の横の ☆ をタップすると、お気に入り（⭐）にできます。</p>
+<h3>フィルター</h3>
+<ul>
+<li><strong>すべて</strong>：すべてのレシピ。</li>
+<li><strong>⭐ お気に入り</strong>：星を付けたレシピ。</li>
+<li><strong>マイレシピ</strong>：自分で作成・保存したレシピ。</li>
+<li><strong>✓ マイバーで作れる</strong>：お持ちのジンのスタイルに合うレシピだけ（自分のレシピも含む）。</li>
+</ul>
+<h3>オリジナルレシピ</h3>
+<p><strong>オリジナルレシピを追加</strong>ブロックで<em>名前</em>、<em>材料（1行に1つ）</em>、<em>作り方</em>を入力し、<em>レシピを保存</em>をタップします。自分のレシピは 🗑 で削除できます（「このレシピを削除しますか？」と確認されます）。</p>
+<h3>ジンのレシピ（AI）</h3>
+<p><strong>ジンのレシピ（AI）</strong>ブロックで、バーからジンを選び（「ジンを選択…」）、<em>🤖 レシピを作成</em>をタップします。AIが、そのジンを引き立てるカクテルや特別なジントニックを作ります。<strong>AIスキャンを1回消費します</strong>。<em>マイレシピとして保存</em>で、そのレシピがマイレシピに入ります。</p>
+<h3>マイ・ハーブ＆ガーニッシュ棚</h3>
+<p><strong>マイ・ハーブ＆ガーニッシュ棚</strong>ブロックで、家にあるものをタップします：ライムのくし切り、ローズマリー、タイム、バジル、キュウリ、グレープフルーツの皮、ピンクペッパーなど。パーフェクトサーブの「ハーブとガーニッシュ」には、<strong>✓</strong>（ある）または<strong>🛒</strong>（足りない）が表示されます。<em>🛒 足りない物をほしい物リストに追加</em>をタップすると、足りないハーブやガーニッシュが<a href="#wish">ウィッシュリスト</a>に入ります。足りないものがなければ、アプリがそう知らせます。</p>
+<div class="note">レシピ、お気に入り、ハーブ＆ガーニッシュ棚は、クラウド同期（<a href="#sync">セクション13</a>）とともに保存されます。</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. 統計</h2>
+
+<p>上から順に：</p>
+<ul>
+<li><strong>主要な数値：</strong>ボトル、ジン、合計評価額、平均評価。</li>
+<li><strong>タイプ別：</strong>スタイルごとのバー（London Dry、Old Tom / Plymouth、ピンク / フルーツジン、Navy Strength、その他）。タップすると、該当するフィルターでバーが開きます。</li>
+<li><strong>人気のジン：</strong>星で絞り込み（すべて、または1つ以上の評価）、<em>★ 評価</em>または<em>🥂 頻度</em>（そのジンを飲んだ回数）で並び替えできます。絞り込みなしの場合は上位10件を表示し、タップするとそのジンが開きます。</li>
+</ul>
+<p>評価がまだない場合、人気のジンの一覧は表示されません。</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. 書き出し、読み込み、バックアップ</h2>
+
+<table>
+<tbody><tr><th>機能</th><th>用途</th></tr>
+<tr><td>CSVを書き出し</td><td>ExcelやNumbers用の表</td></tr>
+<tr><td>Excelを書き出し</td><td>.xlsxファイルとして</td></tr>
+<tr><td>PDFを書き出し</td><td>印刷用の一覧</td></tr>
+<tr><td><strong>JSONバックアップ</strong></td><td><strong>データの完全バックアップ</strong>（ジンとトニック、ウィッシュリスト、履歴、ラック、表示名、自分の写真）</td></tr>
+<tr><td>クリップボードへ</td><td>テキストリストをコピー</td></tr>
+<tr><td>JSON / CSV / Excelを読み込み</td><td>バックアップの復元、または表の読み込み</td></tr>
+</tbody></table>
+<p>CSVとExcelの列は次のとおりです：<strong>名前、瓶詰め年、スタイル、地域、国、ボタニカル、ラック、段、場所、ボトル数、評価、価格、アルコール度数 %、メモ</strong>。</p>
+<div class="tip"><strong>JSONバックアップを定期的に作成してください。</strong>JSONの読み込みは、バーをバックアップの内容で置き換えます（事前にアプリが確認します）。新しいデバイスでは、これですべてが復元されます。代わりにクラウド同期も使えます（<a href="#sync">セクション13</a>）。</div>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. 設定</h2>
+
+<h3>表示と言語</h3>
+<ul>
+<li><strong>表示名（タイトル）：</strong>「Peter」と入力すると「Peter's Gin-Factory」のようになります。空のままにすると標準のタイトルです。</li>
+<li><strong>通貨：</strong>€、$、£、CHF、A$、C$、SEK、NOK、DKK、PLN、HUF、CZK、RON、RUB、UAH、JPY、CNY、KRW、INR。</li>
+<li><strong>言語：</strong>ドイツ語、英語、英語（米国）など、25の言語バリエーションがあります。<strong>通貨は自動的に切り替わり</strong>、アプリがそのことを知らせます（「通貨を自動的に…に設定しました」）。通貨は「通貨」からいつでも手動で変更できます。</li>
+<li><strong>飲むときの紙吹雪＆サウンド：</strong>両方、紙吹雪のみ、またはオフ。</li>
+<li><strong>フォント：</strong>10種類のフォントから選べます。</li>
+</ul>
+<h3>保存先</h3>
+<p><em>このデバイスのみ</em>または<em>クラウド</em>（同期コード、<a href="#sync">セクション13</a>）。</p>
+<h3>AIクレジット（iPhoneアプリのみ）</h3>
+<p>残りのAIスキャン数、デバイスID、そして必要に応じて<em>クレジットを追加</em>またはロック解除コードが表示されます。<a href="#privacy">セクション14</a>を参照してください。</p>
+<h3>ジンデータベース</h3>
+<ul>
+<li><strong>すべてのジンを更新（AI）：</strong>すべてのジンについて、不足している地域、国、ボタニカル、価格を補完します（ウェブ版ではボトル画像も）。既存の値は保持されます。<em>ヒント：先にJSONバックアップを書き出しておきましょう。</em></li>
+<li><strong>トニックウォーターを割り当て（AI）：</strong>トニックが未設定のすべてのジンに合うトニックを探します（<a href="#serve">セクション8</a>）。</li>
+</ul>
+<h3>ラック</h3>
+<p><a href="#racks">セクション5</a>を参照してください。</p>
+<h3>プライバシー、ユーザーガイド、サポート</h3>
+<p><em>プライバシーポリシー</em>と<em>サポートとヘルプ</em>のリンク先は、プライバシーポリシーとサポートページです。<strong>ユーザーガイド</strong>ボタンを押すと、このガイドがお使いの言語で開きます。</p>
+<h3>お問い合わせ</h3>
+<p>開閉できる<strong>お問い合わせ</strong>（一番下）には、開発者の名前と<strong>「Last Build: 日付」</strong>が表示されます。これは現在のアプリのバージョンがビルドされた日付です。ご連絡の際にお知らせください。</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. 2台のデバイスを同期する</h2>
+
+<ol>
+<li><strong>1台目のデバイス：</strong>設定 → 保存先 → <em>クラウド</em> → <em>新しい同期コードを作成</em>。コードが画面に表示されます。<em>コードをメールで保存</em>で自分宛てに送れます。</li>
+<li><strong>2台目のデバイス：</strong>設定 → 保存先 → <em>クラウド</em> → コードを入力（小文字、スペースなし）→ 接続。デバイスにすでにジンがある場合は、クラウドのデータと統合するかどうかをアプリが尋ねます。</li>
+<li>その後は、両方のデバイスが自動的に同期します（アプリを開いたときなど）。<em>今すぐ同期</em>で手動実行もできます。ルールは<strong>最新の変更が優先</strong>です。</li>
+</ol>
+<p>ジンとトニック、ウィッシュリスト、履歴、ラック、レシピ、お気に入り、ハーブ＆ガーニッシュ棚、言語や通貨などの設定が同期されます。自分の写真とデバイス固有のデータは<strong>同期されません</strong>。コードを知っている人は誰でもあなたのジンを見られるため、信頼できる人とだけ共有してください。JSONバックアップも併せて保管しておきましょう。</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. AI、プライバシー、費用</h2>
+
+<ul>
+<li><strong>AIは何に使われますか？</strong>ラベルのスキャン、ジンの検索、価格の検索、「すべてのジンを更新」、パーフェクトサーブのおすすめ、トニックの割り当て、AIによるレシピ作成です。写真またはジン名は、当社のサーバーを経由してAIサービス（Anthropic、米国）に送られ、解析されます。氏名やアカウント情報は含まれません。初回の使用前に、アプリが同意を求めます。</li>
+<li><strong>バーコードのスキャン</strong>は、番号だけを無料の商品データベースに送信し、AIクレジットは消費しません。<strong>ルールに基づくヒント</strong>も、完全にお使いのデバイス上で動作します。</li>
+<li><strong>費用（iPhoneアプリ）：</strong>1インストールあたり50回のAI利用が購入価格に含まれています。追加分は任意の1回限りの購入で入手できます（サブスクリプションではなく、クレジットに有効期限はありません）。アプリのそれ以外の機能に追加費用はかかりません。クレジットを使い切っても、AI機能以外はすべて引き続き使えます。</li>
+<li><strong>データ：</strong>クラウドを有効にしない限り、すべてお使いのデバイスに保存されます。広告なし、トラッキングなし、ユーザーアカウントなし。詳細は<a href="datenschutz.html">プライバシーポリシー</a>（ドイツ語）をご覧ください。</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. ヒントとFAQ</h2>
+
+<ul>
+<li><strong>iPadやPCでは</strong>レイアウトが調整されます。列が広くなり、複数のカードが横に並び、PC（と横向きのiPad）ではナビゲーションが左側に表示されます。スマートフォンも横向きで使えます。PCでは <kbd>Esc</kbd> で一番上のウィンドウが閉じます。スマートフォンではウィンドウを下にスワイプして閉じます。</li>
+<li><strong>ジンが消えた：</strong><a href="support.html">サポート</a>を参照してください。同期コードまたはJSONバックアップで復元できます。</li>
+<li><strong>ジンのバーコードが見つからない：</strong>小規模な蒸留所では普通のことです。ラベルのスキャンを使ってください。</li>
+<li><strong>AIが読み間違えた：</strong>項目を手動で修正して保存してください。AIの値は提案です。</li>
+<li><strong>おすすめのトニックが手元にない：</strong>お持ちのトニックを登録してください（スタイルは「トニックウォーター」）。それ以外は 🛒 買い物のヒントとして表示され、ワンタップでウィッシュリストに追加できます。</li>
+<li><strong>ページが古いバージョンのまま（ウェブ）：</strong>ページを再読み込みしてください（PCでは <kbd>Ctrl</kbd>+<kbd>F5</kbd>）。</li>
+</ul>
+<p>ほかにご質問がありますか？ <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20User%20guide">t.knecht@web.de</a> までご連絡ください。その際は、「Last Build」の表示（設定 → お問い合わせ）をお知らせください。</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

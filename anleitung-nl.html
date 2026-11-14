@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gebruikershandleiding – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← Naar de collectie</a> &nbsp;·&nbsp; </span><a href="support.html">← Terug naar support</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html">Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html" selected>Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>Gebruikershandleiding – Gin-Factory</h1>
+<p><small>Bijgewerkt: 15 november 2026 · App-versie 2.0</small></p>
+
+<div class="toc">
+
+<strong>Inhoud</strong><ol>
+<li><a href="#start">Overzicht en eerste stappen</a></li>
+<li><a href="#add">Een gin toevoegen</a></li>
+<li><a href="#cellar">De bar</a></li>
+<li><a href="#drink">Een gin drinken</a></li>
+<li><a href="#racks">Rekken en opbergen</a></li>
+<li><a href="#history">Historie</a></li>
+<li><a href="#wish">Verlanglijst</a></li>
+<li><a href="#serve">Perfect serve, tonic en glazen</a></li>
+<li><a href="#recipes">Recepten en plank met kruiden en garnering</a></li>
+<li><a href="#stats">Statistieken</a></li>
+<li><a href="#export">Export, import en back-up</a></li>
+<li><a href="#setup">Opties (instellingen)</a></li>
+<li><a href="#sync">Twee apparaten synchroniseren</a></li>
+<li><a href="#privacy">AI, privacy en kosten</a></li>
+<li><a href="#faq">Tips en veelgestelde vragen</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. Overzicht en eerste stappen</h2>
+
+<p>Gin-Factory is je persoonlijke ginbar in je zak: je beheert voorraad, opbergplekken, een verlanglijst, recepten en statistieken. Alles draait op je eigen apparaat; met een synccode kun je meerdere apparaten koppelen.</p>
+<p>Onderaan (op pc en iPad liggend: links) vind je de balk met acht onderdelen:</p>
+<table>
+<tbody><tr><th>Onderdeel</th><th>Doel</th></tr>
+<tr><td><strong>Bar</strong></td><td>Al je gins en tonics, zoeken, filters, sorteren, een gin toevoegen, drinken</td></tr>
+<tr><td><strong>Cijfers</strong></td><td>Analyses van voorraad, prijzen, opslag, drinkgeschiedenis</td></tr>
+<tr><td><strong>Recepten</strong></td><td>13 klassiekers met gin-tonic en cocktails, eigen recepten, plank met kruiden en garnering</td></tr>
+<tr><td><strong>Historie</strong></td><td>De gins die je hebt gedronken</td></tr>
+<tr><td><strong>Rekken</strong></td><td>Opslagplan: gins opbergen en verplaatsen, QR-labels</td></tr>
+<tr><td><strong>Verlanglijst</strong></td><td>Gins die je nog wilt kopen</td></tr>
+<tr><td><strong>Export/Import</strong></td><td>Een back-up van je gegevens maken, tabellen en back-ups inlezen</td></tr>
+<tr><td><strong>Opties</strong></td><td>Naam, valuta, taal, cloud, rekken definiëren</td></tr>
+</tbody></table>
+<h3>De eerste vijf stappen</h3>
+<ol>
+<li><strong>Kies taal en valuta</strong>: Opties → Algemeen. De valuta volgt automatisch de taal.</li>
+<li><strong>Definieer rekken</strong> (optioneel): Opties → Rekken (zie <a href="#racks">paragraaf 5</a>).</li>
+<li><strong>Voeg je eerste gin toe</strong>: tik op <kbd>+</kbd> in de bar (<a href="#add">paragraaf 2</a>).</li>
+<li><strong>Berg hem op</strong>: geef de gin een plek in een rek.</li>
+<li><strong>Maak een back-up</strong>: Export/Import → JSON-back-up, of stel cloudsynchronisatie in (<a href="#sync">paragraaf 13</a>).</li>
+</ol>
+<div class="tip">De onderdelen van <em>Opties</em> zijn inklapbaar. “Algemeen” staat bij de eerste start open, de andere zijn dicht. De app onthoudt wat je het laatst hebt geopend of gesloten.</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. Een gin toevoegen</h2>
+
+<p>Tik op <kbd>+</kbd> in de bar. Er zijn meerdere manieren om een gin toe te voegen – ze zijn te combineren.</p>
+<h3>a) Met de hand</h3>
+<p>Vul de velden in: <strong>Naam / Distilleerderij, Bottelingsjaar, Flessen, Voorraad (flessen), Ginstijl, Regio, Land, Botanicals, ABV (% vol.), Passende tonic, Perfect serve, Opslagplaats (rek · niveau · plaats van links), Prijs, Flesfoto, Eigen foto, Beoordeling, Notitie</strong>. Alleen de naam is verplicht. <em>Opslaan</em> maakt de gin aan.</p>
+<ul>
+<li><strong>Ginstijl:</strong> London Dry, Old Tom / Plymouth, Roze / fruitgin, Navy Strength, Tonic of Overig. Tonics leg je ook als “gin” vast, met de stijl <em>Tonic</em> (<a href="#serve">paragraaf 8</a>).</li>
+<li><strong>Botanicals</strong> zijn de kruiden en specerijen van de gin (jeneverbes, citrus, koriander …) en <strong>ABV (% vol.)</strong> is het alcoholpercentage. <strong>Bottelingsjaar</strong> is het bottelingsjaar van de fles.</li>
+<li><strong>Passende tonic:</strong> de tonic die het best bij deze gin past; die kan ook door de AI worden toegewezen met de knop 🤖 (<a href="#serve">paragraaf 8</a>).</li>
+<li><strong>Voorraad, min en max:</strong> Als je een minimum invoert, waarschuwt de app je wanneer de voorraad daaronder zakt en biedt aan de gin op de verlanglijst te zetten (<a href="#cellar">paragraaf 3</a>).</li>
+<li><strong>Perfect serve:</strong> aanbevelingen voor tonic, kruiden, garnering en glas (<a href="#serve">paragraaf 8</a>).</li>
+<li><strong>Eigen foto:</strong> “Foto maken / kiezen” voegt een foto aan de gin toe. Hij blijft op dit apparaat en zit in de JSON-back-up, maar wordt niet met de cloud gesynchroniseerd.</li>
+</ul>
+<h3>b) Etiket scannen (AI)</h3>
+<p>Tik op <em>Etiket scannen (AI)</em> en fotografeer het etiket van de fles. De AI leest naam, jaar, stijl, regio, land, distilleerderij, botanicals en ABV. Controleer de waarden en sla op. Vóór het eerste gebruik vraagt de app om je toestemming (<a href="#privacy">paragraaf 14</a>).</p>
+<h3>c) Barcode scannen</h3>
+<p>Tik op <em>Barcode scannen</em> en houd de barcode van de fles in het kader. De app zoekt het nummer op in een gratis productdatabase (geen kosten, geen AI-tegoed) en vult, als het gevonden wordt, <strong>naam, producent en ginstijl</strong> in.</p>
+<ul>
+<li>Staat de fles al in de bar, dan vraagt de app “Nog een fles toevoegen?” – een snelle manier om bij te tellen als je meer koopt.</li>
+<li>Staat de barcode <strong>niet</strong> in de database (vaak bij kleinere distilleerderijen), dan verschijnt een hint met de knop <em>Etiket scannen (AI)</em>. Het nummer wordt toch bij de gin opgeslagen, zodat de fles de volgende keer meteen wordt herkend.</li>
+</ul>
+<h3>d) Gin opzoeken (AI)</h3>
+<p><em>Gin opzoeken (AI)</em> laat de AI op het web zoeken naar regio, land, distilleerderij, botanicals, ABV, huidige gemiddelde prijs en – in de webversie – een afbeelding van de fles. Velden die je al hebt ingevuld, worden niet overschreven. Dit gebeurt ook automatisch zodra naam en jaar zijn ingevoerd en er nog geen prijs is.</p>
+<div class="note">De iPhone-app laadt geen flesafbeeldingen van internet (App Store-regel). Je kunt in plaats daarvan eigen foto's maken.</div>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="cellar">3. De bar</h2>
+
+<h3>Zoeken, filteren, sorteren</h3>
+<ul>
+<li><strong>Zoeken</strong> bovenaan: vindt gins op naam, regio, land en distilleerderij.</li>
+<li><strong>Filters:</strong> Alle, London Dry, Old Tom / Plymouth, Roze / fruitgin, Navy Strength, Tonic, Overig. Klik je op een stijl, dan wordt de zoekopdracht automatisch gewist.</li>
+<li><strong>Sorteren:</strong> Nieuwste eerst, Naam (A–Z), Bottelingsjaar, Botanicals, Regio of Land.</li>
+<li><strong>Lijst / kaarten:</strong> De knop <em>Lijst</em> wisselt tussen een compacte lijst en gedetailleerde kaarten.</li>
+</ul>
+<h3>De ginkaart</h3>
+<p>De kaart toont naam, jaar, distilleerderij, beoordeling (sterren), regio en land (tik om een kaart of de ginregio's van het land te openen), het aantal flessen en de <strong>opslagplekken</strong> (tik om naar het rek te springen). Heb je een perfect serve ingesteld, dan toont de kaart ook de <strong>favoriet</strong>, de <strong>garnering</strong> en het <strong>glas</strong>. De jeneverbessen op de kaart tonen met hun kleur de ginstijl; een tik op de bessen opent de Wikipedia-pagina van de gin. Op een tonickaart staat <strong>Past bij: …</strong> (de gins waarbij hij past).</p>
+<p>Onderaan de kaart: <em>Bewerken</em>, <em>Drinken</em> en 🗑 (gin verwijderen).</p>
+<h3>Voorraad, min/max en de boodschappenlijst</h3>
+<p>Voer je voor een gin een minimum (en eventueel een maximum) in, dan toont de kaart “Voorraad · Min · Max” en waarschuwt met ⚠ als je eronder zit. De knop <em>Bijbestellen</em> opent de <strong>boodschappenlijst</strong>: die toont alle gins onder hun minimum (het doel is het maximum, anders het minimum). Je kunt de lijst delen of kopiëren, of de gins op de verlanglijst zetten.</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. Een gin drinken</h2>
+
+<p>Tik op <em>Drinken</em> op de ginkaart. Het venster <em>Gin drinken</em> opent:</p>
+<ul>
+<li><strong>Uit welke plek genomen?</strong> – kies de rekplek waar de fles vandaan kwam, of “Fles zonder plek”. De plek komt vrij.</li>
+<li><strong>Met wie heb je gedronken?</strong> – namen van je gasten (optioneel).</li>
+<li><strong>Gelegenheid</strong> – Lente, Zomer, Herfst, Winter, Verjaardag, Feest of “Zomaar” (meerdere mogelijk).</li>
+</ul>
+<p><em>Drinken</em> haalt één fles weg en maakt een vermelding in de <a href="#history">Historie</a>. Confetti en geluid vieren het (uit te zetten bij Opties). Is het de <strong>laatste fles</strong>, dan meldt de app dat: de gin verdwijnt dan uit de bar (maar blijft in de Historie).</p>
+<div class="tip"><strong>Snel met scannen:</strong> De ronde 🥂-knop in de bar fotografeert een etiket, herkent de gin in je bar en opent meteen het Drinken-venster.</div>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. Rekken en opbergen</h2>
+
+<h3>Rekken definiëren en bewerken</h3>
+<p><strong>Opties → Rekken</strong> (tik op de kop om te openen): voer naam, niveaus, plaatsen per niveau en flessen per plek in en tik op ＋. “Flessen/plek” is 1 voor een flessenrek en hoger voor een vloer of kist. In de lijst heeft elk rek:</p>
+<ul>
+<li>de <strong>handgreep ⠿</strong> om de volgorde te wijzigen, en de knop <em>Sorteer A–Z</em> onder de lijst,</li>
+<li>▦ voor <strong>QR-labels</strong>, ✏️ om te bewerken, 🧹 om te legen en 🗑 om te verwijderen.</li>
+</ul>
+<p>Met <strong>bewerken</strong> (✏️) kun je het rek hernoemen, de plaatsen per niveau wijzigen, niveaus bovenaan of onderaan toevoegen, niveaus verwijderen en elk niveau een eigen naam en aantal flessen geven. Flessen die zo hun plek verliezen, tellen daarna als “niet opgeslagen”; de gins zelf blijven in de bar. De app vraagt vóór zulke wijzigingen om bevestiging.</p>
+<h3>Het onderdeel Rekken</h3>
+<p>Bovenaan kies je een rek met de <strong>tegels</strong> (naam en “bezet / plaatsen”). De volgorde kun je ook hier wijzigen: sleep op een pc een tegel; houd op aanraakschermen een tegel ongeveer een halve seconde ingedrukt en sleep daarna. Daaronder staat het <strong>opslagplan</strong>: elk niveau met zijn plaatsen. Bezette plaatsen tonen een fles in de kleur van het ginstijl.</p>
+<h3>Opbergen</h3>
+<ol>
+<li>Tik op een gin onder “Niet toegewezen” (de lijst kan worden gefilterd op distilleerderij en land) – of tik op een hint “niet opgeslagen” in de bar.</li>
+<li>Tik op een <strong>vrije plek</strong>. Bij vloeren en kisten bergt de app zoveel flessen op als er passen.</li>
+</ol>
+<p><strong>Gin scannen en opslaan</strong> fotografeert het etiket, vindt de gin en leidt je door het opbergen.</p>
+<h3>Bezette plekken, verplaatsen, verwijderen</h3>
+<p>Tik op een bezette plek: je ziet de gin en kunt hem <em>openen</em>, <em>uit het vak verwijderen</em> of <em>verplaatsen</em> (tik daarna op een vrije plek). <em>Rek legen</em> haalt alle flessen uit het rek (na bevestiging).</p>
+<h3>QR-labels en “Niveau scannen”</h3>
+<p>Met de <strong>QR-labels</strong> (Opties → Rekken → ▦) maak je één label voor het rek en één voor elk niveau. Deel ze als pdf of print ze (etikettenvel 63,5 × 38,1 mm, 21 per pagina) en plak ze op. Daarna: <strong>Niveau scannen</strong> in het onderdeel Rekken – je ziet wat er op dat niveau staat en kunt <em>hier opslaan</em>, <em>uitnemen</em>, drinken, een fles verplaatsen of <em>heel niveau verplaatsen</em>. In het formulier “Gin toevoegen” vult het scannen van een niveaulabel ook de opslagplek in.</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. Historie</h2>
+
+<p>De Historie toont alle gins die je hebt gedronken met datum, gin, waarde, gasten en gelegenheid. Je kunt filteren op ginstijl en gelegenheid en een vermelding bewerken (gasten, gelegenheid). De Historie voedt de analyses “Gedronken per maand/jaar”, de uitgaven en de frequentie in de Cijfers.</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. Verlanglijst</h2>
+
+<ul>
+<li><strong>+ Wens toevoegen</strong>: met de hand of door een etiket te scannen, met een optionele notitie (“Waar kopen?”).</li>
+<li><strong>Prijzen zoeken</strong> (💶): De app zoekt op het web naar prijzen van de gin, toont de goedkoopste treffer en vermenigvuldigt die met het aantal. Dit zijn richtwaarden zonder garantie – controleer verzendkosten en beschikbaarheid bij de winkel.</li>
+<li><strong>Vinkje</strong> links: markeren als gekocht/klaar (de rij vervaagt).</li>
+<li><strong>→ Bar</strong>: verplaatst de wens naar de bar (met aantal en, indien beschikbaar, de goedkoopste prijs) en brengt je, als je rekken hebt, meteen naar het opbergen.</li>
+<li>Zakt een gin onder zijn minimum, dan biedt de app aan hem met de ontbrekende hoeveelheid op de verlanglijst te zetten (“bijbestellen”).</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="serve">8. Perfect serve, tonic en glazen</h2>
+
+<h3>Tonic als eigen categorie</h3>
+<p>Tonics leg je vast als gins: kies bij <em>Gin toevoegen</em> de stijl <strong>Tonic</strong>. In het filter van de bar staat <em>Tonic</em>. De AI wijst elke gin een passende tonic toe:</p>
+<ul>
+<li>in het veld <strong>Passende tonic</strong>, met de knop 🤖 (<em>⏳ Passende tonic zoeken…</em>), of</li>
+<li>bij Opties onder <strong>Tonics toewijzen (AI)</strong> (“Zoek een passende tonic voor elke gin zonder tonic”) voor alle gins tegelijk; de app vraagt eerst om bevestiging.</li>
+</ul>
+<p>Op de tonickaart staat <strong>Past bij: …</strong>.</p>
+<h3>Perfect serve voor gin</h3>
+<p>In het ginformulier vind je het blok <strong>Perfect serve (kruiden, garnering, verhouding)</strong> met twee knoppen:</p>
+<ul>
+<li><strong>🌿 Tip op basis van regels:</strong> offline, gratis, gebaseerd op stijl en botanicals.</li>
+<li><strong>🤖 AI-aanbeveling:</strong> vraagt het aan de AI en kost één AI-scan (<a href="#privacy">paragraaf 14</a>).</li>
+</ul>
+<p>Het resultaat zijn maximaal <strong>drie tonicaanbevelingen</strong> met een toelichting, bijvoorbeeld Klassieke Indian tonic, Mediterrane tonic, Vlierbloesemtonic, Roze grapefruittonic of Citrustonic. Elke toont <strong>✓ in je bar</strong> (als je hem hebt) of <strong>🛒 Kooptip</strong> met de knop <strong>+ Verlanglijst</strong>. Tik op een tonic om die als <strong>favoriet</strong> in te stellen.</p>
+<h3>De velden</h3>
+<ul>
+<li><strong>Kruiden en garnering, gescheiden door komma's</strong> – rozemarijn, tijm, basilicum, komkommer, grapefruitschil, roze peperkorrels …</li>
+<li><strong>Verhouding</strong> – bijv. 1:2.</li>
+<li><strong>Glas</strong> en <strong>IJs</strong> (bijv. veel grote ijsblokken).</li>
+</ul>
+<h3>De glazen</h3>
+<p>Het glas is een link <em>Bekijk het glas</em>: die opent een kaart met een tekening en een korte uitleg; met <em>Bekijk meer foto's ↗</em> zie je meer afbeeldingen en met <em>Sluiten</em> sluit je de kaart. Er zijn <strong>Copa / ballonglas</strong>, <strong>Highballglas</strong>, <strong>Tumbler (rocksglas)</strong>, <strong>Coupe</strong>, <strong>Martiniglas</strong> en <strong>Champagneflûte</strong>.</p>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. Recepten en plank met kruiden en garnering</h2>
+
+<p>Het onderdeel <strong>Recepten</strong> (“Gin-tonic en cocktails”) staat tussen Cijfers en Historie.</p>
+<h3>De 13 klassiekers</h3>
+<p>Gin-tonic, Mediterrane G&amp;T, Roze gin-tonic, Navy strength G&amp;T, Negroni, Dry Martini, Gimlet, Tom Collins, Southside, French 75, Bee's Knees, Martinez en Gin Basil Smash. Elk recept toont <strong>Ingrediënten</strong>, <strong>Bereiding</strong> en <strong>Glas</strong>.</p>
+<h3>Filters</h3>
+<ul>
+<li><strong>Alle</strong> – alle recepten.</li>
+<li><strong>⭐ Favorieten</strong> – de recepten die je met de ster hebt gemarkeerd.</li>
+<li><strong>Mijn</strong> – de recepten die je zelf hebt gemaakt.</li>
+<li><strong>✓ Past bij mijn bar</strong> – recepten waarvoor je alles al hebt; recepten die passen tonen <em>Past</em>.</li>
+</ul>
+<h3>Je eigen recepten</h3>
+<ul>
+<li><strong>Eigen recept toevoegen:</strong> vul <em>Naam</em>, <em>Ingrediënten, één per regel</em> en <em>Bereiding</em> in en tik op <em>Recept opslaan</em>. Bij het wissen bevestig je <em>Dit recept verwijderen?</em>.</li>
+<li><strong>Recept voor een gin (AI):</strong> kies een gin bij <em>Kies een gin…</em> en tik op <em>🤖 Recept maken</em>. Met <em>Opslaan als mijn recept</em> bewaar je het resultaat (kost één AI-scan).</li>
+</ul>
+<h3>Mijn plank met kruiden en garnering</h3>
+<p>Bij <strong>Mijn plank met kruiden en garnering</strong> tik je aan wat je thuis hebt (citroen, limoen, rozemarijn, tijm, basilicum, komkommer, roze peperkorrels …). Aanbevelingen en recepten tonen dan <strong>✓</strong> (heb ik) of <strong>🛒</strong> (ontbreekt). Met <strong>🛒 Ontbrekende items aan verlanglijst toevoegen</strong> komen ontbrekende kruiden en garnering op de verlanglijst (<a href="#wish">paragraaf 7</a>).</p>
+<p>Recepten, favorieten en de plank worden bewaard met de cloudsynchronisatie (<a href="#sync">paragraaf 13</a>).</p>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. Statistieken</h2>
+
+<p>Van boven naar beneden:</p>
+<ul>
+<li><strong>Kerncijfers:</strong> flessen, gins, totale waarde, gemiddelde beoordeling.</li>
+<li><strong>Per stijl</strong> en <strong>Topgins</strong> (op beoordeling of frequentie, te filteren op sterren).</li>
+<li><strong>Per land, regio, distilleerderij:</strong> balken (tot 8, de rest als “+n meer”); een tik doorzoekt de bar. <strong>Per jaar:</strong> kolommen, zijwaarts scrollbaar.</li>
+<li><strong>Prijzen:</strong> gemiddelde per fles, goedkoopste, duurste, prijsklassen (afgestemd op je valuta) en waarde per land.</li>
+<li><strong>Opslag:</strong> bezetting in procenten, vrije plekken, niet opgeslagen flessen en een balk per rek (een tik springt naar het rek).</li>
+<li><strong>Gedronken:</strong> per maand (laatste 12) en per jaar, plus de uitgaven aan gedronken flessen.</li>
+<li><strong>Bijkopen:</strong> gins onder de minimumvoorraad (opent de boodschappenlijst), openstaande wensen en hun waarde.</li>
+</ul>
+<p>Onderdelen zonder gegevens (bijv. zonder prijzen) worden verborgen.</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. Export, import en back-up</h2>
+
+<table>
+<tbody><tr><th>Functie</th><th>Doel</th></tr>
+<tr><td>CSV exporteren</td><td>Tabel voor Excel of Numbers</td></tr>
+<tr><td>Excel exporteren</td><td>Als .xlsx-bestand</td></tr>
+<tr><td>PDF exporteren</td><td>Afdrukbaar overzicht</td></tr>
+<tr><td><strong>JSON-back-up</strong></td><td><strong>Volledige gegevensback-up</strong> (gins, verlanglijst, historie, rekken, weergavenaam, eigen foto's)</td></tr>
+<tr><td>Naar klembord</td><td>Een tekstlijst kopiëren</td></tr>
+<tr><td>JSON / CSV / Excel importeren</td><td>Een back-up terugzetten of een tabel inlezen</td></tr>
+</tbody></table>
+<p>De import accepteert ook de oude kolomnamen en leest tabellen met de kolommen naam, jaar, stijl, regio, land, botanicals, ABV, rek, niveau, plek, flessen, beoordeling, prijs en notitie.</p>
+<div class="note"><strong>Contact:</strong> Onderaan dit onderdeel klap je met een tik op <em>Contact</em> een sectie open met de naam van de ontwikkelaar en <em>Last Build: datum</em> – de datum van de laatste update van de app.</div>
+<div class="tip"><strong>Maak regelmatig een JSON-back-up.</strong> De JSON-import vervangt de bar door de back-up (de app vraagt eerst). Op een nieuw apparaat zet dit alles terug. Gebruik anders de cloudsynchronisatie (<a href="#sync">paragraaf 13</a>).</div>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. Opties (instellingen)</h2>
+
+<h3>Algemeen</h3>
+<ul>
+<li><strong>Weergavenaam (titel):</strong> “Peter” wordt “Peters Gin-Factory” enz. Laat leeg voor de standaardtitel.</li>
+<li><strong>Valuta:</strong> €, $, £, CHF, A$, C$, SEK, NOK, DKK, PLN, HUF, CZK, RON, RUB, UAH, JPY, CNY, KRW, INR.</li>
+<li><strong>Taal:</strong> 25 taalvarianten, waaronder Duits, Engels, Engels (VS) en nog veel meer. <strong>De valuta verandert automatisch</strong> (Zweeds → kroon, Engels (VS) → US $, Engels (VK) → £). Als je van taal wisselt, vraagt de app of ze <strong>alle prijzen moet omrekenen tegen de koers van vandaag van de Europese Centrale Bank</strong> (“OK”) of alleen het label moet wijzigen (“Annuleren”). Voor RUB en UAH zijn er geen koersen. Je kunt de valuta altijd met de hand wijzigen.</li>
+<li><strong>Confetti &amp; geluid bij het drinken:</strong> beide, alleen confetti of uit.</li>
+<li><strong>Lettertype:</strong> tien lettertypen om uit te kiezen.</li>
+</ul>
+<h3>Opslaglocatie</h3>
+<p><em>Alleen dit apparaat</em> of <em>Cloud</em> (synccode, <a href="#sync">paragraaf 13</a>).</p>
+<h3>AI-tegoed (alleen iPhone-app)</h3>
+<p>Toont de resterende AI-scans, het apparaat-ID en – indien nodig – <em>Tegoed opwaarderen</em> of een ontgrendelcode. Zie <a href="#privacy">paragraaf 14</a>.</p>
+<h3>Gindatabase</h3>
+<ul>
+<li><strong>Alle gins bijwerken (AI):</strong> vult ontbrekende regio, land, botanicals en prijs aan voor alle gins (in de webversie ook flesafbeeldingen). Bestaande waarden blijven. <em>Tip: exporteer eerst een JSON-back-up.</em></li>
+<li><strong>Tonics toewijzen (AI):</strong> zoekt een passende tonic voor elke gin die er nog geen heeft (<a href="#serve">paragraaf 8</a>).</li>
+</ul>
+<h3>Rekken</h3>
+<p>Zie <a href="#racks">paragraaf 5</a>. De kop toont het aantal rekken.</p>
+<h3>Privacy, support, handleiding, versie</h3>
+<p>De links leiden naar het privacybeleid, naar de supportpagina en – met de knop <em>Gebruikershandleiding</em> – naar deze handleiding. Helemaal onderaan vind je de <strong>versie</strong> van de app – vermeld die als je contact met ons opneemt.</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. Twee apparaten synchroniseren</h2>
+
+<ol>
+<li><strong>Eerste apparaat:</strong> Opties → Opslaglocatie → <em>Cloud</em> → <em>Nieuwe synccode aanmaken</em>. De code verschijnt op het scherm; met <em>Code opslaan via e-mail</em> stuur je hem naar jezelf.</li>
+<li><strong>Tweede apparaat:</strong> Opties → Opslaglocatie → <em>Cloud</em> → voer de code in (kleine letters, geen spaties) → Verbinden. Bevat het apparaat al gins, dan vraagt de app of ze met de cloudgegevens samengevoegd moeten worden.</li>
+<li>Daarna synchroniseren beide apparaten automatisch (bijv. wanneer de app wordt geopend); <em>Nu synchroniseren</em> start het handmatig. De regel is: <strong>de nieuwste wijziging wint</strong>.</li>
+</ol>
+<p>Gins, verlanglijst, historie, rekken en instellingen zoals taal en valuta worden gesynchroniseerd. Ook je eigen recepten, favorieten en de ingrediëntenplank worden gesynchroniseerd. <strong>Niet gesynchroniseerd</strong> worden eigen foto's en apparaatspecifieke gegevens. Iedereen die je code kent, kan je gins zien – deel hem alleen met mensen die je vertrouwt. Bewaar ook een JSON-back-up.</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. AI, privacy en kosten</h2>
+
+<ul>
+<li><strong>Waarvoor wordt AI gebruikt?</strong> Etiket scannen, gin opzoeken, prijzen zoeken, “Alle gins bijwerken”, tonics toewijzen, de <em>AI-aanbeveling</em> voor perfect serve en <em>Recept maken</em>. De foto of de naam van de gin wordt via onze server naar een AI-dienst (Anthropic, VS) gestuurd voor beoordeling – zonder namen of accounts. De app vraagt om je toestemming vóór het eerste gebruik.</li>
+<li>Het <strong>scannen van barcodes</strong> stuurt alleen het nummer naar een gratis productdatabase en kost geen AI-tegoed. De <em>Tip op basis van regels</em> is ook gratis.</li>
+<li><strong>Kosten (iPhone-app):</strong> 50 AI-aanroepen per installatie zijn bij de aankoopprijs inbegrepen; meer kun je kopen als optionele eenmalige aankoop (geen abonnement, tegoed verloopt niet). Al het andere in de app kost niets extra. Is het tegoed op, dan werkt alles behalve de AI-functies gewoon door.</li>
+<li><strong>Gegevens:</strong> Alles blijft op je apparaat zolang je de cloud niet inschakelt. Geen advertenties, geen tracking, geen gebruikersaccount. Details in het <a href="datenschutz.html">privacybeleid</a> (in het Duits).</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. Tips en veelgestelde vragen</h2>
+
+<ul>
+<li><strong>Op een iPad of pc</strong> past de indeling zich aan: bredere kolom, meerdere kaarten naast elkaar en op pc (en iPad liggend) de navigatie links. De telefoon werkt ook liggend. Op een pc sluit <kbd>Esc</kbd> het bovenste venster; op een telefoon veeg je een venster omlaag om het te sluiten.</li>
+<li><strong>Mijn gins zijn weg:</strong> Zie <a href="support.html">Support</a> – herstel met de synccode of een JSON-back-up.</li>
+<li><strong>Geen barcodetreffer voor een gin:</strong> Normaal bij kleine distilleerderijen. Gebruik de etiketscan.</li>
+<li><strong>De AI heeft iets verkeerd gelezen:</strong> Corrigeer het veld met de hand en sla op; de AI-waarden zijn suggesties.</li>
+<li><strong>Hoe leg ik een tonic vast?</strong> Als een gin, met de stijl <em>Tonic</em>. Daarna kun je hem aan gins toewijzen als passende tonic.</li>
+<li><strong>De pagina toont nog de oude versie (web):</strong> Laad de pagina opnieuw (op pc <kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+</ul>
+<p>Nog vragen? Schrijf naar <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20Gebruikershandleiding">t.knecht@web.de</a> en vermeld de app-versie (Opties, helemaal onderaan).</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>

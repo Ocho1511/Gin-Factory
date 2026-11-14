@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Uživatelská příručka – Gin-Factory</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR","Noto Sans Devanagari",sans-serif;max-width:760px;margin:0 auto;padding:24px 18px 70px;line-height:1.6;color:#222;background:#fff}
+  h1{font-size:28px;margin:6px 0 4px} h2{font-size:20px;margin-top:34px;padding-top:6px;border-top:1px solid #e3e3e3} h3{font-size:16px;margin:20px 0 4px}
+  small{color:#666} a{color:#0a58ca} p{margin:8px 0} ul,ol{margin:6px 0 10px;padding-left:22px} li{margin:3px 0}
+  code,kbd{background:#f2f2f2;border-radius:4px;padding:1px 5px;font-size:.92em}
+  .tip,.note{border-left:4px solid #b88a2a;background:#fbf6ea;padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+  .note{border-color:#0a58ca;background:#eef4fd}
+  .toc{background:#f7f7f7;border-radius:10px;padding:10px 16px;margin:16px 0} .toc ol{margin:4px 0}
+  .lang{position:sticky;top:0;background:#fff;padding:8px 0;margin:0 0 6px;border-bottom:1px solid #eee;z-index:5}
+  .lang select{font:inherit;font-size:15px;padding:5px 10px;border:1px solid #bbb;border-radius:16px;background:#fff;max-width:100%}
+  table{border-collapse:collapse;width:100%;margin:8px 0} td,th{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top;font-size:15px} th{background:#f4f4f4}
+  .back{margin:0 0 6px} .toapp{display:none} @media (display-mode: standalone){.toapp{display:inline}}
+  @media print{.lang,.back{display:none} body{max-width:none} h2{page-break-after:avoid}}
+</style></head><body>
+<p class="back"><span class="toapp"><a href="index.html">← Do sbírky</a> &nbsp;·&nbsp; </span><a href="support.html">← Zpět na podporu</a></p>
+<div class="lang"><select aria-label="Language / Sprache" onchange="try{localStorage.setItem('gf_guide_lang',this.value.slice(9,-5))}catch(e){}location.href=this.value"><option value="anleitung-cs.html" selected>Čeština</option><option value="anleitung-da.html">Dansk</option><option value="anleitung-de.html">Deutsch</option><option value="anleitung-en.html">English</option><option value="anleitung-el.html">Ελληνικά</option><option value="anleitung-es.html">Español</option><option value="anleitung-fr.html">Français</option><option value="anleitung-hr.html">Hrvatski</option><option value="anleitung-it.html">Italiano</option><option value="anleitung-hu.html">Magyar</option><option value="anleitung-nl.html">Nederlands</option><option value="anleitung-no.html">Norsk</option><option value="anleitung-pl.html">Polski</option><option value="anleitung-pt.html">Português</option><option value="anleitung-ro.html">Română</option><option value="anleitung-ru.html">Русский</option><option value="anleitung-sk.html">Slovenčina</option><option value="anleitung-fi.html">Suomi</option><option value="anleitung-sv.html">Svenska</option><option value="anleitung-uk.html">Українська</option><option value="anleitung-ja.html">日本語</option><option value="anleitung-ko.html">한국어</option><option value="anleitung-zh.html">简体中文</option><option value="anleitung-hi.html">हिन्दी</option></select></div>
+
+<h1>Uživatelská příručka – Gin-Factory</h1>
+<p><small>Aktualizováno: 15. listopadu 2026 · Verze aplikace 2.0</small></p>
+
+<div class="toc">
+
+<strong>Obsah</strong><ol>
+<li><a href="#start">Přehled a první kroky</a></li>
+<li><a href="#add">Přidání ginů a toniků</a></li>
+<li><a href="#cellar">Bar</a></li>
+<li><a href="#drink">Vypití ginu</a></li>
+<li><a href="#racks">Regály a uskladnění</a></li>
+<li><a href="#history">Historie</a></li>
+<li><a href="#wish">Seznam přání</a></li>
+<li><a href="#serve">Perfect serve a sklenice</a></li>
+<li><a href="#recipes">Recepty a police s bylinkami a ozdobami</a></li>
+<li><a href="#stats">Statistiky</a></li>
+<li><a href="#export">Export, import a záloha</a></li>
+<li><a href="#setup">Nastavení</a></li>
+<li><a href="#sync">Synchronizace dvou zařízení</a></li>
+<li><a href="#privacy">AI, soukromí a náklady</a></li>
+<li><a href="#faq">Tipy a časté dotazy</a></li></ol>
+</div>
+
+<!-- ───────────────── 1 ───────────────── -->
+<h2 id="start">1. Přehled a první kroky</h2>
+
+<p>Gin-Factory je váš osobní ginový bar v kapse: spravujete v něm zásoby ginů a toniků, místa uložení, seznam přání, recepty a statistiky. Vše běží ve vašem zařízení; pomocí synchronizačního kódu můžete propojit několik zařízení.</p>
+<p>Dole (na PC a iPadu na šířku: vlevo) najdete lištu s osmi oblastmi:</p>
+<table>
+<tbody><tr><th>Oblast</th><th>Účel</th></tr>
+<tr><td><strong>Bar</strong></td><td>Všechny giny (a tonika), vyhledávání, filtry, řazení, přidání ginu, vypití</td></tr>
+<tr><td><strong>Statistiky</strong></td><td>Vyhodnocení zásob, cen, uskladnění a historie pití</td></tr>
+<tr><td><strong>Recepty</strong></td><td>Gin s tonikem a koktejly, vlastní recepty, recept od AI, police s bylinkami a ozdobami</td></tr>
+<tr><td><strong>Historie</strong></td><td>Giny, které jste vypili</td></tr>
+<tr><td><strong>Regály</strong></td><td>Plán baru: ukládání a přesouvání ginů, QR štítky</td></tr>
+<tr><td><strong>Seznam přání</strong></td><td>Giny a tonika, které si ještě chcete koupit</td></tr>
+<tr><td><strong>Export/Import</strong></td><td>Záloha dat, načítání tabulek a záloh</td></tr>
+<tr><td><strong>Nastavení</strong></td><td>Jméno, měna, jazyk, cloud, definice regálů</td></tr>
+</tbody></table>
+<h3>Prvních pět kroků</h3>
+<ol>
+<li><strong>Vyberte jazyk a měnu</strong>: Nastavení → Obecné. Měna automaticky následuje jazyk.</li>
+<li><strong>Definujte regály</strong> (volitelné): Nastavení → Regály (viz <a href="#racks">kapitola 5</a>).</li>
+<li><strong>Přidejte svůj první gin</strong>: v baru klepněte na <kbd>+</kbd> (<a href="#add">kapitola 2</a>).</li>
+<li><strong>Uskladněte ho</strong>: přiřaďte ginu místo v regálu.</li>
+<li><strong>Zálohujte</strong>: Export/Import → záloha JSON, nebo nastavte cloudovou synchronizaci (<a href="#sync">kapitola 13</a>).</li>
+</ol>
+<div class="tip">Sekce v <em>Nastavení</em> lze sbalit. „Obecné“ je při prvním spuštění otevřeno, ostatní jsou zavřené. Aplikace si pamatuje, co jste naposledy otevřeli nebo zavřeli.</div>
+
+<!-- ───────────────── 2 ───────────────── -->
+<h2 id="add">2. Přidání ginů a toniků</h2>
+
+<p>V baru klepněte na <kbd>+</kbd>. Gin lze přidat několika způsoby – ty se dají kombinovat.</p>
+<h3>a) Ručně</h3>
+<p>Vyplňte pole: <strong>Název / Destilerie, Rok stáčení, Lahve, Styl ginu, Region, Země, Botanicals, ABV (% vol.), Vhodný tonik, Perfect serve, Místo uložení, Cena, Hodnocení, Poznámka</strong>. Povinný je pouze název. <em>Uložit</em> gin vytvoří.</p>
+<ul>
+<li><strong>Styl ginu:</strong> London Dry, Old Tom / Plymouth, Růžový / ovocný gin, Navy Strength, Tonik nebo Ostatní.</li>
+<li><strong>Rok stáčení</strong> je rok stáčení nebo destilace lahve. <strong>Botanicals</strong> jsou bylinné a ovocné složky ginu (např. jalovec, koriandr, citrusová kůra) a <strong>ABV (% vol.)</strong> je obsah alkoholu v procentech.</li>
+<li><strong>Zásoba, Min a Max:</strong> Zadáte-li minimum, aplikace vás upozorní, když zásoba klesne pod něj, a nabídne, že gin přidá na seznam přání (<a href="#cellar">kapitola 3</a>).</li>
+<li><strong>Vhodný tonik</strong> a <strong>Perfect serve</strong>: viz níže a <a href="#serve">kapitola 8</a>.</li>
+<li><strong>Vlastní foto:</strong> „Vyfotit / vybrat foto“ připojí ke ginu fotografii. Zůstane v tomto zařízení a je součástí zálohy JSON, ale do cloudu se nesynchronizuje.</li>
+</ul>
+<h3>b) Naskenovat etiketu (AI)</h3>
+<p>Klepněte na <em>Naskenovat etiketu (AI)</em> a vyfoťte etiketu láhve. AI přečte název, rok, styl, region, zemi, destilerii, botanicals a ABV. Zkontrolujte hodnoty a uložte. Před prvním použitím vás aplikace požádá o souhlas (<a href="#privacy">kapitola 14</a>).</p>
+<h3>c) Naskenovat čárový kód</h3>
+<p>Klepněte na <em>Naskenovat čárový kód</em> a přidržte čárový kód láhve v rámečku. Aplikace vyhledá číslo v bezplatné databázi produktů (bez nákladů, bez kreditu AI) a pokud ho najde, vyplní <strong>název, výrobce a styl ginu</strong>. Rok doplní z názvu, nebo se na něj zeptá.</p>
+<ul>
+<li>Pokud je láhev už v baru, aplikace se zeptá „Přidat další láhev?“ – rychlý způsob, jak zvýšit počet při dalším nákupu.</li>
+<li>Pokud čárový kód v databázi <strong>není</strong> (časté u menších destilerií), objeví se nápověda s tlačítkem <em>Naskenovat etiketu (AI)</em>. Číslo se přesto uloží ke ginu, takže láhev se příště pozná hned.</li>
+</ul>
+<h3>d) Vyhledat gin (AI)</h3>
+<p><em>Vyhledat gin (AI)</em> nechá AI vyhledat na webu region, zemi, botanicals, ABV, aktuální průměrnou cenu a – ve webové verzi – obrázek láhve. Pole, která jste už vyplnili, se nepřepisují. Děje se to také automaticky, jakmile je zadán název a rok a ještě není cena.</p>
+<div class="note">Aplikace pro iPhone nenačítá obrázky láhví z internetu (pravidlo App Store). Místo toho můžete pořizovat vlastní fotografie.</div>
+<h3>e) Tonik jako samostatná kategorie</h3>
+<p>Tonika zakládáte stejně jako giny, ve stylu <strong>Tonik</strong>. V baru je najdete pod filtrem <em>🥤 Tonik</em> a na kartě toniku stojí „Hodí se k: …“ – tedy giny, ke kterým se hodí. Pole <strong>Vhodný tonik</strong> ve formuláři ginu můžete vyplnit ručně, nebo klepnout na 🤖: AI ke ginu přiřadí vhodný tonik (nejprve z vašich toniků, jinak jako doporučení). Všechny giny najednou přiřadíte v <em>Nastavení</em> tlačítkem <em>Přiřadit tonika (AI)</em> (<a href="#setup">kapitola 12</a>).</p>
+
+<!-- ───────────────── 3 ───────────────── -->
+<h2 id="cellar">3. Bar</h2>
+
+<h3>Hledání, filtry, řazení</h3>
+<ul>
+<li><strong>Hledání</strong> nahoře: najde giny podle názvu, regionu, země a destilerie.</li>
+<li><strong>Filtry:</strong> Vše, London Dry, Old Tom / Plymouth, Růžový / ovocný gin, Navy Strength, Tonik, Ostatní. Kliknutím na styl se hledání automaticky vymaže.</li>
+<li><strong>Řazení:</strong> Nejnovější první, Název, Rok stáčení, Botanicals, Region nebo Země.</li>
+<li><strong>Seznam / karty:</strong> Tlačítko <em>Seznam</em> přepíná mezi kompaktním seznamem a podrobnými kartami.</li>
+</ul>
+<h3>Karta ginu</h3>
+<p>Karta ukazuje název, rok stáčení, destilerii, hodnocení (hvězdičky), region a zemi (klepnutím se otevře mapa regionů ginu), počet lahví a <strong>místa uložení</strong> (klepnutím přejdete na regál). Jalovcové bobule na kartě označují styl ginu; klepnutím na ně se otevře stránka ginu na Wikipedii. Je-li nastaven Perfect serve, karta ukazuje také oblíbený tonik, ozdobu a sklenici. Karta toniku ukazuje „Hodí se k: …“.</p>
+<p>Dole na kartě: <em>Upravit</em>, <em>Vypít</em> a 🗑 (smazat gin).</p>
+<h3>Zásoba, Min/Max a nákupní seznam</h3>
+<p>Zadáte-li u ginu minimum (a volitelně maximum), karta ukazuje „Zásoba · Min · Max“ a pomocí ⚠ upozorní, když jste pod ním. Tlačítko <em>Dokoupit</em> otevře <strong>nákupní seznam</strong>: uvádí všechny giny pod minimem (cílem je maximum, jinak minimum). Seznam můžete sdílet nebo zkopírovat, nebo giny přidat na seznam přání.</p>
+
+<!-- ───────────────── 4 ───────────────── -->
+<h2 id="drink">4. Vypití ginu</h2>
+
+<p>Na kartě ginu klepněte na <em>Vypít</em>. Otevře se dialog <em>Vypít gin</em>:</p>
+<ul>
+<li><strong>Z kterého místa byla vzata?</strong> – vyberte místo v regálu, odkud láhev pochází, nebo „Láhev bez místa“. Místo se uvolní.</li>
+<li><strong>S kým jste pili?</strong> – jména vašich hostů (volitelné).</li>
+<li><strong>Příležitost</strong> – Jaro, Léto, Podzim, Zima, Narozeniny, Oslava nebo „Jen tak“ (lze vybrat více).</li>
+</ul>
+<p><em>Vypít</em> odebere jednu láhev a vytvoří záznam v <a href="#history">Historii</a>. Slaví to konfety a zvuk (lze vypnout v Nastavení). Je-li to <strong>poslední láhev</strong>, aplikace vás upozorní: gin pak zmizí z baru (ale zůstane v Historii).</p>
+<p>Jak gin nejlépe podávat, napoví Perfect serve (<a href="#serve">kapitola 8</a>).</p>
+<div class="tip"><strong>Rychle skenem:</strong> Kulaté tlačítko 🥂 v baru vyfotí etiketu, pozná gin ve vašem baru a rovnou otevře dialog Vypít.</div>
+
+<!-- ───────────────── 5 ───────────────── -->
+<h2 id="racks">5. Regály a uskladnění</h2>
+
+<h3>Definování a úprava regálů</h3>
+<p><strong>Nastavení → Regály</strong> (klepnutím na nadpis otevřete): zadejte název, úrovně, místa na úroveň a lahve na místo, poté klepněte na ＋. „Lahví/místo“ je 1 pro stojan na lahve a větší pro podlahu nebo bednu. V seznamu má každý regál:</p>
+<ul>
+<li><strong>úchyt ⠿</strong> pro změnu pořadí a pod seznamem tlačítko <em>Seřadit A–Z</em>,</li>
+<li>▦ pro <strong>QR štítky</strong>, ✏️ pro úpravu, 🧹 pro vyprázdnění a 🗑 pro smazání.</li>
+</ul>
+<p>Pomocí <strong>úpravy</strong> (✏️) můžete regál přejmenovat, změnit počet míst na úroveň, přidat úrovně nahoře nebo dole, úrovně odebrat a dát každé úrovni vlastní název a počet lahví. Lahve, které tím ztratí místo, se poté počítají jako „neuskladněné“; samotné giny zůstávají v baru. Před takovými změnami se aplikace zeptá.</p>
+<h3>Oblast Regály</h3>
+<p>Nahoře vyberete regál pomocí <strong>dlaždic</strong> (název a „obsazeno / míst“). Pořadí lze změnit i zde: na PC dlaždici přetáhněte, na dotykových obrazovkách dlaždici asi půl sekundy podržte a pak přetáhněte. Pod tím je <strong>plán baru</strong>: každá úroveň s jejími místy. Obsazená místa ukazují láhev v barvě stylu ginu.</p>
+<h3>Uskladnění</h3>
+<ol>
+<li>Klepněte na gin pod „Nezařazené“ (seznam lze filtrovat podle destilerie a země) – nebo klepněte na upozornění „neuskladněno“ v baru.</li>
+<li>Klepněte na <strong>volné místo</strong>. U podlah a beden aplikace uloží tolik lahví, kolik se vejde.</li>
+</ol>
+<p><strong>Naskenovat a uložit gin</strong> vyfotí etiketu, najde gin a provede vás uskladněním.</p>
+<h3>Obsazená místa, přesun, odebrání</h3>
+<p>Klepněte na obsazené místo: uvidíte gin a můžete ho <em>otevřít</em>, <em>odebrat z místa</em> nebo <em>přesunout</em> (pak klepněte na volné místo). <em>Vyprázdnit regál</em> vyjme všechny lahve z regálu (po potvrzení).</p>
+<h3>QR štítky a „Skenovat úroveň“</h3>
+<p>Pomocí <strong>QR štítků</strong> (Nastavení → Regály → ▦) vytvoříte jeden štítek pro regál a jeden pro každou úroveň. Sdílejte jako PDF nebo vytiskněte (arch štítků 63,5 × 38,1 mm, 21 na stránku) a nalepte je. Poté: <strong>Skenovat úroveň</strong> v oblasti Regály – uvidíte, co na dané úrovni stojí, a můžete <em>uložit sem</em>, <em>vyjmout</em>, vypít, přesunout láhev nebo <em>přesunout celou úroveň</em>. Ve formuláři „Přidat gin“ naskenování štítku úrovně vyplní také místo uložení.</p>
+
+<!-- ───────────────── 6 ───────────────── -->
+<h2 id="history">6. Historie</h2>
+
+<p>Historie uvádí všechny giny, které jste vypili, s datem, ginem, hodnotou, hosty a příležitostí. Můžete filtrovat podle stylu ginu a příležitosti a upravit záznam (hosté, příležitost). Historie napájí vyhodnocení „Vypito za měsíc/rok“, výdaje a četnost ve Statistikách.</p>
+
+<!-- ───────────────── 7 ───────────────── -->
+<h2 id="wish">7. Seznam přání</h2>
+
+<ul>
+<li><strong>+ Přidat přání</strong>: ručně nebo naskenováním etikety, s volitelnou poznámkou („Kde koupit?“).</li>
+<li><strong>Hledat ceny</strong> (💶): Aplikace hledá na webu ceny ginu, ukáže nejlevnější nález a vynásobí ho množstvím. Jde o orientační hodnoty bez záruky – poštovné a dostupnost si ověřte v obchodě.</li>
+<li><strong>Zaškrtnutí</strong> vlevo: označí jako koupené/hotové (řádek zeslábne).</li>
+<li><strong>→ Bar</strong>: přesune přání do baru (s množstvím a, je-li k dispozici, nejlevnější cenou) a pokud máte regály, rovnou vás zavede k uskladnění.</li>
+<li>Pokud gin klesne pod minimum, aplikace nabídne, že ho s chybějícím množstvím přidá na seznam přání („dokoupit“).</li>
+<li>Chybějící tonika, bylinky a ozdoby se sem dostanou přes <em>+ Seznam přání</em> v Perfect serve nebo přes <em>🛒 Přidat chybějící do seznamu přání</em> v Receptech.</li>
+</ul>
+
+<!-- ───────────────── 8 ───────────────── -->
+<h2 id="serve">8. Perfect serve a sklenice</h2>
+
+<p>Ve formuláři <em>Přidat gin</em> / <em>Upravit gin</em> najdete blok <strong>Perfect serve (bylinky, ozdoby, poměr)</strong>. Napoví, jak gin nejlépe podávat – především s jakým tonikem.</p>
+<h3>Dvě tlačítka</h3>
+<ul>
+<li><strong>🌿 Tip podle pravidel</strong> – funguje offline a je zdarma. Aplikace posuzuje gin podle stylu a botanicals.</li>
+<li><strong>🤖 Doporučení AI</strong> – stojí jeden sken AI (<a href="#privacy">kapitola 14</a>).</li>
+</ul>
+<p>Před použitím zadejte název (jinak se zobrazí „Nejprve zadejte název“). Výsledkem je <strong>až tři doporučení toniku</strong> s odůvodněním, např. „Klasický indický tonik“ (neutrální a hořký, nechává vést jalovec), „Středomořský tonik“, „Tonik z bezových květů“, „Zázvorový / kořeněný tonik“, „Tonik s růžovým grapefruitem“, „Citrusový tonik“ nebo „Lehký tonik (jemný)“. U každého doporučení uvidíte <strong>✓ ve vašem baru</strong> (takový tonik máte) nebo <strong>🛒 Tip na nákup</strong> s tlačítkem <em>+ Seznam přání</em>. <strong>Klepnutím</strong> na doporučení nastavíte tento tonik jako oblíbený („Nastaveno jako oblíbené ✓“).</p>
+<h3>Pole</h3>
+<ul>
+<li><strong>Bylinky a ozdoby</strong> (oddělené čárkou): rozmarýn, tymián, bazalka, okurka, grapefruitová kůra, růžový pepř apod.</li>
+<li><strong>Poměr</strong>: např. 1:2 (gin k toniku)</li>
+<li><strong>Sklenice</strong></li>
+<li><strong>Led</strong></li>
+</ul>
+<p>Na <strong>kartě ginu</strong> v baru se zobrazí oblíbený tonik, ozdoba a sklenice.</p>
+<h3>Sklenice: „Zobrazit sklenici“</h3>
+<p>Sklenice (např. sklenice balon) je odkaz <em>Zobrazit sklenici</em>. Otevře kartu s kresbou a krátkým vysvětlením; odkaz <em>Zobrazit další obrázky ↗</em> vede k dalším obrázkům a <em>Zavřít</em> kartu zavře. K dispozici jsou tyto sklenice:</p>
+<table>
+<tbody><tr><th>Sklenice</th><th>K čemu</th></tr>
+<tr><td><strong>Sklenice copa / balon</strong></td><td>Klasický gin s tonikem: široká mísa na dlouhé stopce, vejde se do ní velký led a ozdoba</td></tr>
+<tr><td><strong>Sklenice highball</strong></td><td>Gin s hodně toniku, Tom Collins a další long drinky</td></tr>
+<tr><td><strong>Tumbler (sklenice na rocks)</strong></td><td>Gin s ledem, Negroni, Gimlet, Basil Smash</td></tr>
+<tr><td><strong>Coupe</strong></td><td>Koktejly bez ledu: Gimlet, Southside, Bee's Knees</td></tr>
+<tr><td><strong>Sklenice na martini</strong></td><td>Dry Martini a další míchané ginové koktejly bez ledu</td></tr>
+<tr><td><strong>Flétna na šampaňské</strong></td><td>French 75 se šumivým vínem</td></tr>
+</tbody></table>
+
+<!-- ───────────────── 9 ───────────────── -->
+<h2 id="recipes">9. Recepty a police s bylinkami a ozdobami</h2>
+
+<p>Oblast <strong>Recepty</strong> (podtitul „Gin s tonikem a koktejly“) obsahuje <strong>13 klasik</strong> s ingrediencemi a postupem: Gin s tonikem, Středomořský G&amp;T, Pink gin s tonikem, G&amp;T s Navy Strength ginem, Negroni, Dry Martini, Gimlet, Tom Collins, Southside, French 75, Bee's Knees, Martinez a Gin Basil Smash.</p>
+<h3>Filtry</h3>
+<ul>
+<li><strong>Vše</strong> – všechny recepty,</li>
+<li><strong>⭐ Oblíbené</strong> – recepty označené hvězdičkou,</li>
+<li><strong>Moje</strong> – vaše vlastní recepty,</li>
+<li><strong>✓ Hodí se do mého baru</strong> – recepty, na které máte potřebné giny, tonika, bylinky a ozdoby.</li>
+</ul>
+<h3>Vlastní recepty</h3>
+<ul>
+<li><strong>Přidat vlastní recept</strong>: zadejte název, ingredience (každou na samostatném řádku) a postup, pak klepněte na <em>Uložit recept</em>. Před smazáním receptu se aplikace zeptá.</li>
+<li><strong>Recept na gin (AI)</strong>: vyberte gin ze seznamu („Vyberte gin…“) a klepněte na <em>🤖 Vytvořit recept</em>. AI vytvoří recept pro tento gin; podržíte si ho pomocí <em>Uložit jako můj recept</em>. Stojí to jeden sken AI.</li>
+</ul>
+<h3>Police s bylinkami a ozdobami</h3>
+<p>V <strong>Moje police s bylinkami a ozdobami</strong> klepnete na to, co máte doma: např. měsíček limetky, citronová nebo grapefruitová kůra, okurková stuha, rozmarýn, tymián, bazalka, máta, šalvěj, levandule, okvětní lístky růže, růžový pepř, jalovcové bobule, jahoda, malina, zázvor nebo kardamom. Doporučení (i v Perfect serve) pak zobrazí <strong>✓</strong> (mám) nebo <strong>🛒</strong> (chybí). <em>🛒 Přidat chybějící do seznamu přání</em> založí chybějící věci na <a href="#wish">seznamu přání</a>.</p>
+<div class="tip">Recepty, oblíbené a police s bylinkami a ozdobami se zálohují cloudovou synchronizací (<a href="#sync">kapitola 13</a>).</div>
+
+<!-- ───────────────── 10 ───────────────── -->
+<h2 id="stats">10. Statistiky</h2>
+
+<p>Shora dolů:</p>
+<ul>
+<li><strong>Klíčová čísla:</strong> lahve, giny, celková hodnota, průměrné hodnocení.</li>
+<li><strong>Podle typu</strong> a <strong>Nejlepší giny</strong> (podle hodnocení nebo četnosti, lze filtrovat podle hvězdiček).</li>
+<li><strong>Podle země, regionu, destilerie:</strong> sloupce (až 8, zbytek jako „+n dalších“); klepnutí vyhledá v baru. <strong>Podle roku stáčení:</strong> sloupce, posuvné do stran.</li>
+<li><strong>Ceny:</strong> průměr na láhev, nejlevnější, nejdražší, cenové kategorie (přizpůsobené vaší měně) a hodnota podle země.</li>
+<li><strong>Sklad:</strong> obsazenost v procentech, volná místa, neuskladněné lahve a sloupec pro každý regál (klepnutím přejdete na regál).</li>
+<li><strong>Vypito:</strong> za měsíc (posledních 12) a za rok, plus výdaje za vypité lahve.</li>
+<li><strong>Nejlepší země a nejlepší destilerie</strong> podle průměrného hodnocení (bar a Historie dohromady).</li>
+<li><strong>Dokoupit:</strong> giny pod minimální zásobou (otevře nákupní seznam), otevřená přání a jejich hodnota.</li>
+</ul>
+<p>Sekce bez dat (např. bez cen) se skryjí.</p>
+
+<!-- ───────────────── 11 ───────────────── -->
+<h2 id="export">11. Export, import a záloha</h2>
+
+<table>
+<tbody><tr><th>Funkce</th><th>Účel</th></tr>
+<tr><td>Exportovat CSV</td><td>Tabulka pro Excel nebo Numbers</td></tr>
+<tr><td>Exportovat Excel</td><td>Jako soubor .xlsx</td></tr>
+<tr><td>Exportovat PDF</td><td>Tisknutelný přehled</td></tr>
+<tr><td><strong>Záloha JSON</strong></td><td><strong>Kompletní záloha dat</strong> (giny, seznam přání, historie, regály, zobrazované jméno, vlastní fotografie)</td></tr>
+<tr><td>Do schránky</td><td>Zkopírovat textový seznam</td></tr>
+<tr><td>Importovat JSON / CSV / Excel</td><td>Obnovit zálohu nebo načíst tabulku</td></tr>
+</tbody></table>
+<div class="tip"><strong>Pravidelně zálohujte do JSON.</strong> Import JSON nahradí bar zálohou (aplikace se předtím zeptá). Na novém zařízení tím obnovíte vše. Případně použijte cloudovou synchronizaci (<a href="#sync">kapitola 13</a>).</div>
+
+<!-- ───────────────── 12 ───────────────── -->
+<h2 id="setup">12. Nastavení</h2>
+
+<h3>Obecné</h3>
+<ul>
+<li><strong>Zobrazované jméno (název):</strong> zadejte například své křestní jméno, aby se objevilo v názvu aplikace. Pro výchozí název nechte prázdné.</li>
+<li><strong>Měna:</strong> €, $, £, CHF, A$, C$, SEK, NOK, DKK, PLN, HUF, CZK, RON, RUB, UAH, JPY, CNY, KRW, INR.</li>
+<li><strong>Jazyk:</strong> 25 jazykových variant, včetně němčiny, angličtiny, angličtiny (US) a mnoha dalších. <strong>Měna se mění automaticky</strong> (švédština → koruna, angličtina (US) → US $, angličtina (UK) → £). Příklad: když přepnete na švédštinu, aplikace přejde na SEK a zeptá se, zda <strong>přepočítat všechny ceny dnešním kurzem Evropské centrální banky</strong> („OK“), nebo jen změnit označení („Zrušit“). Pro RUB a UAH kurzy nejsou. Měnu můžete kdykoli změnit ručně.</li>
+<li><strong>Konfety a zvuk při pití:</strong> obojí, jen konfety, nebo vypnuto.</li>
+<li><strong>Písmo:</strong> na výběr je deset písem.</li>
+</ul>
+<h3>Úložiště</h3>
+<p><em>Pouze toto zařízení</em> nebo <em>Cloud</em> (synchronizační kód, <a href="#sync">kapitola 13</a>).</p>
+<h3>Kredity AI (pouze aplikace pro iPhone)</h3>
+<p>Ukazuje zbývající skeny AI, ID zařízení a – v případě potřeby – <em>Dobít kredity</em> nebo odemykací kód. Viz <a href="#privacy">kapitola 14</a>.</p>
+<h3>Databáze ginů</h3>
+<ul>
+<li><strong>Aktualizovat všechny giny (AI):</strong> doplní chybějící region, zemi, botanicals a cenu u všech ginů (ve webové verzi i obrázky láhví). Stávající hodnoty zůstanou. <em>Tip: nejdřív exportujte zálohu JSON.</em></li>
+<li><strong>Přiřadit tonika (AI):</strong> najde vhodný tonik pro každý gin, který ho ještě nemá. AI vybírá nejprve z vašich toniků, jinak dá doporučení. Aplikace se před startem zeptá na potvrzení a na konci ukáže počet uložených dvojic.</li>
+</ul>
+<h3>Regály</h3>
+<p>Viz <a href="#racks">kapitola 5</a>. Nadpis ukazuje počet regálů.</p>
+<h3>Soukromí, podpora, příručka, kontakt, verze</h3>
+<p>Odkazy vedou na zásady ochrany osobních údajů a na stránku podpory; tlačítko <em>Uživatelská příručka</em> otevře tuto příručku. Úplně dole najdete <strong>verzi</strong> aplikace – uveďte ji prosím, když nás kontaktujete.</p>
+<p>V oblasti <em>Kontakt</em> (po klepnutí se rozbalí) najdete jméno vývojáře a řádek „Last Build: datum“, tedy datum posledního sestavení aplikace.</p>
+
+<!-- ───────────────── 13 ───────────────── -->
+<h2 id="sync">13. Synchronizace dvou zařízení</h2>
+
+<ol>
+<li><strong>První zařízení:</strong> Nastavení → Úložiště → <em>Cloud</em> → <em>Vytvořit nový synchronizační kód</em>. Kód se zobrazí na obrazovce; pomocí <em>Uložit kód e-mailem</em> si ho pošlete.</li>
+<li><strong>Druhé zařízení:</strong> Nastavení → Úložiště → <em>Cloud</em> → zadejte kód (malými písmeny, bez mezer) → Připojit. Pokud už zařízení obsahuje giny, aplikace se zeptá, zda je sloučit s daty v cloudu.</li>
+<li>Poté se obě zařízení synchronizují automaticky (např. při otevření aplikace); <em>Synchronizovat nyní</em> to spustí ručně. Pravidlo zní: <strong>vyhrává nejnovější změna</strong>.</li>
+</ol>
+<p>Synchronizují se giny (a tonika), seznam přání, historie, regály, vlastní recepty, oblíbené recepty, police s bylinkami a ozdobami a nastavení jako jazyk a měna. <strong>Nesynchronizují se</strong> vlastní fotografie a data specifická pro zařízení. Kdokoli, kdo zná váš kód, může vidět vaše giny – sdílejte ho jen s lidmi, kterým důvěřujete. Uchovávejte také zálohu JSON.</p>
+
+<!-- ───────────────── 14 ───────────────── -->
+<h2 id="privacy">14. AI, soukromí a náklady</h2>
+
+<ul>
+<li><strong>K čemu se AI používá?</strong> Naskenování etikety, vyhledání ginu, hledání cen, Perfect serve (Doporučení AI), přiřazení toniku, recept na gin a „Aktualizovat všechny giny“. Fotografie nebo název ginu se přes náš server odešle službě AI (Anthropic, USA) k vyhodnocení – bez jmen a účtů. Před prvním použitím vás aplikace požádá o souhlas.</li>
+<li><strong>Bez kreditu AI:</strong> skenování čárového kódu (odesílá pouze číslo do bezplatné databáze produktů) a Tip podle pravidel v Perfect serve.</li>
+<li><strong>Náklady (aplikace pro iPhone):</strong> 50 volání AI na instalaci je zahrnuto v kupní ceně; další lze koupit jako volitelný jednorázový nákup (žádné předplatné, kredity nevypršují). Vše ostatní v aplikaci je bez příplatku. Po vyčerpání kreditů funguje vše kromě funkcí AI dál.</li>
+<li><strong>Data:</strong> Vše zůstává ve vašem zařízení, dokud nezapnete cloud. Žádné reklamy, žádné sledování, žádný uživatelský účet. Podrobnosti v <a href="datenschutz.html">zásadách ochrany osobních údajů</a> (německy).</li>
+</ul>
+
+<!-- ───────────────── 15 ───────────────── -->
+<h2 id="faq">15. Tipy a časté dotazy</h2>
+
+<ul>
+<li><strong>Na iPadu nebo PC</strong> se rozložení přizpůsobí: širší sloupec, více karet vedle sebe a na PC (a iPadu na šířku) navigace vlevo. Telefon funguje i na šířku. Na PC <kbd>Esc</kbd> zavře horní okno; na telefonu okno zavřete přejetím dolů.</li>
+<li><strong>Moje giny zmizely:</strong> Viz <a href="support.html">Podpora</a> – obnovte pomocí synchronizačního kódu nebo zálohy JSON.</li>
+<li><strong>Pro gin se nenašel čárový kód:</strong> U malých destilerií normální. Použijte skenování etikety.</li>
+<li><strong>AI něco špatně přečetla:</strong> Pole opravte ručně a uložte; hodnoty od AI jsou jen návrhy.</li>
+<li><strong>Jak přidám tonika?</strong> Založte je jako giny se stylem „Tonik“. Pak je AI může ginům přiřadit (🤖 u pole „Vhodný tonik“ nebo „Přiřadit tonika (AI)“ v Nastavení).</li>
+<li><strong>Stránka stále ukazuje starou verzi (web):</strong> Načtěte stránku znovu (na PC <kbd>Ctrl</kbd>+<kbd>F5</kbd>).</li>
+</ul>
+<p>Další otázky? Napište na <a href="mailto:t.knecht@web.de?subject=Gin-Factory%20U%C5%BEivatelsk%C3%A1%20p%C5%99%C3%ADru%C4%8Dka">t.knecht@web.de</a> a uveďte verzi aplikace (Nastavení, úplně dole).</p>
+
+<p style="margin-top:36px"><small>Gin-Factory · Thomas Knecht · Scheidemannstr. 29 · 42781 Haan · Deutschland</small></p>
+<script>if(window.navigator.standalone){document.querySelectorAll('.toapp').forEach(function(e){e.style.display='inline'})}</script>
+</body></html>
