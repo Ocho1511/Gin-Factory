@@ -22,7 +22,8 @@
     "title_connect": "Mit Code verbinden",
     "title_unlock": "Freischalten",
     "title_addrack": "Regal hinzufügen",
-    "title_scanloc": "Lagerplatz scannen"
+    "title_scanloc": "Lagerplatz scannen",
+    "enrich_desc": "Fehlende Region, Land, Destillerie, Serviertemperatur & Preis ergänzen"
   },
   "en": {
     "glass_more": "See more pictures ↗",
@@ -47,6 +48,7 @@
     "title_connect": "Connect with code",
     "title_unlock": "Unlock",
     "title_addrack": "Add shelf",
-    "title_scanloc": "Scan storage location"
+    "title_scanloc": "Scan storage location",
+    "enrich_desc": "Fill in missing region, country, distillery, serving temperature & price"
   }
 }
