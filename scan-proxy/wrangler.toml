@@ -7,7 +7,7 @@ compatibility_date = "2026-01-01"
 # und die ausgegebene id hier eintragen.
 [[kv_namespaces]]
 binding = "SYNC"
-id = "7f6c997d7c1446e5b01d44f6ee32d403"
+id = "201668e0b15a422db4aa032fe1451d62"
 
 # Optional: erlaubte Herkunftsadressen (Komma-getrennt), z. B. die eigene GitHub-Pages-Adresse
 # [vars]
