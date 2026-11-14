@@ -1,0 +1,114 @@
+{
+ "sv": {
+  "sync_email_body_1": "Din synkkod för Gin-Factory (förvara den säkert):",
+  "ripe_nomatch": "Inga ginsorter matchar filtren.",
+  "setup_owner_desc": "Lämna tomt för standardtiteln. Namn → „Namns Gin-Factory\"."
+ },
+ "da": {
+  "sync_email_body_1": "Din synk-kode til Gin-Factory (opbevar den sikkert):",
+  "ripe_nomatch": "Ingen gin matcher disse filtre.",
+  "setup_owner_desc": "Lad være tom for standardtitlen. Navn → „Navns Gin-Factory\"."
+ },
+ "fi": {
+  "sync_email_body_1": "Gin-Factory-synkronointikoodisi (säilytä turvassa):",
+  "ripe_nomatch": "Ei ginejä näillä suodattimilla.",
+  "setup_owner_desc": "Jätä tyhjäksi oletusotsikkoa varten. Nimi → „Nimen Gin-Factory\".",
+  "shelf_how_many": "Kuinka monta pulloa ginia ”{name}” varastoidaan?"
+ },
+ "ru": {
+  "sync_email_body_1": "Ваш код синхронизации Gin-Factory (храните в надёжном месте):",
+  "ripe_nomatch": "Нет джинов по этим фильтрам.",
+  "setup_owner_desc": "Оставьте пустым для стандартного заголовка. Имя → „Gin-Factory: Имя\"."
+ },
+ "it": {
+  "sync_email_body_1": "Il tuo codice di sync di Gin-Factory (conservalo al sicuro):",
+  "ripe_nomatch": "Nessun gin corrisponde a questi filtri.",
+  "setup_owner_desc": "Lascia vuoto per il titolo predefinito. Nome → „Gin-Factory di Nome\"."
+ },
+ "fr": {
+  "sync_email_body_1": "Votre code de sync Gin-Factory (conservez-le en lieu sûr) :",
+  "ripe_nomatch": "Aucun gin ne correspond à ces filtres.",
+  "setup_owner_desc": "Laissez vide pour le titre par défaut. Nom → « Gin-Factory de Nom »."
+ },
+ "pl": {
+  "sync_email_body_1": "Twój kod synchronizacji Gin-Factory (przechowuj go bezpiecznie):",
+  "ripe_nomatch": "Brak ginów dla tych filtrów.",
+  "setup_owner_desc": "Pozostaw puste dla domyślnego tytułu. Nazwa → „Gin-Factory: Nazwa\"."
+ },
+ "hu": {
+  "sync_email_body_1": "A Gin-Factory szinkronkódod (őrizd meg biztonságosan):",
+  "ripe_nomatch": "Nincs a szűrőknek megfelelő gin.",
+  "setup_owner_desc": "Hagyd üresen az alapértelmezett címhez. Név → „Név Gin-Factory-ja\"."
+ },
+ "cs": {
+  "sync_email_body_1": "Váš synchronizační kód Gin-Factory (uchovejte jej v bezpečí):",
+  "ripe_nomatch": "Žádné giny neodpovídají filtrům.",
+  "setup_owner_desc": "Nechte prázdné pro výchozí název. Jméno → „Gin-Factory: Jméno\"."
+ },
+ "sk": {
+  "sync_email_body_1": "Váš synchronizačný kód Gin-Factory (uchovajte ho v bezpečí):",
+  "ripe_nomatch": "Žiadne giny nezodpovedajú filtrom.",
+  "setup_owner_desc": "Nechajte prázdne pre predvolený názov. Meno → „Gin-Factory: Meno\"."
+ },
+ "ro": {
+  "sync_email_body_1": "Codul tău de sincronizare Gin-Factory (păstrează-l în siguranță):",
+  "ripe_nomatch": "Niciun gin nu corespunde acestor filtre.",
+  "setup_owner_desc": "Lasă gol pentru titlul implicit. Nume → „Gin-Factory al lui Nume\"."
+ },
+ "hr": {
+  "sync_email_body_1": "Vaš kôd za sinkronizaciju Gin-Factory (čuvajte ga na sigurnom):",
+  "ripe_nomatch": "Nema ginova za ove filtre.",
+  "setup_owner_desc": "Ostavite prazno za zadani naslov. Ime → „Gin-Factory: Ime\"."
+ },
+ "pt": {
+  "sync_email_body_1": "O seu código de sincronização do Gin-Factory (guarde-o em segurança):",
+  "ripe_nomatch": "Nenhum gin corresponde a estes filtros.",
+  "setup_owner_desc": "Deixe vazio para o título padrão. Nome → „Gin-Factory de Nome\"."
+ },
+ "no": {
+  "sync_email_body_1": "Din synk-kode for Gin-Factory (oppbevar den trygt):",
+  "ripe_nomatch": "Ingen gin matcher disse filtrene.",
+  "setup_owner_desc": "La stå tomt for standardtittelen. Navn → „Navns Gin-Factory\"."
+ },
+ "nl": {
+  "sync_email_body_1": "Jouw synccode voor Gin-Factory (bewaar hem veilig):",
+  "ripe_nomatch": "Geen gins voor deze filters.",
+  "setup_owner_desc": "Laat leeg voor de standaardtitel. Naam → „Gin-Factory van Naam\"."
+ },
+ "hi": {
+  "sync_email_body_1": "आपका Gin-Factory सिंक कोड (कृपया इसे सुरक्षित रखें):",
+  "ripe_nomatch": "इन फ़िल्टर से कोई जिन मेल नहीं खाती।",
+  "setup_owner_desc": "डिफ़ॉल्ट शीर्षक के लिए खाली छोड़ें। नाम → \"नाम की Gin-Factory\"।"
+ },
+ "de": {
+  "ripe_nomatch": "Keine Gins für diese Filter."
+ },
+ "en": {
+  "ripe_nomatch": "No gins match these filters."
+ },
+ "es": {
+  "ripe_nomatch": "Ninguna ginebra coincide con estos filtros.",
+  "setup_owner_desc": "Déjalo vacío para el título estándar. Nombre → \"Gin-Factory de Nombre\"."
+ },
+ "el": {
+  "ripe_nomatch": "Κανένα τζιν δεν ταιριάζει με αυτά τα φίλτρα.",
+  "setup_owner_desc": "Αφήστε κενό για τον προεπιλεγμένο τίτλο. Όνομα → \"Gin-Factory: Όνομα\"."
+ },
+ "uk": {
+  "ripe_nomatch": "Немає джинів за цими фільтрами.",
+  "setup_owner_desc": "Залиште порожнім для стандартної назви. Ім'я → \"Gin-Factory: Ім'я\"."
+ },
+ "ja": {
+  "ripe_nomatch": "この条件に一致するジンはありません。",
+  "setup_owner_desc": "空欄の場合は標準のタイトルになります。名前 → \"名前のGin-Factory\"。"
+ },
+ "ko": {
+  "ripe_nomatch": "이 필터에 맞는 진이 없어요.",
+  "setup_owner_desc": "비워 두면 기본 제목이 표시돼요. 이름 → \"이름의 Gin-Factory\".",
+  "toast_rack_removed": "\"{name}\" 진을 칸에서 제거했어요 ✓"
+ },
+ "zh": {
+  "ripe_nomatch": "没有符合这些筛选条件的金酒。",
+  "setup_owner_desc": "留空则使用默认标题。名称 → \"名称的Gin-Factory\"。"
+ }
+}

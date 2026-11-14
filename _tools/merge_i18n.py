@@ -84,6 +84,30 @@ for lang, a, b in sorted(blocks, key=lambda x: -x[1]):
     L[a + 1:a + 1] = new_lines
     added_total += len(new_lines)
 
+# Korrekturen (Wein-Reste -> Gin; erzeugt von make_overrides.py), die ein erneutes Zusammenfuehren nicht zuruecksetzt
+ov = load(D + 'i18n_overrides_gin.json') or {}
+n_ov = 0
+cur_lang = None
+i_end = next(i for i in range(i0, len(L)) if L[i] == '};')
+seen = {}
+for k in range(i0 + 1, i_end):
+    mb = re.match(r'^([a-z]{2}(?:-[A-Za-z]+)?): \{$', L[k])
+    if mb:
+        cur_lang = mb.group(1)
+        continue
+    kv = ov.get(cur_lang)
+    m = re.match(r'^\s+([A-Za-z_0-9]+): ', L[k])
+    if kv and m and m.group(1) in kv:
+        new = '  %s: %s,' % (m.group(1), esc(kv[m.group(1)]))
+        seen.setdefault(cur_lang, set()).add(m.group(1))
+        if L[k] != new:
+            L[k] = new
+            n_ov += 1
+for lang, kv in ov.items():
+    miss = [k for k in kv if k not in seen.get(lang, set())]
+    if miss:
+        print('Override-Schluessel ohne vorhandene Zeile (%s):' % lang, miss)
+print('Ueberschreibungen angewendet:', n_ov)
 s2 = '\n'.join(L)
 if '--check' not in sys.argv:
     open(P, 'w', encoding='utf-8', newline='').write(s2)
