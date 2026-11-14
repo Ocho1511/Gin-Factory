@@ -1111,7 +1111,7 @@ input[type="file"] { display: none; }
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <button class="nav-btn active" onclick="showTab('keller',this)">
-    <span class="nav-icon">🍸</span><span data-i18n="nav_keller">Keller</span>
+    <span class="nav-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" style="display:block;margin:0 auto"><defs><linearGradient id="gbG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2e8f6b"/><stop offset=".55" stop-color="#4fc19a"/><stop offset="1" stop-color="#1f6b4f"/></linearGradient></defs><rect x="9.4" y="1.2" width="5.2" height="2.6" rx="1" fill="#c9a064"/><path d="M10.2 3.8h3.6v4.2c0 1.2 3.7 2.2 3.7 5.2V20a2.5 2.5 0 0 1-2.5 2.5H9a2.5 2.5 0 0 1-2.5-2.5v-6.8c0-3 3.7-4 3.7-5.2z" fill="url(#gbG)" stroke="#17583f" stroke-width=".7" stroke-linejoin="round"/><rect x="8" y="13" width="8" height="6" rx=".8" fill="#f3dfa0"/><circle cx="10.4" cy="16" r="1.1" fill="#3e5f9e"/><circle cx="13.6" cy="16" r="1.1" fill="#3e5f9e"/><circle cx="12" cy="14.6" r="1.1" fill="#5f86c4"/><path d="M8.3 12.6c0-1 .7-1.8 1.2-2.3" stroke="rgba(255,255,255,.55)" stroke-width=".7" fill="none" stroke-linecap="round"/></svg></span><span data-i18n="nav_keller">Keller</span>
   </button>
   <button class="nav-btn" onclick="showTab('stats',this)">
     <span class="nav-icon">📊</span><span data-i18n="nav_stats">Statistik</span>
@@ -14176,7 +14176,7 @@ function tonicLine(w) {
   if (w.type === 'tonic') {
     const nm = (w.name || '').trim().toLowerCase();
     const gins = wines.filter(x => x.type !== 'tonic' && x.tonic && x.tonic.trim().toLowerCase() === nm).map(x => x.name);
-    return gins.length ? `<div class="wine-region" style="margin-top:4px">🍸 ${esc(t('tonic_pairs'))}: ${esc(gins.join(', '))}</div>` : '';
+    return gins.length ? `<div class="wine-region" style="margin-top:4px">${GIN_ICO} ${esc(t('tonic_pairs'))}: ${esc(gins.join(', '))}</div>` : '';
   }
   return (w.tonic ? `<div class="wine-region" style="margin-top:4px">🥤 ${esc(w.tonic)}</div>` : '') + serveCardLine(w);
 }
@@ -16809,12 +16809,13 @@ document.addEventListener('visibilitychange', () => {
    PERFECT SERVE · REZEPTE · KRÄUTERREGAL
    Texte in diesem Block: Deutsch und Englisch (andere Sprachen zeigen Englisch)
 ═══════════════════════════════════════ */
+const GIN_ICO = '<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" style="display:inline-block;vertical-align:-.15em"><defs><linearGradient id="gbI" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2e8f6b"/><stop offset=".55" stop-color="#4fc19a"/><stop offset="1" stop-color="#1f6b4f"/></linearGradient></defs><rect x="9.4" y="1.2" width="5.2" height="2.6" rx="1" fill="#c9a064"/><path d="M10.2 3.8h3.6v4.2c0 1.2 3.7 2.2 3.7 5.2V20a2.5 2.5 0 0 1-2.5 2.5H9a2.5 2.5 0 0 1-2.5-2.5v-6.8c0-3 3.7-4 3.7-5.2z" fill="url(#gbI)" stroke="#17583f" stroke-width=".7" stroke-linejoin="round"/><rect x="8" y="13" width="8" height="6" rx=".8" fill="#f3dfa0"/><circle cx="10.4" cy="16" r="1.1" fill="#3e5f9e"/><circle cx="13.6" cy="16" r="1.1" fill="#3e5f9e"/><circle cx="12" cy="14.6" r="1.1" fill="#5f86c4"/><path d="M8.3 12.6c0-1 .7-1.8 1.2-2.3" stroke="rgba(255,255,255,.55)" stroke-width=".7" fill="none" stroke-linecap="round"/></svg>';
 const SX = {
   de: {
     need_name: 'Bitte erst den Namen eintragen', busy: '⏳ Empfehlung wird gesucht…', none: 'Keine Empfehlung gefunden', applied: 'Empfehlung übernommen ✓',
     in_bar: 'in deiner Bar', shop: 'Einkaufstipp', to_wish: '+ Wunschliste', fav_set: 'Als Favorit gesetzt ✓', wish_added: 'Auf die Wunschliste gesetzt ✓',
     glass_copa: 'Copa-/Ballonglas', ice_big: 'viel großes Eis', shelf_have: 'vorhanden', shelf_miss: 'fehlt',
-    rec_title: 'Rezepte', rec_sub: 'Gin & Tonic und Cocktails', rec_all: 'Alle', rec_fav: '⭐ Favoriten', rec_own: 'Eigene', rec_mine: '🍸 Passt zu meiner Bar',
+    rec_title: 'Rezepte', rec_sub: 'Gin & Tonic und Cocktails', rec_all: 'Alle', rec_fav: '⭐ Favoriten', rec_own: 'Eigene', rec_mine: '✓ Passt zu meiner Bar',
     rec_fits: 'Passt zu', rec_none: 'Keine Rezepte für diese Auswahl.', rec_ing: 'Zutaten', rec_steps: 'Zubereitung', rec_glass: 'Glas',
     rec_ai_title: 'Rezept für einen Gin (KI)', rec_ai_btn: '🤖 Rezept erstellen', rec_pick: 'Gin wählen…', rec_save: 'Als eigenes Rezept speichern', rec_saved: 'Rezept gespeichert ✓',
     rec_add_title: 'Eigenes Rezept anlegen', rec_name: 'Name', rec_ing_ph: 'Zutaten, eine pro Zeile', rec_steps_ph: 'Zubereitung', rec_add_btn: 'Rezept speichern',
@@ -16826,7 +16827,7 @@ const SX = {
     need_name: 'Please enter the name first', busy: '⏳ Looking for a recommendation…', none: 'No recommendation found', applied: 'Recommendation applied ✓',
     in_bar: 'in your bar', shop: 'Shopping tip', to_wish: '+ Wish list', fav_set: 'Set as favourite ✓', wish_added: 'Added to the wish list ✓',
     glass_copa: 'Copa / balloon glass', ice_big: 'lots of large ice', shelf_have: 'have', shelf_miss: 'missing',
-    rec_title: 'Recipes', rec_sub: 'Gin & tonic and cocktails', rec_all: 'All', rec_fav: '⭐ Favourites', rec_own: 'Mine', rec_mine: '🍸 Fits my bar',
+    rec_title: 'Recipes', rec_sub: 'Gin & tonic and cocktails', rec_all: 'All', rec_fav: '⭐ Favourites', rec_own: 'Mine', rec_mine: '✓ Fits my bar',
     rec_fits: 'Fits', rec_none: 'No recipes for this selection.', rec_ing: 'Ingredients', rec_steps: 'Method', rec_glass: 'Glass',
     rec_ai_title: 'Recipe for a gin (AI)', rec_ai_btn: '🤖 Create recipe', rec_pick: 'Choose a gin…', rec_save: 'Save as my recipe', rec_saved: 'Recipe saved ✓',
     rec_add_title: 'Add your own recipe', rec_name: 'Name', rec_ing_ph: 'Ingredients, one per line', rec_steps_ph: 'Method', rec_add_btn: 'Save recipe',
@@ -17171,8 +17172,8 @@ function renderRecipes() {
     const fits = gins.filter(w => r.styles.includes(w.type)).slice(0, 5).map(w => w.name);
     return `<details class="rec-card"><summary><span class="rec-name">${esc(r.name)}</span>
         <button type="button" class="rec-fav" onclick="event.preventDefault();toggleRecFav('${esc(r.id)}')" aria-label="fav">${favs.has(r.id) ? '⭐' : '☆'}</button></summary>
-      ${fits.length ? `<div class="wine-region">🍸 ${esc(sx('rec_fits'))}: ${esc(fits.join(', '))}</div>` : ''}
-      ${r.gin ? `<div class="wine-region">🍸 ${esc(r.gin)}</div>` : ''}
+      ${fits.length ? `<div class="wine-region">${GIN_ICO} ${esc(sx('rec_fits'))}: ${esc(fits.join(', '))}</div>` : ''}
+      ${r.gin ? `<div class="wine-region">${GIN_ICO} ${esc(r.gin)}</div>` : ''}
       <div class="rec-h">${esc(sx('rec_ing'))}</div><ul>${r.ing.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
       <div class="rec-h">${esc(sx('rec_steps'))}</div><p>${esc(r.steps || '')}</p>
       ${r.glass ? `<div class="wine-region">🥃 ${esc(sx('rec_glass'))}: ${esc(r.glass)}</div>` : ''}
