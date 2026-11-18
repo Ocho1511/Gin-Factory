@@ -273,17 +273,12 @@ input::placeholder, textarea::placeholder { color: #9a8893; opacity: 1; }
   line-height: 1.3;
 }
 .wine-year { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
-.wine-type-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  margin-top: 5px;
-  flex-shrink: 0;
-}
-.dot-rot { background: #5f86c4; }
-.dot-weiß { background: var(--white-wine); }
-.dot-rosé { background: var(--rose); }
-.dot-sekt { background: var(--sparkling); }
-.dot-other { background: #8a7080; }
+
+
+
+
+
+
 .wine-type-grape { flex-shrink: 0; margin-top: 2px; display: block; line-height: 0; color: inherit; text-decoration: none; }
 a.wine-type-grape { cursor: pointer; padding: 4px; margin: -4px; }
 .wine-row .wine-type-grape { margin-top: 0; }
@@ -373,7 +368,7 @@ a.wine-type-grape { cursor: pointer; padding: 4px; margin: -4px; }
   align-items: center;
   gap: 10px;
 }
-.wine-row .wine-type-dot { margin-top: 0; }
+
 .wine-row-info { flex: 1; min-width: 0; }
 .wine-row-name { font-family: var(--heading-font, 'Playfair Display', serif); font-size: 14px; color: var(--text); }
 .wine-row-sub { font-size: 11px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
@@ -603,7 +598,7 @@ a.wine-type-grape { cursor: pointer; padding: 4px; margin: -4px; }
 #f-photo-box img { max-width: 100%; max-height: 220px; border-radius: 10px; display: block; }
 .mm-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 8px; flex-wrap: wrap; }
 .mm-row label { display: flex; flex-direction: column; font-size: 12px; color: var(--text-muted); gap: 4px; flex: 1; min-width: 90px; }
-.mm-cellar { width: 100%; font-size: 12px; font-weight: 700; color: var(--gold-light); }
+
 .mm-badge { font-size: 11px; font-weight: 600; border-radius: 8px; padding: 3px 8px; margin: 6px 0 0; display: inline-block; }
 .mm-badge.ok { color: var(--green-text); background: rgba(60,160,90,.12); }
 .mm-badge.low { color: #fff; background: var(--red-alert); }
@@ -736,8 +731,7 @@ a.wine-type-grape { cursor: pointer; padding: 4px; margin: -4px; }
   font-size: 16px;
   cursor: pointer;
 }
-/* ── STATS TAB ── */
-.stats-section { padding: 0 16px 20px; }
+
 .stats-title {
   font-family: var(--heading-font, 'Playfair Display', serif);
   font-size: 14px;
@@ -1945,7 +1939,6 @@ function cleanOpened(arr, count, size) {
 // Anteil einer Flasche, der in einem Historien-Eintrag getrunken wurde (alte Einträge ohne Menge = ganze Flasche)
 function drunkFraction(x) { return x && x.cl && x.size ? Math.min(1, x.cl / x.size) : 1; }
 function drunkCost(x) { return (x.price || 0) * drunkFraction(x); }
-function drunkBottles(list) { return list.reduce((a, x) => a + drunkFraction(x), 0) || 1; }
 function cleanWine(w, used) {
   if (!w || typeof w !== 'object' || Array.isArray(w)) return null;
   const name = cleanStr(w.name, 200).trim();
@@ -3844,7 +3837,6 @@ de: {
   dm_title: "Gin trinken",
   dm_with: "Mit wem getrunken?",
   dm_with_ph: "z.B. Anna, Ben",
-  dm_last: "Dies ist die letzte Flasche — der Gin wird aus der Bar entfernt.",
   btn_drink_confirm: "🥂 Trinken",
   dm_occasion: "Anlass",
   occ_spring: "Frühling",
@@ -4434,7 +4426,6 @@ en: {
   dm_title: "Drink gin",
   dm_with: "Drunk with whom?",
   dm_with_ph: "e.g. Anna, Ben",
-  dm_last: "This is the last bottle — the gin will be removed from the bar.",
   btn_drink_confirm: "🥂 Drink",
   dm_occasion: "Occasion",
   occ_spring: "Spring",
@@ -5024,7 +5015,6 @@ es: {
   dm_title: "Beber ginebra",
   dm_with: "¿Con quién lo bebiste?",
   dm_with_ph: "p.ej. Anna, Ben",
-  dm_last: "Esta es la última botella: la ginebra se eliminará del bar.",
   btn_drink_confirm: "🥂 Beber",
   dm_occasion: "Ocasión",
   occ_spring: "Primavera",
@@ -5614,7 +5604,6 @@ sv: {
   dm_title: "Drick gin",
   dm_with: "Med vem drack du?",
   dm_with_ph: "t.ex. Anna, Ben",
-  dm_last: "Det här är sista flaskan — ginen tas bort från baren.",
   btn_drink_confirm: "🥂 Drick",
   dm_occasion: "Tillfälle",
   occ_spring: "Vår",
@@ -6204,7 +6193,6 @@ da: {
   dm_title: "Drik gin",
   dm_with: "Med hvem drak du?",
   dm_with_ph: "f.eks. Anna, Ben",
-  dm_last: "Dette er den sidste flaske — ginnen fjernes fra baren.",
   btn_drink_confirm: "🥂 Drik",
   dm_occasion: "Anledning",
   occ_spring: "Forår",
@@ -6794,7 +6782,6 @@ fi: {
   dm_title: "Juo gin",
   dm_with: "Kenen kanssa joit?",
   dm_with_ph: "esim. Anna, Ben",
-  dm_last: "Tämä on viimeinen pullo — gin poistetaan baarista.",
   btn_drink_confirm: "🥂 Juo",
   dm_occasion: "Tilaisuus",
   occ_spring: "Kevät",
@@ -7384,7 +7371,6 @@ ru: {
   dm_title: "Выпить джин",
   dm_with: "С кем вы пили?",
   dm_with_ph: "напр. Anna, Ben",
-  dm_last: "Это последняя бутылка — джин будет удалён из бара.",
   btn_drink_confirm: "🥂 Выпить",
   dm_occasion: "Повод",
   occ_spring: "Весна",
@@ -7974,7 +7960,6 @@ it: {
   dm_title: "Bevi gin",
   dm_with: "Con chi hai bevuto?",
   dm_with_ph: "es. Anna, Ben",
-  dm_last: "Questa è l'ultima bottiglia: il gin verrà rimosso dal bar.",
   btn_drink_confirm: "🥂 Bevi",
   dm_occasion: "Occasione",
   occ_spring: "Primavera",
@@ -8564,7 +8549,6 @@ fr: {
   dm_title: "Boire le gin",
   dm_with: "Avec qui l'avez-vous bu ?",
   dm_with_ph: "ex. Anna, Ben",
-  dm_last: "C'est la dernière bouteille — le gin sera retiré du bar.",
   btn_drink_confirm: "🥂 Boire",
   dm_occasion: "Occasion",
   occ_spring: "Printemps",
@@ -9154,7 +9138,6 @@ pl: {
   dm_title: "Wypij gin",
   dm_with: "Z kim piłeś?",
   dm_with_ph: "np. Anna, Ben",
-  dm_last: "To ostatnia butelka — gin zostanie usunięty z baru.",
   btn_drink_confirm: "🥂 Wypij",
   dm_occasion: "Okazja",
   occ_spring: "Wiosna",
@@ -9744,7 +9727,6 @@ hu: {
   dm_title: "Gin megivása",
   dm_with: "Kivel ittad?",
   dm_with_ph: "pl. Anna, Ben",
-  dm_last: "Ez az utolsó palack — a gin eltűnik a bárból.",
   btn_drink_confirm: "🥂 Iszom",
   dm_occasion: "Alkalom",
   occ_spring: "Tavasz",
@@ -10334,7 +10316,6 @@ cs: {
   dm_title: "Vypít gin",
   dm_with: "S kým jste pili?",
   dm_with_ph: "např. Anna, Ben",
-  dm_last: "Toto je poslední láhev — gin bude z baru odebrán.",
   btn_drink_confirm: "🥂 Vypít",
   dm_occasion: "Příležitost",
   occ_spring: "Jaro",
@@ -10924,7 +10905,6 @@ sk: {
   dm_title: "Vypiť gin",
   dm_with: "S kým ste pili?",
   dm_with_ph: "napr. Anna, Ben",
-  dm_last: "Toto je posledná fľaša — gin sa z baru odstráni.",
   btn_drink_confirm: "🥂 Vypiť",
   dm_occasion: "Príležitosť",
   occ_spring: "Jar",
@@ -11514,7 +11494,6 @@ ro: {
   dm_title: "Bea gin",
   dm_with: "Cu cine ai băut?",
   dm_with_ph: "ex. Anna, Ben",
-  dm_last: "Aceasta este ultima sticlă — ginul va fi eliminat din bar.",
   btn_drink_confirm: "🥂 Bea",
   dm_occasion: "Ocazie",
   occ_spring: "Primăvară",
@@ -12104,7 +12083,6 @@ hr: {
   dm_title: "Popij gin",
   dm_with: "S kim ste pili?",
   dm_with_ph: "npr. Anna, Ben",
-  dm_last: "Ovo je posljednja boca — gin će biti uklonjen iz bara.",
   btn_drink_confirm: "🥂 Popij",
   dm_occasion: "Prigoda",
   occ_spring: "Proljeće",
@@ -12694,7 +12672,6 @@ pt: {
   dm_title: "Beber gin",
   dm_with: "Com quem bebeu?",
   dm_with_ph: "ex. Anna, Ben",
-  dm_last: "Esta é a última garrafa — o gin será removido do bar.",
   btn_drink_confirm: "🥂 Beber",
   dm_occasion: "Ocasião",
   occ_spring: "Primavera",
@@ -13284,7 +13261,6 @@ no: {
   dm_title: "Drikk gin",
   dm_with: "Hvem drakk du med?",
   dm_with_ph: "f.eks. Anna, Ben",
-  dm_last: "Dette er den siste flasken — ginen fjernes fra baren.",
   btn_drink_confirm: "🥂 Drikk",
   dm_occasion: "Anledning",
   occ_spring: "Vår",
@@ -13874,7 +13850,6 @@ nl: {
   dm_title: "Gin drinken",
   dm_with: "Met wie heb je gedronken?",
   dm_with_ph: "bijv. Anna, Ben",
-  dm_last: "Dit is de laatste fles — de gin wordt uit de bar verwijderd.",
   btn_drink_confirm: "🥂 Drinken",
   dm_occasion: "Gelegenheid",
   occ_spring: "Lente",
@@ -14464,7 +14439,6 @@ el: {
   dm_title: "Πιείτε τζιν",
   dm_with: "Με ποιον το ήπιατε;",
   dm_with_ph: "π.χ. Άννα, Μπεν",
-  dm_last: "Αυτό είναι το τελευταίο μπουκάλι — το τζιν θα αφαιρεθεί από το μπαρ.",
   btn_drink_confirm: "🥂 Πίνω",
   dm_occasion: "Περίσταση",
   occ_spring: "Άνοιξη",
@@ -15054,7 +15028,6 @@ uk: {
   dm_title: "Випити джин",
   dm_with: "З ким випито?",
   dm_with_ph: "напр. Анна, Борис",
-  dm_last: "Це остання пляшка — джин буде видалено з бару.",
   btn_drink_confirm: "🥂 Випити",
   dm_occasion: "Нагода",
   occ_spring: "Весна",
@@ -15644,7 +15617,6 @@ ja: {
   dm_title: "ジンを飲む",
   dm_with: "誰と飲みましたか？",
   dm_with_ph: "例: アンナ、ベン",
-  dm_last: "これが最後の1本です — ジンはバーから削除されます。",
   btn_drink_confirm: "🥂 飲む",
   dm_occasion: "シーン",
   occ_spring: "春",
@@ -16234,7 +16206,6 @@ ko: {
   dm_title: "진 마시기",
   dm_with: "누구와 마셨나요?",
   dm_with_ph: "예: Anna, Ben",
-  dm_last: "마지막 병이에요 — 이 진은 바에서 삭제됩니다.",
   btn_drink_confirm: "🥂 마시기",
   dm_occasion: "계기",
   occ_spring: "봄",
@@ -16824,7 +16795,6 @@ zh: {
   dm_title: "喝金酒",
   dm_with: "和谁一起喝的？",
   dm_with_ph: "例如：小红、小明",
-  dm_last: "这是最后一瓶 — 该金酒将从酒吧中移除。",
   btn_drink_confirm: "🥂 饮用",
   dm_occasion: "场合",
   occ_spring: "春天",
@@ -17414,7 +17384,6 @@ hi: {
   dm_title: "जिन पिएँ",
   dm_with: "किसके साथ पी?",
   dm_with_ph: "जैसे अन्ना, बेन",
-  dm_last: "यह आखिरी बोतल है — जिन बार से हटा दी जाएगी।",
   btn_drink_confirm: "🥂 पिएँ",
   dm_occasion: "अवसर",
   occ_spring: "वसंत",
