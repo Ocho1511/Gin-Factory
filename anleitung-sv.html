@@ -27,7 +27,7 @@
 <li><a href="#start">Översikt och första stegen</a></li>
 <li><a href="#add">Lägga till en gin</a></li>
 <li><a href="#bar">Baren</a></li>
-<li><a href="#drink">Dricka en gin</a></li>
+<li><a href="#drink">Dricka en gin</a><br><small>↳ <a href="#dram">4a. Flaskor, drams och provningsanteckningar</a></small></li>
 <li><a href="#racks">Hyllor och lagring</a></li>
 <li><a href="#history">Historik</a></li>
 <li><a href="#wish">Önskelista</a></li>
@@ -119,6 +119,27 @@
 <li><strong>Tillfälle</strong> – Vår, Sommar, Höst, Vinter, Födelsedag, Fest eller ”Bara så” (flera går att välja).</li>
 </ul>
 <p><em>Drick</em> tar bort en flaska och skapar en post i <a href="#history">Historik</a>. Konfetti och ljud firar det (kan stängas av i Setup). Om det är den <strong>sista flaskan</strong> meddelar appen det: ginen försvinner då från baren (men finns kvar i Historik).</p>
+
+<h2 id="dram">4a. Flaskor, drams och provningsanteckningar</h2>
+
+<p>En flaska räcker många kvällar, så <em>Drick</em> häller nu upp en portion och håller reda på fyllnadsnivån i stället för att ta bort en hel flaska.</p>
+<ul>
+<li><strong>Drick:</strong> Tryck på <em>Drick</em> och välj mängden i cl (2, 4, 6, 10 eller ett eget värde). Appen häller upp från den öppnade flaskan med minst kvar eller öppnar en ny, oöppnad flaska. Innan du bekräftar ser du vad som finns kvar efteråt.</li>
+<li><strong>Flaskan tom:</strong> Kryssa i “Flaskan är då tom” (eller häll upp resten). Först då tas en flaska bort från lagret och du får frågan vilken hyllplats den kom från.</li>
+<li><strong>På kortet:</strong> 🔓 öppnade flaskor med återstående cl och en fyllnadsstapel, 🔒 oöppnade flaskor och flaskstorleken. Filtren <em>🔓 Öppnad</em> och <em>🔒 Oöppnad</em> avgränsar listan.</li>
+<li><strong>Historik:</strong> varje portion är en post med sin mängd i cl; en tömd flaska är markerad med 🏁. Priset för en portion räknas proportionellt.</li>
+</ul>
+<h3>Nya fält</h3>
+<ul>
+<li><strong>Flaska:</strong> storlek (cl) och marknadsvärde.</li>
+<li><strong>Provning:</strong> doft, smak, eftersmak och poäng (0–100).</li>
+</ul>
+<h3>Sortering, sökning och statistik</h3>
+<ul>
+<li>Sortera efter ABV eller poäng. Sökningen hittar även provningsanteckningar.</li>
+<li>Statistik: volym i cl, öppnade flaskor, drucken mängd och antal portioner, marknadsvärde jämfört med inköpspriset och genomsnittspris per cl.</li>
+<li>CSV- och Excel-exporten innehåller de nya kolumnerna; importen förstår dem.</li>
+</ul>
 
 <!-- ───────────────── 5 ───────────────── -->
 <h2 id="racks">5. Hyllor och lagring</h2>
