@@ -1540,9 +1540,13 @@ input[type="file"] { display: none; }
       <label data-i18n="l_type">Gin-Stil</label>
       <select id="f-type">
         <option value="rot" data-i18n="o_rot">🌲 London Dry</option>
-        <option value="weiß" data-i18n="o_weiss">🍯 Old Tom / Plymouth</option>
-        <option value="rosé" data-i18n="o_rose">🌸 Rosé</option>
-        <option value="sekt" data-i18n="o_sekt">✨ Sekt / Champagner</option>
+        <option value="plym" data-i18n="o_plym">🏰 Plymouth</option>
+        <option value="weiß" data-i18n="o_weiss">🍯 Old Tom</option>
+        <option value="west" data-i18n="o_west">🌿 New Western</option>
+        <option value="rosé" data-i18n="o_rose">🌸 Pink / Fruchtgin</option>
+        <option value="sekt" data-i18n="o_sekt">⚓ Navy Strength</option>
+        <option value="gene" data-i18n="o_gene">🌾 Genever</option>
+        <option value="barr" data-i18n="o_barr">🛢️ Fassgereift</option>
         <option value="tonic" data-i18n="o_tonic">🥤 Tonic Water</option>
         <option value="other" data-i18n="o_other">◻️ Sonstiges</option>
       </select>
@@ -1739,11 +1743,15 @@ input[type="file"] { display: none; }
         <label data-i18n="l_type">Typ</label>
         <select id="w-type">
           <option value="rot" data-i18n="t_rot">London Dry</option>
-          <option value="weiß" data-i18n="t_weiss">Old Tom / Plymouth</option>
-          <option value="rosé" data-i18n="t_rose">Rosé</option>
-          <option value="sekt" data-i18n="t_sekt">Sekt</option>
+        <option value="plym" data-i18n="t_plym">Plymouth</option>
+        <option value="weiß" data-i18n="t_weiss">Old Tom</option>
+        <option value="west" data-i18n="t_west">New Western</option>
+        <option value="rosé" data-i18n="t_rose">Pink / Fruchtgin</option>
+        <option value="sekt" data-i18n="t_sekt">Navy Strength</option>
+        <option value="gene" data-i18n="t_gene">Genever</option>
+        <option value="barr" data-i18n="t_barr">Fassgereift</option>
         <option value="tonic" data-i18n="t_tonic">🥤 Tonic Water</option>
-          <option value="other" data-i18n="t_other">Sonstiges</option>
+        <option value="other" data-i18n="t_other">Sonstiges</option>
         </select>
       </div>
     </div>
@@ -1887,7 +1895,11 @@ const SETTINGS_KEY = 'ginfactory_v2_settings';
 // ── Daten bereinigen: schützt vor beschädigtem Speicher, Fehlimporten und manipulierten Cloud-Daten ──
 // Alles, was von außen kommt (Speicher, Import, Cloud), läuft durch diese Funktionen. So sind Typen, Zahlenbereiche
 // und IDs immer sauber, und Texte können keine Markierungen oder Skripte in die Oberfläche einschleusen.
-const VALID_TYPES = ['rot', 'weiß', 'rosé', 'sekt', 'tonic', 'other'];
+const TYPE_ORDER = ['rot','plym','weiß','west','rosé','sekt','gene','barr','tonic','other'];   // Reihenfolge in Auswahl, Filter, Statistik
+const VALID_TYPES = TYPE_ORDER;
+// Stil-Familie für die Rezept-Vorschläge: neue Sorten zählen wie die nächstverwandte ursprüngliche
+const STYLE_FAM = { plym:'rot', west:'rot', gene:'weiß', barr:'weiß' };
+const styleFam = (t) => STYLE_FAM[t] || t;
 const cleanStr = (v, max) => (v == null ? '' : String(v)).slice(0, max || 500);
 const cleanText = (v, max) => cleanStr(v, max).trim() || null;
 function cleanId(v, used) {
@@ -2121,7 +2133,7 @@ function touchData() {
 // CLOUD-SYNC (newest wins)
 // ═══════════════════════════════════════
 function collectData() {
-  return { dv: 5, wines, wishes, drunkWines, racks: settings.racks || [], cellars: settings.cellars || [], owner: settings.owner || '', prefs: collectPrefs(), recipes: settings.recipes || [], favRecipes: settings.favRecipes || [], herbs: settings.herbs || [] };
+  return { dv: 6, wines, wishes, drunkWines, racks: settings.racks || [], cellars: settings.cellars || [], owner: settings.owner || '', prefs: collectPrefs(), recipes: settings.recipes || [], favRecipes: settings.favRecipes || [], herbs: settings.herbs || [] };
 }
 // Einstellungen, die mit in die Cloud gehen (gerätegebundenes bleibt draußen: Sync-Code und Speicherort, E-Mail, KI-Einwilligung, Gerätekennung)
 const PREF_KEYS = ['lang', 'currency', 'font', 'celeb'];
@@ -3061,7 +3073,7 @@ async function lookupWineData(name, year) {
       model: 'claude-sonnet-4-6',
       max_tokens: 1200,
       tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }],
-      system: `Du bist ein Gin-Experte. Recherchiere den aktuellen durchschnittlichen Marktpreis (Endverbraucher, 0,7-l-Flasche) mit der Websuche. Antworte am Ende mit GENAU EINEM JSON-Objekt (ohne Markdown) mit den Feldern: type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), abv (Alkoholgehalt in % vol. als Zahl, z. B. 43.0, oder null), price (aktueller Durchschnittspreis pro Flasche in ${currencyName()} als Zahl ohne Währungssymbol, gerundet, oder null), image (eine direkte, öffentlich erreichbare URL zu einem Foto DER FLASCHE, die direkt auf eine Bilddatei zeigt und auf .jpg/.jpeg/.png/.webp endet; nur eine URL, die du über die Websuche tatsächlich gesehen hast, sonst null), page (die URL EINER Webseite, auf der die Flasche abgebildet ist – bevorzugt Wikipedia, die Seite der Destillerie oder ein Gin-Shop; eine echte, über die Websuche gefundene Seiten-URL, sonst null). Für Beschreibungsfelder nutze dein Wissen; für Preis, Bild und Seite die Websuche. Nutze null nur wenn keine sinnvolle Angabe möglich ist.`,
+      system: `Du bist ein Gin-Experte. Recherchiere den aktuellen durchschnittlichen Marktpreis (Endverbraucher, 0,7-l-Flasche) mit der Websuche. Antworte am Ende mit GENAU EINEM JSON-Objekt (ohne Markdown) mit den Feldern: type (rot = London Dry, plym = Plymouth, weiß = Old Tom, west = New Western/Contemporary, rosé = Pink/Fruchtgin/Flavoured/Sloe, sekt = Navy Strength, gene = Genever, barr = Barrel Aged, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), abv (Alkoholgehalt in % vol. als Zahl, z. B. 43.0, oder null), price (aktueller Durchschnittspreis pro Flasche in ${currencyName()} als Zahl ohne Währungssymbol, gerundet, oder null), image (eine direkte, öffentlich erreichbare URL zu einem Foto DER FLASCHE, die direkt auf eine Bilddatei zeigt und auf .jpg/.jpeg/.png/.webp endet; nur eine URL, die du über die Websuche tatsächlich gesehen hast, sonst null), page (die URL EINER Webseite, auf der die Flasche abgebildet ist – bevorzugt Wikipedia, die Seite der Destillerie oder ein Gin-Shop; eine echte, über die Websuche gefundene Seiten-URL, sonst null). Für Beschreibungsfelder nutze dein Wissen; für Preis, Bild und Seite die Websuche. Nutze null nur wenn keine sinnvolle Angabe möglich ist.`,
       messages: [{ role: 'user', content: `Gin: ${name}${year ? ' (Abfüllung ' + year + ')' : ''}. Nenne Stil, Region, Land, Botanicals, den aktuellen Durchschnittspreis pro Flasche in ${currencyName()}, eine direkte Bild-URL der Flasche und die URL einer Webseite, auf der die Flasche abgebildet ist.` }]
     })
   });
@@ -3149,7 +3161,7 @@ async function lookupWine() {
     const info = await lookupWineData(name, year);
     if (tok !== formToken) return;
     if (!info) { showToast(t('toast_scanfail')); return; }
-    if (['rot','weiß','rosé','sekt','other'].includes(info.type)) document.getElementById('f-type').value = info.type;
+    if (TYPE_ORDER.filter(x => x !== 'tonic').includes(info.type)) document.getElementById('f-type').value = info.type;
     setIfEmpty('f-region', info.region);
     setIfEmpty('f-country', info.land);
     setIfEmpty('f-grape', info.grape);
@@ -3187,7 +3199,7 @@ async function maybeAutoLookup() {
   try {
     const info = await lookupWineData(name, year);
     if (tok !== formToken || !info) return;
-    if (['rot','weiß','rosé','sekt','other'].includes(info.type)) setIfEmpty('f-type', info.type);
+    if (TYPE_ORDER.filter(x => x !== 'tonic').includes(info.type)) setIfEmpty('f-type', info.type);
     setIfEmpty('f-region', info.region);
     setIfEmpty('f-country', info.land);
     setIfEmpty('f-grape', info.grape);
@@ -3664,7 +3676,7 @@ de: {
   sort_country: "↕ Land",
   t_all: "Alle",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Pink / Fruchtgin",
   t_sekt: "Navy Strength",
   t_other: "Sonstiges",
@@ -3747,10 +3759,18 @@ de: {
   wiki_open: "Wikipedia (Gin)",
   img_broken: "Bild nicht verfügbar",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Pink / Fruchtgin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Sonstiges",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Fassgereift",
+  o_barr: "🛢️ Fassgereift",
   btn_cancel: "Abbrechen",
   btn_save: "Speichern",
   btn_add: "Hinzufügen",
@@ -4281,7 +4301,7 @@ en: {
   sort_country: "↕ Country",
   t_all: "All",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Pink / Fruit gin",
   t_sekt: "Navy Strength",
   t_other: "Other",
@@ -4364,10 +4384,18 @@ en: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Image unavailable",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Pink / Fruit gin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Other",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Barrel Aged",
+  o_barr: "🛢️ Barrel Aged",
   btn_cancel: "Cancel",
   btn_save: "Save",
   btn_add: "Add",
@@ -4898,7 +4926,7 @@ es: {
   sort_country: "↕ País",
   t_all: "Todos",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Ginebra rosa / de frutas",
   t_sekt: "Navy Strength",
   t_other: "Otros",
@@ -4981,10 +5009,18 @@ es: {
   wiki_open: "Wikipedia (ginebra)",
   img_broken: "Imagen no disponible",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Ginebra rosa / de frutas",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Otro",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Envejecido en barrica",
+  o_barr: "🛢️ Envejecido en barrica",
   btn_cancel: "Cancelar",
   btn_save: "Guardar",
   btn_add: "Añadir",
@@ -5515,7 +5551,7 @@ sv: {
   sort_country: "↕ Land",
   t_all: "Alla",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Rosa / Fruktgin",
   t_sekt: "Navy Strength",
   t_other: "Övrigt",
@@ -5598,10 +5634,18 @@ sv: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Bilden är inte tillgänglig",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Rosa / Fruktgin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Övrigt",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Fatlagrad",
+  o_barr: "🛢️ Fatlagrad",
   btn_cancel: "Avbryt",
   btn_save: "Spara",
   btn_add: "Lägg till",
@@ -6132,7 +6176,7 @@ da: {
   sort_country: "↕ Land",
   t_all: "Alle",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Pink / Frugtgin",
   t_sekt: "Navy Strength",
   t_other: "Andet",
@@ -6215,10 +6259,18 @@ da: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Billedet er ikke tilgængeligt",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Pink / Frugtgin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Andet",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Fadlagret",
+  o_barr: "🛢️ Fadlagret",
   btn_cancel: "Annuller",
   btn_save: "Gem",
   btn_add: "Tilføj",
@@ -6749,7 +6801,7 @@ fi: {
   sort_country: "↕ Maa",
   t_all: "Kaikki",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Pinkki / hedelmägin",
   t_sekt: "Navy Strength",
   t_other: "Muu",
@@ -6832,10 +6884,18 @@ fi: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Kuva ei ole saatavilla",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Pinkki / hedelmägin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Muu",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Tammitynnyrissä kypsytetty",
+  o_barr: "🛢️ Tammitynnyrissä kypsytetty",
   btn_cancel: "Peruuta",
   btn_save: "Tallenna",
   btn_add: "Lisää",
@@ -7366,7 +7426,7 @@ ru: {
   sort_country: "↕ Страна",
   t_all: "Все",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Розовый / фруктовый джин",
   t_sekt: "Navy Strength",
   t_other: "Прочее",
@@ -7449,10 +7509,18 @@ ru: {
   wiki_open: "Википедия (джин)",
   img_broken: "Изображение недоступно",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Розовый / фруктовый джин",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Другое",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Выдержанный в бочке",
+  o_barr: "🛢️ Выдержанный в бочке",
   btn_cancel: "Отмена",
   btn_save: "Сохранить",
   btn_add: "Добавить",
@@ -7983,7 +8051,7 @@ it: {
   sort_country: "↕ Paese",
   t_all: "Tutti",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Gin rosa / alla frutta",
   t_sekt: "Navy Strength",
   t_other: "Altro",
@@ -8066,10 +8134,18 @@ it: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Immagine non disponibile",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Gin rosa / alla frutta",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Altro",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Invecchiato in botte",
+  o_barr: "🛢️ Invecchiato in botte",
   btn_cancel: "Annulla",
   btn_save: "Salva",
   btn_add: "Aggiungi",
@@ -8600,7 +8676,7 @@ fr: {
   sort_country: "↕ Pays",
   t_all: "Tous",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Gin rosé / aux fruits",
   t_sekt: "Navy Strength",
   t_other: "Autre",
@@ -8683,10 +8759,18 @@ fr: {
   wiki_open: "Wikipédia (gin)",
   img_broken: "Image indisponible",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Gin rosé / aux fruits",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Autre",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Vieilli en fût",
+  o_barr: "🛢️ Vieilli en fût",
   btn_cancel: "Annuler",
   btn_save: "Enregistrer",
   btn_add: "Ajouter",
@@ -9217,7 +9301,7 @@ pl: {
   sort_country: "↕ Kraj",
   t_all: "Wszystkie",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Gin różowy / owocowy",
   t_sekt: "Navy Strength",
   t_other: "Inne",
@@ -9300,10 +9384,18 @@ pl: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Obraz niedostępny",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Gin różowy / owocowy",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Inne",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Dojrzewany w beczce",
+  o_barr: "🛢️ Dojrzewany w beczce",
   btn_cancel: "Anuluj",
   btn_save: "Zapisz",
   btn_add: "Dodaj",
@@ -9834,7 +9926,7 @@ hu: {
   sort_country: "↕ Ország",
   t_all: "Mind",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Rózsaszín / gyümölcsös gin",
   t_sekt: "Navy Strength",
   t_other: "Egyéb",
@@ -9917,10 +10009,18 @@ hu: {
   wiki_open: "Wikipédia (gin)",
   img_broken: "A kép nem érhető el",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Rózsaszín / gyümölcsös gin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Egyéb",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Hordóban érlelt",
+  o_barr: "🛢️ Hordóban érlelt",
   btn_cancel: "Mégse",
   btn_save: "Mentés",
   btn_add: "Hozzáadás",
@@ -10451,7 +10551,7 @@ cs: {
   sort_country: "↕ Země",
   t_all: "Vše",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Růžový / ovocný gin",
   t_sekt: "Navy Strength",
   t_other: "Ostatní",
@@ -10534,10 +10634,18 @@ cs: {
   wiki_open: "Wikipedie (gin)",
   img_broken: "Obrázek není dostupný",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Růžový / ovocný gin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Jiné",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Zrající v sudu",
+  o_barr: "🛢️ Zrající v sudu",
   btn_cancel: "Zrušit",
   btn_save: "Uložit",
   btn_add: "Přidat",
@@ -11068,7 +11176,7 @@ sk: {
   sort_country: "↕ Krajina",
   t_all: "Všetko",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Ružový / ovocný gin",
   t_sekt: "Navy Strength",
   t_other: "Ostatné",
@@ -11151,10 +11259,18 @@ sk: {
   wiki_open: "Wikipédia (gin)",
   img_broken: "Obrázok nie je dostupný",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Ružový / ovocný gin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Iné",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Zrejúci v sude",
+  o_barr: "🛢️ Zrejúci v sude",
   btn_cancel: "Zrušiť",
   btn_save: "Uložiť",
   btn_add: "Pridať",
@@ -11685,7 +11801,7 @@ ro: {
   sort_country: "↕ Țară",
   t_all: "Toate",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Gin roz / cu fructe",
   t_sekt: "Navy Strength",
   t_other: "Altele",
@@ -11768,10 +11884,18 @@ ro: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Imagine indisponibilă",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Gin roz / cu fructe",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Altele",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Maturat în butoi",
+  o_barr: "🛢️ Maturat în butoi",
   btn_cancel: "Anulează",
   btn_save: "Salvează",
   btn_add: "Adaugă",
@@ -12302,7 +12426,7 @@ hr: {
   sort_country: "↕ Zemlja",
   t_all: "Sve",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Ružičasti / voćni gin",
   t_sekt: "Navy Strength",
   t_other: "Ostalo",
@@ -12385,10 +12509,18 @@ hr: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Slika nije dostupna",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Ružičasti / voćni gin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Ostalo",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Odležan u bačvi",
+  o_barr: "🛢️ Odležan u bačvi",
   btn_cancel: "Odustani",
   btn_save: "Spremi",
   btn_add: "Dodaj",
@@ -12919,7 +13051,7 @@ pt: {
   sort_country: "↕ País",
   t_all: "Todos",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Gin rosa / de frutas",
   t_sekt: "Navy Strength",
   t_other: "Outros",
@@ -13002,10 +13134,18 @@ pt: {
   wiki_open: "Wikipédia (gin)",
   img_broken: "Imagem indisponível",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Gin rosa / de frutas",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Outro",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Envelhecido em barril",
+  o_barr: "🛢️ Envelhecido em barril",
   btn_cancel: "Cancelar",
   btn_save: "Guardar",
   btn_add: "Adicionar",
@@ -13536,7 +13676,7 @@ no: {
   sort_country: "↕ Land",
   t_all: "Alle",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Rosa / fruktgin",
   t_sekt: "Navy Strength",
   t_other: "Annet",
@@ -13619,10 +13759,18 @@ no: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Bildet er ikke tilgjengelig",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Rosa / fruktgin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Annet",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Fatlagret",
+  o_barr: "🛢️ Fatlagret",
   btn_cancel: "Avbryt",
   btn_save: "Lagre",
   btn_add: "Legg til",
@@ -14153,7 +14301,7 @@ nl: {
   sort_country: "↕ Land",
   t_all: "Alle",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Roze / fruitgin",
   t_sekt: "Navy Strength",
   t_other: "Overig",
@@ -14236,10 +14384,18 @@ nl: {
   wiki_open: "Wikipedia (gin)",
   img_broken: "Afbeelding niet beschikbaar",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Roze / fruitgin",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Overig",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Vatgerijpt",
+  o_barr: "🛢️ Vatgerijpt",
   btn_cancel: "Annuleren",
   btn_save: "Opslaan",
   btn_add: "Toevoegen",
@@ -14770,7 +14926,7 @@ el: {
   sort_country: "↕ Χώρα",
   t_all: "Όλα",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Ροζ / τζιν φρούτων",
   t_sekt: "Navy Strength",
   t_other: "Άλλο",
@@ -14853,10 +15009,18 @@ el: {
   wiki_open: "Wikipedia (τζιν)",
   img_broken: "Η εικόνα δεν είναι διαθέσιμη",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Ροζ / τζιν φρούτων",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Άλλο",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Παλαιωμένο σε βαρέλι",
+  o_barr: "🛢️ Παλαιωμένο σε βαρέλι",
   btn_cancel: "Άκυρο",
   btn_save: "Αποθήκευση",
   btn_add: "Προσθήκη",
@@ -15387,7 +15551,7 @@ uk: {
   sort_country: "↕ Країна",
   t_all: "Усі",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "Рожевий / фруктовий джин",
   t_sekt: "Navy Strength",
   t_other: "Інше",
@@ -15470,10 +15634,18 @@ uk: {
   wiki_open: "Вікіпедія (джин)",
   img_broken: "Зображення недоступне",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 Рожевий / фруктовий джин",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ Інше",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "Витриманий у бочці",
+  o_barr: "🛢️ Витриманий у бочці",
   btn_cancel: "Скасувати",
   btn_save: "Зберегти",
   btn_add: "Додати",
@@ -16004,7 +16176,7 @@ ja: {
   sort_country: "↕ 国",
   t_all: "すべて",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "ピンク / フルーツジン",
   t_sekt: "Navy Strength",
   t_other: "その他",
@@ -16087,10 +16259,18 @@ ja: {
   wiki_open: "Wikipedia（ジン）",
   img_broken: "画像を表示できません",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 ピンク / フルーツジン",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ その他",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "樽熟成",
+  o_barr: "🛢️ 樽熟成",
   btn_cancel: "キャンセル",
   btn_save: "保存",
   btn_add: "追加",
@@ -16621,7 +16801,7 @@ ko: {
   sort_country: "↕ 국가",
   t_all: "전체",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "핑크 / 프루트 진",
   t_sekt: "Navy Strength",
   t_other: "기타",
@@ -16704,10 +16884,18 @@ ko: {
   wiki_open: "Wikipedia (진)",
   img_broken: "이미지를 불러올 수 없어요",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 핑크 / 프루트 진",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ 기타",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "오크통 숙성",
+  o_barr: "🛢️ 오크통 숙성",
   btn_cancel: "취소",
   btn_save: "저장",
   btn_add: "추가",
@@ -17238,7 +17426,7 @@ zh: {
   sort_country: "↕ 国家",
   t_all: "全部",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "粉红 / 水果金酒",
   t_sekt: "Navy Strength",
   t_other: "其他",
@@ -17321,10 +17509,18 @@ zh: {
   wiki_open: "Wikipedia（金酒）",
   img_broken: "图片无法显示",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 粉红 / 水果金酒",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ 其他",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "桶陈",
+  o_barr: "🛢️ 桶陈",
   btn_cancel: "取消",
   btn_save: "保存",
   btn_add: "添加",
@@ -17855,7 +18051,7 @@ hi: {
   sort_country: "↕ देश",
   t_all: "सभी",
   t_rot: "London Dry",
-  t_weiss: "Old Tom / Plymouth",
+  t_weiss: "Old Tom",
   t_rose: "पिंक / फ्रूट जिन",
   t_sekt: "Navy Strength",
   t_other: "अन्य",
@@ -17938,10 +18134,18 @@ hi: {
   wiki_open: "Wikipedia (जिन)",
   img_broken: "तस्वीर उपलब्ध नहीं",
   o_rot: "🌲 London Dry",
-  o_weiss: "🍯 Old Tom / Plymouth",
+  o_weiss: "🍯 Old Tom",
   o_rose: "🌸 पिंक / फ्रूट जिन",
   o_sekt: "⚓ Navy Strength",
   o_other: "◻️ अन्य",
+  t_plym: "Plymouth",
+  o_plym: "🏰 Plymouth",
+  t_west: "New Western",
+  o_west: "🌿 New Western",
+  t_gene: "Genever",
+  o_gene: "🌾 Genever",
+  t_barr: "बैरल-एज्ड",
+  o_barr: "🛢️ बैरल-एज्ड",
   btn_cancel: "रद्द करें",
   btn_save: "सहेजें",
   btn_add: "जोड़ें",
@@ -18147,7 +18351,7 @@ function t(key, vars) {
 }
 
 function buildTypeLabels() {
-  return { alle:t('t_all'), rot:t('t_rot'), weiß:t('t_weiss'), rosé:t('t_rose'), sekt:t('t_sekt'), tonic:t('t_tonic'), other:t('t_other') };
+  return { alle:t('t_all'), 'rot':t('t_rot'), plym:t('t_plym'), 'weiß':t('t_weiss'), west:t('t_west'), 'rosé':t('t_rose'), 'sekt':t('t_sekt'), gene:t('t_gene'), barr:t('t_barr'), tonic:t('t_tonic'), other:t('t_other') };
 }
 
 // Untere Leiste: Beschriftungen nie mitten im Wort umbrechen; zu lange Wörter (z. B. "Статистика", "Export/Import") werden verkleinert, bis sie passen
@@ -18455,7 +18659,7 @@ function showTab(name, btn) {
 // ═══════════════════════════════════════
 // KELLER
 // ═══════════════════════════════════════
-const TYPES = ['alle','rot','weiß','rosé','sekt','tonic','other'];
+const TYPES = ['alle'].concat(TYPE_ORDER);
 // Kleines Weintrauben-Symbol in der Typ-Farbe (ersetzt den farbigen Punkt)
 function grapeSvg(fill) {   // Wacholderbeeren (Name bleibt aus historischen Gründen) in der Typ-Farbe
   return `<svg width="15" height="18" viewBox="0 0 16 19" aria-hidden="true" style="display:block">
@@ -18487,7 +18691,7 @@ function renderLegend() {
   el.style.display = legendOpen ? '' : 'none';
   if (!legendOpen) return;
   el.innerHTML = `<div class="legend-title">${esc(t('legend_title'))}</div><div class="legend-text">${esc(t('legend_text'))}</div>` +
-    ['rot','weiß','rosé','sekt','tonic','other'].map(ty => `<div class="legend-row"><span class="legend-ico">${grapeSvg(TYPE_FILL[ty])}</span><span>${esc(TYPE_LABELS[ty])}</span></div>`).join('');
+    TYPE_ORDER.map(ty => `<div class="legend-row"><span class="legend-ico">${grapeSvg(TYPE_FILL[ty])}</span><span>${esc(TYPE_LABELS[ty])}</span></div>`).join('');
 }
 function typeGrape(w) {
   const svg = grapeSvg(TYPE_FILL[w.type]||TYPE_FILL.other);
@@ -19406,7 +19610,7 @@ async function handleScan0(e) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 1000,
-        system: 'Du bist ein Gin-Etikett-Experte. Antworte NUR mit einem JSON-Objekt ohne Markdown-Backticks. Felder: name (Destillerie + Gin-Name), year (Abfüllungsjahr als Zahl oder null), type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch, z.B. Frankreich, oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), abv ist der Alkoholgehalt in % vol. als Zahl oder null. Wenn etwas nicht erkennbar ist, nutze null.',
+        system: 'Du bist ein Gin-Etikett-Experte. Antworte NUR mit einem JSON-Objekt ohne Markdown-Backticks. Felder: name (Destillerie + Gin-Name), year (Abfüllungsjahr als Zahl oder null), type (rot = London Dry, plym = Plymouth, weiß = Old Tom, west = New Western/Contemporary, rosé = Pink/Fruchtgin/Flavoured/Sloe, sekt = Navy Strength, gene = Genever, barr = Barrel Aged, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch, z.B. Frankreich, oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null), abv ist der Alkoholgehalt in % vol. als Zahl oder null. Wenn etwas nicht erkennbar ist, nutze null.',
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: base64 } },
           { type: 'text', text: 'Analysiere dieses Gin-Etikett.' }
@@ -19599,7 +19803,7 @@ async function handleWishScan(e) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 1000,
-        system: 'Du bist ein Gin-Etikett-Experte. Antworte NUR mit einem JSON-Objekt ohne Markdown-Backticks. Felder: name (Destillerie + Gin-Name), year (Abfüllungsjahr als Zahl oder null), type (rot = London Dry, weiß = Old Tom/Plymouth/Genever, rosé = Pink/Fruchtgin/Flavoured, sekt = Navy Strength, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch, z.B. Frankreich, oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null). Wenn etwas nicht erkennbar ist, nutze null.',
+        system: 'Du bist ein Gin-Etikett-Experte. Antworte NUR mit einem JSON-Objekt ohne Markdown-Backticks. Felder: name (Destillerie + Gin-Name), year (Abfüllungsjahr als Zahl oder null), type (rot = London Dry, plym = Plymouth, weiß = Old Tom, west = New Western/Contemporary, rosé = Pink/Fruchtgin/Flavoured/Sloe, sekt = Navy Strength, gene = Genever, barr = Barrel Aged, other = sonstiger Gin), region (Herkunftsregion oder null), land (Herkunftsland auf Deutsch, z.B. Frankreich, oder null), grape (wichtigste Botanicals, kommagetrennt, max. 5, oder null). Wenn etwas nicht erkennbar ist, nutze null.',
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: base64 } },
           { type: 'text', text: 'Analysiere dieses Gin-Etikett.' }
@@ -19684,7 +19888,7 @@ function renderStats() {
   const avg = rated.length ? (rated.reduce((s,w)=>s+w.rating,0)/rated.length).toFixed(1) : '–';
   const types = {};
   wines.forEach(w => { types[w.type] = (types[w.type]||0) + (w.count||1); });
-  const typeColors = { rot:'#5f86c4', weiß:'#d9b25a', rosé:'#e58fab', sekt:'#3e5f9e', tonic:'#4fc1b0', other:'var(--text-muted)' };
+  const typeColors = TYPE_FILL;
 
   let html = `
     <div class="stats-grid">
@@ -19695,7 +19899,7 @@ function renderStats() {
     </div>
     <div class="stats-title">${t('s_bytype')}</div>
   `;
-  ['rot','weiß','rosé','sekt','other'].forEach(ty => {
+  TYPE_ORDER.filter(x => x !== 'tonic').forEach(ty => {
     const cnt = types[ty]||0;
     const pct = total > 0 ? Math.round((cnt/total)*100) : 0;
     html += `<div class="type-bar-row" onclick="goToFilter('${ty}')" style="cursor:pointer">
@@ -19818,7 +20022,7 @@ function saveHistoryEdit() {
 // ═══════════════════════════════════════
 // REGALE (Kellerplan)
 // ═══════════════════════════════════════
-const TYPE_FILL = { rot:'#5f86c4', 'weiß':'#d9b25a', 'rosé':'#e58fab', sekt:'#3e5f9e', tonic:'#4fc1b0', other:'var(--text-muted)' };
+const TYPE_FILL = { rot:'#5f86c4', 'weiß':'#d9b25a', 'rosé':'#e58fab', sekt:'#3e5f9e', tonic:'#4fc1b0', plym:'#7a9ad6', west:'#58b99a', gene:'#b08a5a', barr:'#9a6a3a', other:'var(--text-muted)' };
 let rackActive = 0;
 let rackSelectedWineId = null;  // Wein aus „Nicht zugeordnet", der gerade eingeräumt wird
 let rackFilledSlot = null;      // markiertes belegtes Fach {rack, e, p}
@@ -21377,9 +21581,9 @@ function serveByRules(g) {
     }
   });
   let ratio = '1:2';
-  if (g.type === 'sekt') { ratio = serveLang() === 'de' ? '1:1,5' : '1:1.5'; if (!tonics.includes('classic')) tonics.unshift('classic'); }
-  if (g.type === 'weiß') { if (!tonics.includes('light')) tonics.unshift('light'); if (!garn.includes('lemon')) garn.unshift('lemon'); }
-  if (g.type === 'rosé') { if (!tonics.includes('pink')) tonics.unshift('pink'); if (!tonics.includes('light')) tonics.push('light'); }
+  if (styleFam(g.type) === 'sekt') { ratio = serveLang() === 'de' ? '1:1,5' : '1:1.5'; if (!tonics.includes('classic')) tonics.unshift('classic'); }
+  if (styleFam(g.type) === 'weiß') { if (!tonics.includes('light')) tonics.unshift('light'); if (!garn.includes('lemon')) garn.unshift('lemon'); }
+  if (styleFam(g.type) === 'rosé') { if (!tonics.includes('pink')) tonics.unshift('pink'); if (!tonics.includes('light')) tonics.push('light'); }
   if (!tonics.length) tonics.push('classic');
   if (!garn.length) garn.push('lime', 'rosemary');
   if (tonics.length < 2) tonics.push(tonics.includes('classic') ? 'light' : 'classic');
@@ -21716,14 +21920,14 @@ function renderRecipes() {
   if (!el) return;
   const favs = new Set(settings.favRecipes || []);
   const gins = wines.filter(w => w.type !== 'tonic');
-  const types = new Set(gins.map(w => w.type));
+  const types = new Set(gins.map(w => styleFam(w.type)));
   const all = RECIPES.map(r => ({ id: r.id, name: t('rec_' + r.id + '_n'), ing: t('rec_' + r.id + '_ing').split('\n').filter(Boolean), steps: t('rec_' + r.id + '_steps'), glass: t('rec_' + r.id + '_glass'), styles: r.styles, own: false }))
     .concat((settings.recipes || []).map(r => ({ id: r.id, name: r.name, ing: String(r.ing || '').split('\n').filter(Boolean), steps: r.steps, glass: '', styles: [], own: true, gin: r.gin })));
   let list = all.filter(r => recFilter === 'all' || (recFilter === 'fav' && favs.has(r.id)) || (recFilter === 'own' && r.own));
   if (recMine) list = list.filter(r => r.own || r.styles.some(s => types.has(s)));
   const chip = (id, label) => `<button class="filter-chip ${recFilter === id ? 'active' : ''}" onclick="setRecFilter('${id}')">${label}</button>`;
   const cards = list.map(r => {
-    const fits = gins.filter(w => r.styles.includes(w.type)).slice(0, 5).map(w => w.name);
+    const fits = gins.filter(w => r.styles.includes(styleFam(w.type))).slice(0, 5).map(w => w.name);
     return `<details class="rec-card"><summary><span class="rec-name">${esc(r.name)}</span>
         <button type="button" class="rec-fav" onclick="event.preventDefault();toggleRecFav('${esc(r.id)}')" aria-label="fav">${favs.has(r.id) ? '⭐' : '☆'}</button></summary>
       ${fits.length ? `<div class="wine-region">${ginIco()} ${esc(sx('rec_fits'))}: ${esc(fits.join(', '))}</div>` : ''}
